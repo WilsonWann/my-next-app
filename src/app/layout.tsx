@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Logo from "./components/Logo/Logo.component";
+import LinkNavigation from "./components/LinkNavigation/LinkNavigation.component";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header className="fixed top-0 z-50 flex h-16 w-full flex-row items-center justify-end gap-8 bg-white px-8 opacity-65">
+          <Logo />
+          <LinkNavigation />
+        </header>
+        <main className="relative mt-16 flex min-h-screen flex-col items-center justify-between">
+          {children}
+        </main>
+        <footer className="bottom-0 flex h-48 w-full flex-col items-center justify-between bg-white pt-8 opacity-65">
+          <div className="flex flex-row *:flex *:items-center *:justify-center *:px-6 *:before:content-[attr(data-attr)'：']">
+            <div data-attr="電話">0422010520</div>
+            <div data-attr="信箱">service@musense.tw</div>
+            <div data-attr="地址">403518臺中市西區英才路530號23樓之5</div>
+          </div>
+          <div className="flex flex-row divide-x-2 *:flex *:items-center *:justify-center *:px-6">
+            <LinkNavigation />
+          </div>
+          <div className="flex h-8 w-full flex-row items-center justify-center bg-orange-500 *:text-xs *:text-white">
+            <span>Copyright © 陌聲行銷有限公司</span>
+          </div>
+        </footer>
+      </body>
     </html>
   );
 }
