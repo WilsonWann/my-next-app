@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} bg-orange-200`}>
         <Header />
-        <main className="relative mt-16 flex min-h-screen flex-col items-center justify-between bg-transparent">
+        <main className="relative mt-16 min-h-screen bg-transparent">
           {children}
         </main>
         <Footer />

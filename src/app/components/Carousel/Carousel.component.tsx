@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import React, { FC, useEffect, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
 import getRandomNumber from "@/helper/getRandomNumber.helper";
-import SwipeDots from "./SwipeDots";
 
 type CarouselProps = {
   bannerList: StaticImageData[];
@@ -33,9 +32,7 @@ const Carousel: FC<CarouselProps> = ({ bannerList }) => {
     bannerList.map(() => Math.random()),
   );
 
-  const [animations, setAnimations] = useState<string[]>(
-    bannerList.map(() => randomAnimate()),
-  );
+  const [animations, setAnimations] = useState<string[]>([]);
   const handleBeforeChange = (current: number, next: number) => {
     setActiveIndex(next);
     setAnimations((prevAnimations) => {
@@ -70,38 +67,44 @@ const Carousel: FC<CarouselProps> = ({ bannerList }) => {
     );
   };
 
+  useEffect(() => {
+    const initialAnimations = bannerList.map(() => randomAnimate());
+    setAnimations(initialAnimations);
+  }, [bannerList]);
+
+  const settings = {
+    dots: true,
+    fade: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    beforeChange: handleBeforeChange,
+    appendDots: handleAppendDots,
+    customPaging: handleCustomPaging,
+  }
+
   return (
-    <div>
-      <Slider
-        dots
-        fade
-        infinite
-        autoplay
-        autoplaySpeed={4000}
-        speed={1000}
-        slidesToShow={1}
-        slidesToScroll={1}
-        beforeChange={handleBeforeChange}
-        appendDots={handleAppendDots}
-        customPaging={handleCustomPaging}
-        className="relative h-screen w-full overflow-clip"
-      >
-        {bannerList.map((banner, index: number) => {
-          return (
-            <Image
-              key={uniqueKeys[index]}
-              src={banner}
-              placeholder={"blur"}
-              blurDataURL={banner.blurDataURL}
-              alt={""}
-              sizes="100vw"
-              className={`${animations[index]} h-screen w-full select-none object-cover object-center`}
-            />
-          );
-        })}
-      </Slider>
-      {/* <SwipeDots maxSteps={bannerList.length} activeStep={activeIndex} /> */}
-    </div>
+    <Slider
+      {...settings}
+      className="relative h-screen w-full overflow-clip"
+    >
+      {bannerList.map((banner, index: number) => {
+        return (
+          <Image
+            key={uniqueKeys[index]}
+            src={banner}
+            placeholder={"blur"}
+            blurDataURL={banner.blurDataURL}
+            alt={""}
+            sizes="100vw"
+            className={`${animations[index]} h-screen w-full select-none object-cover object-center`}
+          />
+        );
+      })}
+    </Slider>
   );
 };
 

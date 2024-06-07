@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const plugin = require('tailwindcss/plugin');
 import { origin, animationFunction, scale110, scale100, scale150 } from './src/helper/tailwind-function.helper'
 
 const config: Config = {
@@ -71,6 +72,14 @@ const config: Config = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
+      addUtilities({
+        '.direct-mb-32 > *': {
+          'margin-bottom': '8rem', // 相當於 mb-32
+        },
+      });
+    }),
+  ],
 };
 export default config;
