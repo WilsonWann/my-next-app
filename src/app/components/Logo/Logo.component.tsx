@@ -1,11 +1,13 @@
+'use client'
 import React from "react";
-import Link from "next/link";
+import { handleScrollTo } from "@/utils/scrollTo/scrollTo.utils";
 
 const Logo = () => {
+
   return (
-    <Link href="/" className="mr-auto">
+    <button className="mr-auto" onClick={() => handleScrollTo("banner", 0)}>
       我是Logo
-    </Link>
+    </button>
   );
 };
 
