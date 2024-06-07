@@ -11,6 +11,7 @@ import Image from "next/image";
 const bannerList = [slicedOranges, orange, orangePile];
 
 export default function Home() {
+
   return (
     <div className="direct-mb-32 flex flex-col items-center justify-between">
       {/* //* carousel */}
@@ -40,8 +41,8 @@ export default function Home() {
             />
           </div>
         </div>
-        <div>
-          <section className="item-start mt-48 flex flex-col gap-8">
+        <div className="pt-48">
+          <section className="item-start flex flex-col gap-8">
             <div className="flex flex-row items-baseline gap-4">
               <h2 className="text-5xl font-light">ABOUT</h2>
               <h2 className="text-xl font-bold">關於我們</h2>
