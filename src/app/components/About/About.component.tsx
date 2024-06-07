@@ -38,7 +38,7 @@ const About: FC<Props> = ({ id, images }) => {
               sizes: "100vw",
               className: `absolute h-[671px] w-[1010px] object-cover ${position}`,
             }
-            return <Image {...imageProps} />
+            return <Image key={index} {...imageProps} />
           })}
         </div>
       </div>

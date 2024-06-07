@@ -37,7 +37,7 @@ const Photos: FC<Props> = ({ images }) => {
           }
 
           return (
-            <MotionDivLayout {...motionDivLayoutProps}>
+            <MotionDivLayout key={index} {...motionDivLayoutProps}>
               <Image {...imageProps} />
             </MotionDivLayout>
           )
