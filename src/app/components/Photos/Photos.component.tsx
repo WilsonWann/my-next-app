@@ -19,7 +19,7 @@ const Photos: FC<Props> = ({ images }) => {
     >
       {
         showImages.map((image, index) => {
-          const initialY = index % 2 === 0 ? -150 : 150
+          const initialY = index % 2 === 0 ? 100 : -100
           const additionalClassName = index % 2 === 0 ? '' : 'self-end'
 
           const motionDivLayoutProps = {
