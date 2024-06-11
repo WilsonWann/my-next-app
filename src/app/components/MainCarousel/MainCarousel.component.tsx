@@ -5,7 +5,7 @@ import Carousel from '@/app/components/Carousel/Carousel.component';
 type Props = { id: string, bannerList: StaticImageData[] }
 
 const MainCarousel: FC<Props> = ({ id, bannerList }) => {
-  return <div id={id} className="relative w-full">
+  return <div id={id} className="relative w-screen">
     <Carousel bannerList={bannerList} />
   </div>;
 }

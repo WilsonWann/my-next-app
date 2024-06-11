@@ -89,7 +89,7 @@ const Carousel: FC<CarouselProps> = ({ bannerList }) => {
   return (
     <Slider
       {...settings}
-      className="relative h-screen w-full overflow-clip"
+      className="relative h-screen w-full overflow-clip aspect-video"
     >
       {bannerList.map((banner, index: number) => {
         return (
@@ -100,7 +100,7 @@ const Carousel: FC<CarouselProps> = ({ bannerList }) => {
             blurDataURL={banner.blurDataURL}
             alt={""}
             sizes="100vw"
-            className={`${animations[index]} h-screen w-full select-none object-cover object-center`}
+            className={`${animations[index]} h-screen w-full select-none object-cover object-center aspe`}
           />
         );
       })}

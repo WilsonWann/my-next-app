@@ -6,9 +6,7 @@ import Link from "next/link";
 const Logo = () => {
 
   return (
-    <Link href="/" className="mr-auto"
-      onClick={() => handleScrollTo("banner", 0)}
-    >
+    <Link href="/" onClick={() => handleScrollTo("banner", 0)}>
       我是Logo
     </Link>
   );

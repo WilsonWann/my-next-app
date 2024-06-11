@@ -27,9 +27,9 @@ export default function Home() {
     <div className="direct-mb-32 flex flex-col items-center justify-between">
       <MainCarousel id="banner" bannerList={bannerList} />
       <About id="about" images={aboutImages} />
-      <Company />
+      {/* <Company />
       <Photos images={photosImages} />
-      <LargeBanner image={largeBannerImage} />
+      <LargeBanner image={largeBannerImage} /> */}
     </div >
   );
 }

@@ -20,19 +20,21 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} bg-orange-200`}>
         <Header />
-        <main className="relative mt-16 min-h-screen bg-transparent">
+        <main className="relative xl:mt-16 mt-[100px] min-h-screen bg-transparent xl:px-1 px-8">
           {children}
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
 }
 const Header = () => {
   return (
-    <header className="fixed top-0 z-50 flex h-16 w-full flex-row items-center justify-end gap-8 bg-white px-8 opacity-65">
+    <header className="fixed top-0 z-50 flex xl:h-16 h-[100px] w-full flex-row items-center justify-between bg-white px-8 opacity-65">
       <Logo />
-      <LinkNavigation />
+      <ul className="flex flex-row items-center justify-center gap-8">
+        <LinkNavigation />
+      </ul>
     </header>
   );
 };
@@ -44,8 +46,10 @@ const Footer = () => {
         <div data-attr="信箱">service@musense.tw</div>
         <div data-attr="地址">403518臺中市西區英才路530號23樓之5</div>
       </div>
-      <div className="flex flex-row divide-x-2 *:flex *:items-center *:justify-center *:px-6">
-        <LinkNavigation />
+      <div >
+        <div className="flex flex-row divide-x-2 *:flex *:items-center *:justify-center *:px-6">
+          <LinkNavigation />
+        </div>
       </div>
       <div className="flex h-8 w-full flex-row items-center justify-center bg-orange-500 *:text-xs *:text-white">
         <span>Copyright © 陌聲行銷有限公司</span>

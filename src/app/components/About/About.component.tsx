@@ -3,7 +3,10 @@ import { motion, useAnimation } from 'framer-motion';
 import Image, { type StaticImageData } from 'next/image';
 import { useInView } from 'react-intersection-observer';
 
-type Props = { id: string, images: StaticImageData[] }
+type Props = {
+  id: string,
+  images: StaticImageData[]
+}
 
 const About: FC<Props> = ({ id, images }) => {
   const controlsAbout = useAnimation();
@@ -20,29 +23,40 @@ const About: FC<Props> = ({ id, images }) => {
     }
   }, [controlsAbout, aboutInView]);
 
-  const showImages = images.slice(0, 2)
+  const showImages = images.slice(0, 2).reverse()
+
+  const mainImage = showImages.at(0)
+  const subImage = showImages.at(1)
+
+  if (!mainImage || !subImage) return null
+
+  // console.log('🚀 ~ subImage:', subImage)
+  const mainImageProps = {
+    src: mainImage,
+    placeholder: "blur" as const,
+    blurDataURL: mainImage.blurDataURL,
+    alt: "",
+    sizes: "100vw",
+  }
+  const subImageProps = {
+    src: subImage,
+    placeholder: "blur" as const,
+    blurDataURL: subImage.blurDataURL,
+    alt: "",
+    sizes: "100vw",
+  }
 
   return (
-    <div id={id} className="relative flex w-full h-screen flex-row items-start justify-start gap-32">
-      <div className="relative h-screen basis-[1076px]">
-        <div className="absolute h-full w-full">
-          {showImages.map((image, index) => {
-            const position = index === 0
-              ? 'left-0 top-24 z-10 object-center'
-              : 'left-16 z-20 object-top'
-            const imageProps = {
-              src: image,
-              placeholder: "blur" as const,
-              blurDataURL: image.blurDataURL,
-              alt: "",
-              sizes: "100vw",
-              className: `absolute h-[671px] w-[1010px] object-cover ${position}`,
-            }
-            return <Image key={index} {...imageProps} />
-          })}
-        </div>
-      </div>
-      <div className="pt-48">
+    <div id={id} className="relative flex w-full h-screen 
+    md:flex-row flex-col-reverse 
+    md:items-center items-center 
+    md:justify-center justify-end
+    md:gap-32 gap-12">
+      <aside className="relative w-fit h-fit">
+        <Image  {...mainImageProps} className="relative md:ml-12 ml-0 z-10 object-top md:h-auto md:w-[1010px] aspect-video object-cover" />
+        <Image  {...subImageProps} className="absolute md:left-0 -left-12 top-12 z-0 object-center md:h-auto md:w-[1010px] aspect-video object-cover" />
+      </aside>
+      <div className="md:pt-48 pt-0">
         <motion.div
           ref={refAbout}
           animate={controlsAbout}
@@ -75,5 +89,6 @@ const About: FC<Props> = ({ id, images }) => {
     </div>
   );
 }
+
 
 export default About
