@@ -7,7 +7,7 @@ const LinkNavigation = () => {
 
   return (
     <>
-      <button onClick={() => handleScrollTo("about")}>ABOUT</button>
+      <Link href="/" onClick={() => handleScrollTo("about")}>ABOUT</Link>
       <Link href="/service">SERVICE</Link>
       <Link href="/portfolio">PORTFOLIO</Link>
       <Link href="/video">VIDEO</Link>
