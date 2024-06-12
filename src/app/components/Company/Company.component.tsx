@@ -37,7 +37,7 @@ const Company: FC<Props> = ({ className = '' }) => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
 
-        <h2 className="text-7xl font-thin">陌聲行銷</h2>
+        <h2 className="text-7xl font-thin text-nowrap">陌聲行銷</h2>
       </motion.div>
       <h2 className="text-5xl font-light">﹡</h2>
       <div className="flex flex-col justify-start items-baseline">

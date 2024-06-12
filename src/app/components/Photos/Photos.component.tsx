@@ -5,22 +5,49 @@ import Image, { StaticImageData } from 'next/image';
 
 type Props = {
   images: StaticImageData[],
+  className?: string
 }
 
-const Photos: FC<Props> = ({ images }) => {
+const Photos: FC<Props> = ({ images, className = '' }) => {
 
   const showImages = images.slice(0, 4)
 
-  return <div className="w-full h-screen flex flex-col justify-start items-end gap-16">
+  return <div className={`w-full h-screen 
+  flex flex-col justify-start items-end 
+  xl:gap-16 md:gap-8 gap-4 
+  xl:pl-64 md:pl-4 pl-0
+  ${className}`}>
+
     <motion.div
       initial="hidden"
       animate="visible"
-      className="w-full h-[680px] flex justify-end items-start gap-4"
-    >
+      className="w-auto 
+      h-auto
+      grid
+      md:grid-cols-4-minmax grid-cols-2-minmax
+      ">
+
       {
         showImages.map((image, index) => {
-          const initialY = index % 2 === 0 ? 100 : -100
-          const additionalClassName = index % 2 === 0 ? '' : 'self-end'
+          const initialY = index % 2 === 0 ? 50 : -50
+          let additionalClassName
+          if (index === 0) {
+            additionalClassName = `xl:mr-2 xl:mb-8
+                                   md:mr-1 md:mb-4 
+                                   mr-1    mb-4`
+          } else if (index === 1) {
+            additionalClassName = `xl:mr-2 xl:ml-2 xl:mt-8
+                                   md:mr-1 md:ml-1 md:mt-4 md:mb-0   
+                                   mr-0    ml-1    mt-4    mb-4 `
+          } else if (index === 2) {
+            additionalClassName = `xl:mr-2 xl:ml-2 xl:mb-8 
+                                   md:mr-1 md:ml-1 md:mb-4  md:mt-0
+                                   mr-1                     -mt-4`
+          } else if (index === 3) {
+            additionalClassName = `xl:ml-2 xl:mt-8
+                                   md:ml-1 md:mt-4 
+                                   ml-1    mt-0`
+          }
 
           const motionDivLayoutProps = {
             initialY,
@@ -33,21 +60,30 @@ const Photos: FC<Props> = ({ images }) => {
             blurDataURL: image.blurDataURL,
             alt: "",
             sizes: "100vw",
-            className: " object-cover object-center h-full",
           }
 
           return (
             <MotionDivLayout key={index} {...motionDivLayoutProps}>
-              <Image {...imageProps} />
+              <Image {...imageProps}
+                className="object-cover object-center aspect-3/4 "
+              />
             </MotionDivLayout>
           )
         })
       }
     </motion.div>
-    <div className="flex justify-end items-center gap-16 w w-full">
-      <div className="flex flex-col justify-between items-end gap-4">
-        <h2 className="text-5xl font-thin">PHOTO</h2>
-        <span data-attr="﹡" className="text-lg before:content-[attr(data-attr)]">view</span>
+    <div className="flex justify-end items-center 
+    xl:gap-16 md:gap-8 gap-4
+    w-full
+    ">
+      <div className=" 
+    md:ml-8 ml-0 flex flex-col justify-between items-end gap-4">
+        <h2 className="
+        xl:text-5xl md:text-4xl text-3xl
+        font-thin">PHOTO</h2>
+        <span data-attr="﹡" className="
+        xl:text-lg md:text-base text-sm
+        before:content-[attr(data-attr)]">view</span>
       </div>
       <div className={`bg-orange-500 w-[1450px] h-1 rounded-md`}></div>
     </div>

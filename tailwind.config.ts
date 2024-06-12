@@ -7,6 +7,10 @@ type PluginFunctionParams = {
   e: (className: string) => string;
 };
 
+type AddUtilitiesParams = {
+  addUtilities: (utilities: Record<string, Record<string, string | number>>) => void;
+};
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -15,6 +19,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        // 添加自定義的minmax工具
+        'minmax': 'minmax(150px, 1fr)',
+      },
+      aspectRatio: {
+        '3/4': '3 / 4'
+      },
       content: {
         "painting-frame": "url('./../assets/wet-orange-and-white-paint-filling-frame.jpg')",
       },
@@ -32,13 +43,27 @@ const config: Config = {
     },
   },
   plugins: [
-    plugin(function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
+    plugin(function ({ addUtilities }: AddUtilitiesParams) {
       addUtilities({
         '.direct-mb-32 > *': {
           'margin-bottom': '8rem', // 相當於 mb-32
         },
         '.direct-mb-1 > *': {
           'margin-bottom': '4rem', // 相當於 mb-32
+        },
+      });
+    }),
+    plugin(function ({ addUtilities }: AddUtilitiesParams) {
+      addUtilities({
+        '.grid-cols-4-minmax': {
+          gridTemplateColumns: 'repeat(4, minmax(150px, 1fr))',
+        },
+      });
+    }),
+    plugin(function ({ addUtilities }: AddUtilitiesParams) {
+      addUtilities({
+        '.grid-cols-2-minmax': {
+          gridTemplateColumns: 'repeat(2, minmax(150px, 1fr))',
         },
       });
     }),

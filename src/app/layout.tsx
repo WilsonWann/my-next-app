@@ -18,13 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="zh-TW">
       <body className={`${inter.className} bg-orange-200`}>
         <ReduxProvider>
           <Header />
           <main className="relative min-h-screen bg-transparent 
           xl:mt-16 mt-[100px] 
           xl:px-1 px-8
+          overflow-x-clip
           ">
             {children}
           </main>

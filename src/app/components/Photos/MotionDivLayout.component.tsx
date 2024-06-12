@@ -32,7 +32,7 @@ const MotionDivLayout: FC<Props> = ({ initialY, children, additionalClassName = 
       initial="hidden"
       variants={variants}
       transition={{ duration: 0.8 }}
-      className={`w-[407px] h-[610px] rounded-md ${additionalClassName}`}
+      className={` rounded-md ${additionalClassName}`}
     >
       {children}
     </motion.div>

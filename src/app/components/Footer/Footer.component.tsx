@@ -6,13 +6,14 @@ const Footer = () => {
   return (
     <footer className="bottom-0 flex h-fit w-full flex-col items-center justify-between bg-white pt-8 opacity-65 
     md:divide-y-0 divide-y-2
+    md:gap-y-8
     ">
       <div className="flex 
-      flex-row *:flex *:items-center *:justify-center *:px-6 
+      flex-row *:flex *:items-start *:justify-center *:px-6 
       md:flex-nowrap flex-wrap 
       md:gap-y-0 gap-y-2
       md:pb-0 pb-2
-      *:before:content-[attr(data-attr)'：'] *:before:text-nowrap *:text-nowrap" >
+      *:before:content-[attr(data-attr)'：'] *:before:text-nowrap " >
         <div data-attr="電話">0422010520</div>
         <div data-attr="信箱">service@musense.tw</div>
         <div data-attr="地址">403518臺中市西區英才路530號23樓之5</div>
@@ -22,7 +23,7 @@ const Footer = () => {
         md:flex-row flex-col
         md:divide-x-2 divide-x-0
         md:gap-y-0 gap-y-2
-        py-2
+        md:p-0 py-2
         justify-center
         md:items-center items-baseline
          w-full
