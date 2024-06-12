@@ -5,9 +5,10 @@ import { useInView } from 'react-intersection-observer';
 
 type Props = {
   image: StaticImageData
+  className?: string
 }
 
-const LargeBanner: FC<Props> = ({ image }) => {
+const LargeBanner: FC<Props> = ({ image, className = '' }) => {
   const controlsLargeBanner = useAnimation();
   const [refLargeBanner, largeBannerInView] = useInView({
     triggerOnce: false, // 每次進入視口時都觸發
@@ -31,13 +32,13 @@ const LargeBanner: FC<Props> = ({ image }) => {
     className: " object-cover object-center w-full",
   }
 
-  return <div className="!mb-0 w-full h-[571px] overflow-clip">
+  return <div className={`w-screen aspect-large-banner overflow-clip ${className}`}>
     <motion.div
       ref={refLargeBanner}
       animate={controlsLargeBanner}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <Image {...imageProps} />
+      <Image {...imageProps} className={`object-cover object-center w-full`} />
     </motion.div>
   </div>;
 }

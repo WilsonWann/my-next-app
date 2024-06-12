@@ -28,8 +28,8 @@ export default function Home() {
       <MainCarousel id="banner" bannerList={bannerList} className="mb-16" />
       <About id="about" images={aboutImages} className="mb-48" />
       <Company className="mb-32" />
-      <Photos images={photosImages} className="mb-32" />
-      {/* <LargeBanner image={largeBannerImage} /> */}
+      <Photos images={photosImages} className="md:mb-32 mb-24" />
+      <LargeBanner image={largeBannerImage} className="mb-8" />
     </div >
   );
 }

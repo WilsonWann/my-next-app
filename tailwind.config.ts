@@ -24,7 +24,8 @@ const config: Config = {
         'minmax': 'minmax(150px, 1fr)',
       },
       aspectRatio: {
-        '3/4': '3 / 4'
+        '3/4': '3 / 4',
+        'large-banner': '1920 / 571'
       },
       content: {
         "painting-frame": "url('./../assets/wet-orange-and-white-paint-filling-frame.jpg')",

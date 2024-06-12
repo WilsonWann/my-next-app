@@ -12,7 +12,7 @@ const Photos: FC<Props> = ({ images, className = '' }) => {
 
   const showImages = images.slice(0, 4)
 
-  return <div className={`w-full h-screen 
+  return <div className={`w-full h-auto 
   flex flex-col justify-start items-end 
   xl:gap-16 md:gap-8 gap-4 
   xl:pl-64 md:pl-4 pl-0
