@@ -18,13 +18,13 @@ declare global {
 }
 
 type ExtendedPersistConfig = PersistConfig<RootState> & {
-  whitelist: (keyof RootState)[]
+  // whitelist: (keyof RootState)[]
 }
 
 const persistConfig: ExtendedPersistConfig = {
   key: 'root',
   storage,
-  whitelist: ['menu']
+  // whitelist: ['menu']
 }
 
 // const sagaMiddleware = createSagaMiddleware()
@@ -37,11 +37,9 @@ const middleWares = [
   // sagaMiddleware
 ].filter((middleware): middleware is Middleware => Boolean(middleware))
 
-const isClient = typeof window !== 'undefined';
+// const isClient = typeof window !== 'undefined';
 
-const composeEnhancer = isClient &&
-  (process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ) || compose
+const composeEnhancer = (process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
 const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares))
 
@@ -53,4 +51,4 @@ export const store = createStore(
 
 // sagaMiddleware.run(rootSaga)
 
-export const persistor = isClient ? persistStore(store) : null
+export const persistor = persistStore(store) 
