@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW">
-      <body className={`${inter.className} bg-orange-200`}>
+      <body className={`${inter.className} bg-theme-light`}>
         <ReduxProvider>
           <Header />
           <main className="relative min-h-screen bg-transparent 

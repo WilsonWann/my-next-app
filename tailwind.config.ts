@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 const plugin = require('tailwindcss/plugin');
 import { customKeyframes, customAnimation } from './src/helper/tailwind-function.helper'
+import colors from 'tailwindcss/colors'
 
 type PluginFunctionParams = {
   addVariant: (name: string, callback: (options: { modifySelectors: (modifier: ({ className }: { className: string }) => string) => void; separator: string }) => void) => void;
@@ -19,6 +20,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        'theme': {
+          light: colors.slate[300],
+          DEFAULT: colors.slate[500],
+          dark: colors.slate[600],
+        }
+      },
       gridTemplateColumns: {
         // 添加自定義的minmax工具
         'minmax': 'minmax(150px, 1fr)',

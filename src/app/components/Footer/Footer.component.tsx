@@ -4,7 +4,7 @@ import LinkNavigation from '../LinkNavigation/LinkNavigation.component';
 
 const Footer = () => {
   return (
-    <footer className="bottom-0 flex h-fit w-full flex-col items-center justify-between bg-white pt-8 opacity-65 
+    <footer className="bottom-0 flex h-fit w-full flex-col items-center justify-between bg-transparent pt-8 opacity-65 
     md:divide-y-0 divide-y-2
     md:gap-y-8
     ">
@@ -34,7 +34,7 @@ const Footer = () => {
         ">
         <LinkNavigation />
       </div>
-      <div className="flex h-8 w-full flex-row items-center justify-center bg-orange-500 *:text-xs *:text-white">
+      <div className="flex h-8 w-full flex-row items-center justify-center bg-theme *:text-xs *:text-white">
         <span>Copyright © 陌聲行銷有限公司</span>
       </div>
     </footer>

@@ -29,7 +29,6 @@ const LargeBanner: FC<Props> = ({ image, className = '' }) => {
     blurDataURL: image.blurDataURL,
     alt: "",
     sizes: "100vw",
-    className: " object-cover object-center w-full",
   }
 
   return <div className={`w-screen aspect-large-banner overflow-clip ${className}`}>

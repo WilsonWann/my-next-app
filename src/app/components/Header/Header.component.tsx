@@ -53,7 +53,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 z-50 flex w-full flex-row items-center justify-between bg-white px-8 
+    <header className="fixed top-0 z-50 flex w-full flex-row items-center justify-between bg-theme-light px-8 
     bg-opacity-65 
     xl:h-16 h-[100px] 
     ">

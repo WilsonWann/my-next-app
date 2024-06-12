@@ -85,7 +85,7 @@ const Photos: FC<Props> = ({ images, className = '' }) => {
         xl:text-lg md:text-base text-sm
         before:content-[attr(data-attr)]">view</span>
       </div>
-      <div className={`bg-orange-500 w-[1450px] h-1 rounded-md`}></div>
+      <div className={`bg-theme w-[1450px] h-1 rounded-md`}></div>
     </div>
   </div>;
 }
