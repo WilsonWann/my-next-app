@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../Logo/Logo.component";
 import LinkNavigation from "../LinkNavigation/LinkNavigation.component";
 import HamburgerMenuIcon from "../Hamburger-Icon/Hamburger-Icon.component";
@@ -18,6 +18,28 @@ const Header = () => {
   const closeButton = <CloseIcon onClick={toggleIsMenuOpen} />;
 
   const [navigationClassName, setNavigationClassName] = useState("-right-2/3");
+
+  const navRef = useRef<HTMLUListElement | null>(null)
+
+  const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+    if (navRef.current && !navRef.current.contains(event.target as Node)) {
+      toggleIsMenuOpen()
+    }
+  }
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('wheel', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('wheel', handleClickOutside);
+        document.removeEventListener('touchstart', handleClickOutside);
+      };
+    }
+  }, [isMenuOpen]);
+
   useEffect(() => {
     if (isMenuOpen) {
       setNavigationClassName("right-0");
@@ -26,6 +48,10 @@ const Header = () => {
     }
   }, [isMenuOpen]);
 
+  useEffect(() => {
+
+  }, []);
+
   return (
     <header className="fixed top-0 z-50 flex w-full flex-row items-center justify-between bg-white px-8 
     bg-opacity-65 
@@ -33,7 +59,7 @@ const Header = () => {
     ">
       <Logo />
       <button className="md:hidden">{openButton}</button>
-      <ul className={`
+      <ul ref={navRef} className={`
       fixed md:relative 
       md:right-0 ${navigationClassName} 
       flex 

@@ -37,9 +37,14 @@ const middleWares = [
   // sagaMiddleware
 ].filter((middleware): middleware is Middleware => Boolean(middleware))
 
-// const isClient = typeof window !== 'undefined';
+const isClient = typeof window !== 'undefined';
 
-const composeEnhancer = (process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+const composeEnhancer = (
+  isClient &&
+  process.env.NODE_ENV !== 'production' &&
+  window &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+) || compose
 
 const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares))
 
