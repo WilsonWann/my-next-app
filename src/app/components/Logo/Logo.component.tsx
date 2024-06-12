@@ -1,12 +1,16 @@
 'use client'
-import React from "react";
+import React, { FC } from "react";
 import { handleScrollTo } from "@/utils/scrollTo/scrollTo.utils";
 import Link from "next/link";
 
-const Logo = () => {
+type Props = {
+  className?: string
+}
+
+const Logo: FC<Props> = ({ className }) => {
 
   return (
-    <Link href="/" onClick={() => handleScrollTo("banner", 0)}>
+    <Link className={className} href="/" onClick={() => handleScrollTo("banner", 0)}>
       我是Logo
     </Link>
   );

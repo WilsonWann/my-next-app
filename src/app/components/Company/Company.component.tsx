@@ -1,8 +1,12 @@
 import { motion, useAnimation } from 'framer-motion';
-import React, { useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer';
 
-const Company = () => {
+type Props = {
+  className?: string
+}
+
+const Company: FC<Props> = ({ className = '' }) => {
 
   const controls = useAnimation();
   const [ref, inView] = useInView({
@@ -17,8 +21,16 @@ const Company = () => {
     }
   }, [controls, inView]);
 
-  return <div className="!mb-0 w-full h-screen flex justify-center items-center">
-    <div className="flex flex-row justify-center items-end gap-4">
+  return <div className={`
+  w-full 
+  md:h-screen h-fit
+  flex justify-center items-center ${className}`}>
+    <div className="
+    flex 
+    md:flex-row flex-col
+    justify-center 
+    md:items-end items-center
+    gap-4">
       <motion.div
         ref={ref}
         animate={controls}

@@ -2,6 +2,11 @@ import type { Config } from "tailwindcss";
 const plugin = require('tailwindcss/plugin');
 import { customKeyframes, customAnimation } from './src/helper/tailwind-function.helper'
 
+type PluginFunctionParams = {
+  addVariant: (name: string, callback: (options: { modifySelectors: (modifier: ({ className }: { className: string }) => string) => void; separator: string }) => void) => void;
+  e: (className: string) => string;
+};
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -31,6 +36,9 @@ const config: Config = {
       addUtilities({
         '.direct-mb-32 > *': {
           'margin-bottom': '8rem', // 相當於 mb-32
+        },
+        '.direct-mb-1 > *': {
+          'margin-bottom': '4rem', // 相當於 mb-32
         },
       });
     }),

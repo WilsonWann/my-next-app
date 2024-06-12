@@ -2,10 +2,14 @@ import type { StaticImageData } from 'next/image';
 import React, { FC } from 'react'
 import Carousel from '@/app/components/Carousel/Carousel.component';
 
-type Props = { id: string, bannerList: StaticImageData[] }
+type Props = {
+  id: string,
+  bannerList: StaticImageData[],
+  className?: string
+}
 
-const MainCarousel: FC<Props> = ({ id, bannerList }) => {
-  return <div id={id} className="relative w-screen">
+const MainCarousel: FC<Props> = ({ id, bannerList, className = '' }) => {
+  return <div id={id} className={`relative w-screen ${className}`}>
     <Carousel bannerList={bannerList} />
   </div>;
 }

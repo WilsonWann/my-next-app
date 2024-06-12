@@ -24,12 +24,12 @@ const largeBannerImage = smallPumpkins;
 export default function Home() {
 
   return (
-    <div className="direct-mb-32 flex flex-col items-center justify-between">
-      <MainCarousel id="banner" bannerList={bannerList} />
-      <About id="about" images={aboutImages} />
-      {/* <Company />
+    <div className="flex flex-col items-center justify-between md:direct-mb-32">
+      <MainCarousel id="banner" bannerList={bannerList} className="mb-16" />
+      <About id="about" images={aboutImages} className="mb-48" />
+      <Company className="!mb-0" />
       <Photos images={photosImages} />
-      <LargeBanner image={largeBannerImage} /> */}
+      {/* <LargeBanner image={largeBannerImage} /> */}
     </div >
   );
 }

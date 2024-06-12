@@ -5,10 +5,11 @@ import { useInView } from 'react-intersection-observer';
 
 type Props = {
   id: string,
-  images: StaticImageData[]
+  images: StaticImageData[],
+  className?: string
 }
 
-const About: FC<Props> = ({ id, images }) => {
+const About: FC<Props> = ({ id, images, className = '' }) => {
   const controlsAbout = useAnimation();
   const [refAbout, aboutInView] = useInView({
     triggerOnce: false, // 每次進入視口時都觸發
@@ -47,11 +48,12 @@ const About: FC<Props> = ({ id, images }) => {
   }
 
   return (
-    <div id={id} className="relative flex w-full h-screen 
+    <div id={id} className={`relative flex w-full 
+    md:h-screen h-fit
     md:flex-row flex-col-reverse 
     md:items-center items-center 
     md:justify-center justify-end
-    md:gap-32 gap-12">
+    md:gap-32 gap-12 ${className}`}>
       <aside className="relative w-fit h-fit">
         <Image  {...mainImageProps} className="relative md:ml-12 ml-0 z-10 object-top md:h-auto md:w-[1010px] aspect-video object-cover" />
         <Image  {...subImageProps} className="absolute md:left-0 -left-12 top-12 z-0 object-center md:h-auto md:w-[1010px] aspect-video object-cover" />

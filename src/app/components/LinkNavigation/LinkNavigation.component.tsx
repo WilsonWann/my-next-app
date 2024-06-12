@@ -1,12 +1,16 @@
 'use client'
-import React from "react";
+import React, { FC } from "react";
 import Link from "next/link";
 import { handleScrollTo } from "@/utils/scrollTo/scrollTo.utils";
 
-const LinkNavigation = () => {
+type Props = {
+  menuButton?: React.ReactNode
+};
+const LinkNavigation: FC<Props> = ({ menuButton }) => {
 
   return (
     <>
+      {menuButton}
       <li>
         <Link href="/" onClick={() => handleScrollTo("about")}>ABOUT</Link>
       </li>
