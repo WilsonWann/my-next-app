@@ -48,7 +48,7 @@ const About: FC<Props> = ({ id, images, className = '' }) => {
 
   return (
     <div id={id} className={`relative flex w-full 
-    md:h-screen h-fit
+    xl:h-screen h-fit
     md:flex-row flex-col-reverse 
     md:items-center items-center 
     md:justify-center justify-end

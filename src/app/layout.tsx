@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import Head, { type Metadata } from "next";
+import { inter } from './fonts'
 import "./globals.css";
 import ReduxProvider from "./ReduxProvider";
 import Header from "./components/Header/Header.component";
 import Footer from "./components/Footer/Footer.component";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",

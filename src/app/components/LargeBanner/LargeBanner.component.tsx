@@ -37,7 +37,7 @@ const LargeBanner: FC<Props> = ({ image, className = '' }) => {
       animate={controlsLargeBanner}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <Image {...imageProps} className={`object-cover object-center w-full`} />
+      <Image {...imageProps} className={`object-cover object-center w-screen aspect-large-banner`} />
     </motion.div>
   </div>;
 }

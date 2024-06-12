@@ -23,7 +23,7 @@ const Company: FC<Props> = ({ className = '' }) => {
 
   return <div className={`
   w-full 
-  md:h-screen h-fit
+  xl:h-screen h-fit
   flex justify-center items-center ${className}`}>
     <div className="
     flex 
