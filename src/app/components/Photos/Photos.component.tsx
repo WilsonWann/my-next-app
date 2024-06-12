@@ -29,7 +29,7 @@ const Photos: FC<Props> = ({ images, className = '' }) => {
 
       {
         showImages.map((image, index) => {
-          const initialY = index % 2 === 0 ? 50 : -50
+          const initialY = index % 2 === 0 ? 100 : -100
           let additionalClassName
           if (index === 0) {
             additionalClassName = `xl:mr-2 xl:mb-8
