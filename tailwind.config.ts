@@ -25,7 +25,8 @@ const config: Config = {
           light: colors.slate[300],
           DEFAULT: colors.slate[500],
           dark: colors.slate[600],
-        }
+        },
+        'title': '#886A4B'
       },
       gridTemplateColumns: {
         // 添加自定義的minmax工具

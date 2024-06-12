@@ -65,7 +65,7 @@ const About: FC<Props> = ({ id, images, className = '' }) => {
         >
           <section className="item-start flex flex-col gap-8">
             <div className="flex flex-row items-baseline gap-4">
-              <h2 className="text-5xl font-thin">ABOUT</h2>
+              <h2 className="text-5xl font-thin text-title">ABOUT</h2>
               <h2 className="text-xl font-bold">關於我們</h2>
             </div>
             <div>
