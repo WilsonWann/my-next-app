@@ -77,7 +77,9 @@ const Photos: FC<Props> = ({ images, className = '' }) => {
     w-full
     ">
       <div className=" 
-    md:ml-8 ml-0 flex flex-col justify-between items-end gap-4">
+    md:ml-8 ml-0 flex flex-col justify-between items-end 
+    xl:gap-4 md:gap-2 gap-0
+    ">
         <h2 className="
         xl:text-5xl md:text-4xl text-3xl
         font-thin">PHOTO</h2>
