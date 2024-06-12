@@ -57,7 +57,7 @@ const Header = () => {
     bg-opacity-65 
     xl:h-16 h-[100px] 
     ">
-      <Logo />
+      <Logo className="xl:py-4 md:py-6 py-8 h-full" />
       <button className="md:hidden">{openButton}</button>
       <ul ref={navRef} className={`
       fixed md:relative 

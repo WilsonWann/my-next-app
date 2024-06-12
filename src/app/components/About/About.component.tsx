@@ -31,7 +31,6 @@ const About: FC<Props> = ({ id, images, className = '' }) => {
 
   if (!mainImage || !subImage) return null
 
-  // console.log('🚀 ~ subImage:', subImage)
   const mainImageProps = {
     src: mainImage,
     placeholder: "blur" as const,
