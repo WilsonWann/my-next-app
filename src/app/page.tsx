@@ -1,6 +1,6 @@
 'use client'
 
-import { noto } from './fonts'
+import { noto } from '@/app/fonts'
 import { bannerList, aboutImages, photosImages, mainBannerImage } from './imageHandler'
 import MainCarousel from "./components/MainCarousel/MainCarousel.component";
 import About from "./components/About/About.component";

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { josefin } from '../../fonts'
+import { josefin } from '@/app/fonts'
 import { motion } from "framer-motion"
 import MotionDivLayout from './MotionDivLayout.component';
 import Image, { StaticImageData } from 'next/image';

@@ -1,5 +1,5 @@
 import Head, { type Metadata } from "next";
-import { inter } from './fonts'
+import { inter } from '@/app/fonts'
 import "./globals.css";
 import ReduxProvider from "./ReduxProvider";
 import Header from "./components/Header/Header.component";

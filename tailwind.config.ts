@@ -74,6 +74,22 @@ const config: Config = {
       });
     }),
     plugin(function ({ addUtilities }: AddUtilitiesParams) {
+      addUtilities({
+        '.grid-cols-3-auto-rows': {
+          gridTemplateColumns: 'repeat(3, minmax(150px, 1fr))',
+          gridTemplateRows: 'auto auto auto',
+        },
+      });
+    }),
+    plugin(function ({ addUtilities }: AddUtilitiesParams) {
+      addUtilities({
+        '.grid-cols-2-auto-rows': {
+          gridTemplateColumns: 'repeat(2, minmax(150px, 1fr))',
+          gridTemplateRows: 'auto auto',
+        },
+      });
+    }),
+    plugin(function ({ addUtilities }: AddUtilitiesParams) {
       const newUtilities = {
         '.text-stroke': {
           textShadow: `

@@ -1,15 +1,10 @@
 'use client'
 import React from 'react'
-import { playfair, josefin } from '../fonts'
+import { playfair, josefin } from '@/app/fonts'
 import LargeBanner from '../components/LargeBanner/LargeBanner.component'
 import { serviceBannerImage } from '../imageHandler'
 
-type Props = {}
-
-const ServicePage = (props: Props) => {
-
-  const offset = 36
-  const divide = offset / 2
+const ServicePage = () => {
 
   return (
     <div className={`${playfair.className} flex flex-col items-center justify-between`}>
