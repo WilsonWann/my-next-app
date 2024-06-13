@@ -7,9 +7,15 @@ type Props = {
   image: StaticImageData
   aspectRatio?: string
   className?: string
+  imageClassName?: string
 }
 
-const LargeBanner: FC<Props> = ({ image, aspectRatio = 'aspect-main-banner', className = '' }) => {
+const LargeBanner: FC<Props> = ({
+  image,
+  aspectRatio = 'aspect-main-banner',
+  className = '',
+  imageClassName = 'w-screen'
+}) => {
   const controlsLargeBanner = useAnimation();
   const [refLargeBanner, largeBannerInView] = useInView({
     triggerOnce: false, // 每次進入視口時都觸發
@@ -32,13 +38,14 @@ const LargeBanner: FC<Props> = ({ image, aspectRatio = 'aspect-main-banner', cla
     sizes: "100vw",
   }
 
-  return <div className={`w-screen  overflow-clip ${aspectRatio} ${className}`}>
+  return <div className={`w-screen overflow-clip ${aspectRatio} ${className}`}>
     <motion.div
       ref={refLargeBanner}
       animate={controlsLargeBanner}
       transition={{ duration: 0.8, ease: "easeOut" }}
+      className="h-full w-full"
     >
-      <Image {...imageProps} className={`object-cover object-center w-screen ${aspectRatio}`} />
+      <Image {...imageProps} className={`object-cover object-center ${aspectRatio} ${imageClassName}`} />
     </motion.div>
   </div>;
 }
