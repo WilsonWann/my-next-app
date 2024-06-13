@@ -76,15 +76,16 @@ const Header = () => {
       md:self-center 
       md:bg-transparent bg-white opacity-100
       md:*:border-b-transparent *:border-b *:border-slate-400
-      *:w-full
+      *:w-full 
       `}
       >
         <LinkNavigation
           menuButton={
-            <li className="h-[100px] flex justify-center items-center md:hidden !pl-0 !border-b-transparent">
+            <li className="h-[100px] flex justify-center items-center md:hidden !pl-0 !border-b-transparent ">
               <button>{closeButton}</button>
             </li>
           }
+          className={"hover:text-title"}
         />
       </ul>
     </header>

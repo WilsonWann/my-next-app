@@ -37,7 +37,8 @@ const ServiceBanner: FC<Props> = ({ serviceBannerImage, className = '' }) => {
             justify-between 
             items-stretch 
             md:divide-x-2 
-            xl:space-x-16 md:space-x-8 space-y-6
+            xl:space-x-16 md:space-x-8 
+            md:space-y-0 space-y-6
             xl:*:pl-16 md:*:pl-8
             text-subtitle text-center 
             `}>

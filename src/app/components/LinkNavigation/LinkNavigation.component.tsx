@@ -3,29 +3,42 @@ import React, { FC } from "react";
 import Link from "next/link";
 import { handleScrollTo } from "@/utils/scrollTo/scrollTo.utils";
 
+const routeDetailArray = [
+  { route: '/', name: 'about' },
+  { route: '/service', name: 'service' },
+  { route: '/portfolio', name: 'portfolio' },
+  { route: '/video', name: 'video' },
+  { route: '/contact', name: 'contact' },
+]
+
+
 type Props = {
   menuButton?: React.ReactNode
+  className?: string
 };
-const LinkNavigation: FC<Props> = ({ menuButton }) => {
+const LinkNavigation: FC<Props> = ({ menuButton, className = '' }) => {
 
   return (
     <>
       {menuButton}
-      <li>
-        <Link href="/" onClick={() => handleScrollTo("about")}>ABOUT</Link>
-      </li>
-      <li>
-        <Link href="/service">SERVICE</Link>
-      </li>
-      <li>
-        <Link href="/portfolio">PORTFOLIO</Link>
-      </li>
-      <li>
-        <Link href="/video">VIDEO</Link>
-      </li>
-      <li>
-        <Link href="/contact">CONTACT</Link>
-      </li>
+      {routeDetailArray.map((routeDetail, index) => {
+
+        const { route, name } = routeDetail
+
+        if (route === '/') {
+          return (
+            <li>
+              <Link key={index} href="/" className={`uppercase ${className}`} onClick={() => handleScrollTo("about")}>{name}</Link>
+            </li>
+          )
+        } else {
+          return (
+            <li key={index}>
+              <Link key={index} href={route} className={`uppercase ${className}`}>{name}</Link>
+            </li >
+          )
+        }
+      })}
     </>
   );
 };
