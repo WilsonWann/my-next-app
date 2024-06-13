@@ -34,7 +34,8 @@ const config: Config = {
       },
       aspectRatio: {
         '3/4': '3 / 4',
-        'large-banner': '1920 / 571',
+        'main-banner': '1920 / 571',
+        'service-banner': '1920 / 490',
         'logo': '283 / 70'
       },
       content: {
