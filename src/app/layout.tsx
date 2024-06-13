@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-theme-light`}>
         <ReduxProvider>
           <Header />
-          <main className="relative min-h-screen bg-transparent 
+          <main className="relative bg-transparent 
           xl:mt-16 mt-[100px] 
           xl:px-1 px-8
           overflow-x-clip

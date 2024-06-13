@@ -52,6 +52,9 @@ const config: Config = {
       },
       animation: {
         ...customAnimation,
+      },
+      zIndex: {
+        'hidden': '-1',
       }
     },
   },
@@ -75,17 +78,17 @@ const config: Config = {
     }),
     plugin(function ({ addUtilities }: AddUtilitiesParams) {
       addUtilities({
-        '.grid-cols-3-auto-rows': {
+        '.grid-cols-3-rows-2': {
           gridTemplateColumns: 'repeat(3, minmax(150px, 1fr))',
-          gridTemplateRows: 'auto auto auto',
+          gridTemplateRows: 'repeat(2, 280px)',
         },
       });
     }),
     plugin(function ({ addUtilities }: AddUtilitiesParams) {
       addUtilities({
-        '.grid-cols-2-auto-rows': {
+        '.grid-cols-2-rows-3': {
           gridTemplateColumns: 'repeat(2, minmax(150px, 1fr))',
-          gridTemplateRows: 'auto auto',
+          gridTemplateRows: 'repeat(3, 280px)',
         },
       });
     }),
