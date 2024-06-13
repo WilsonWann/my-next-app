@@ -7,9 +7,10 @@ import logo from '@/assets/logo_gray.png'
 
 type Props = {
   className?: string
+  imageClassName?: string
 }
 
-const Logo: FC<Props> = ({ className }) => {
+const Logo: FC<Props> = ({ className = "", imageClassName = "" }) => {
 
   const logoProps = {
     src: logo,
@@ -23,7 +24,7 @@ const Logo: FC<Props> = ({ className }) => {
     <Link className={className} href="/" onClick={() => handleScrollTo("banner", 0)}>
       <div className="h-full aspect-logo overflow-clip">
         <Image {...logoProps}
-          className={`object-top object-cover ${className}`}
+          className={`object-top object-cover ${imageClassName}`}
         />
       </div>
     </Link>

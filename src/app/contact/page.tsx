@@ -41,7 +41,7 @@ const ContactPage = () => {
             >
               <div className="flex flex-col">
                 <div className="flex justify-between items-baseline">
-                  <Logo className="w-[102px]" />
+                  <Logo imageClassName="w-[102px]" />
                   <h3>陌聲行銷有限公司</h3>
                 </div>
                 <p>403518台中市西區英才路530號23樓之5</p>
