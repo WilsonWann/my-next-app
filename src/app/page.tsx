@@ -1,7 +1,7 @@
 'use client'
 
 import { noto } from './fonts'
-import { bannerList, aboutImages, photosImages, largeBannerImage } from './imageHandler'
+import { bannerList, aboutImages, photosImages, mainBannerImage } from './imageHandler'
 import MainCarousel from "./components/MainCarousel/MainCarousel.component";
 import About from "./components/About/About.component";
 import Company from "./components/Company/Company.component";
@@ -15,7 +15,7 @@ export default function Home() {
       <About id="about" images={aboutImages} className="mb-48" />
       <Company className="mb-48" />
       <Photos images={photosImages} className="mb-48" />
-      <LargeBanner image={largeBannerImage} className="mb-8" />
+      <LargeBanner image={mainBannerImage} className="mb-8" />
     </div >
   );
 }

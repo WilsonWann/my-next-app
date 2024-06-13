@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { josefin } from '../../fonts'
 import { motion } from "framer-motion"
 import MotionDivLayout from './MotionDivLayout.component';
 import Image, { StaticImageData } from 'next/image';
@@ -83,9 +84,9 @@ const Photos: FC<Props> = ({ images, className = '' }) => {
         <h2 className="
         xl:text-5xl md:text-4xl text-3xl
         font-thin">PHOTO</h2>
-        <span data-attr="﹡" className="
-        xl:text-lg md:text-base text-sm
-        before:content-[attr(data-attr)]">view</span>
+        <span data-attr="﹡" className={`${josefin.className}
+        xl:text-lg md:text-base text-sm font-light
+        before:content-[attr(data-attr)]`}>view</span>
       </div>
       <div className={`bg-theme w-[1450px] h-1 rounded-md`}></div>
     </div>

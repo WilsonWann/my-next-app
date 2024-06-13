@@ -12,9 +12,13 @@ import galaxyEarrings from "@/assets/galaxy-earrings.jpg";
 
 import modernJewelry from "@/assets/modern-jewelry-and-accessories-on-display.jpg";
 
+import makeupAndJewelry from "@/assets/makeup-and-jewelry.jpg";
+
 const bannerList = [stackedBracelets, weddingVowsAndRings, holdingHands];
 const aboutImages = [detailedSnowflake, womansNecklace];
 const photosImages = [moonBracelet, goldChainNecklace, youngProfessional, galaxyEarrings];
-const largeBannerImage = modernJewelry;
+const mainBannerImage = modernJewelry;
 
-export { bannerList, aboutImages, photosImages, largeBannerImage }
+const serviceBannerImage = makeupAndJewelry
+
+export { bannerList, aboutImages, photosImages, mainBannerImage, serviceBannerImage }

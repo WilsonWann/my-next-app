@@ -26,7 +26,8 @@ const config: Config = {
           DEFAULT: colors.slate[500],
           dark: colors.slate[600],
         },
-        'title': '#886A4B'
+        'title': '#886A4B',
+        'subtitle': '#ffffff',
       },
       gridTemplateColumns: {
         // 添加自定義的minmax工具
@@ -73,11 +74,18 @@ const config: Config = {
       });
     }),
     plugin(function ({ addUtilities }: AddUtilitiesParams) {
-      addUtilities({
-        '.grid-cols-2-minmax': {
-          gridTemplateColumns: 'repeat(2, minmax(150px, 1fr))',
+      const newUtilities = {
+        '.text-stroke': {
+          textShadow: `
+            -1px -1px 0 #000,
+             1px -1px 0 #000,
+            -1px  1px 0 #000,
+             1px  1px 0 #000
+          `,
         },
-      });
+      }
+
+      addUtilities(newUtilities);
     }),
   ],
 };
