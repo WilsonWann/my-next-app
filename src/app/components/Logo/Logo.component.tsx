@@ -23,7 +23,7 @@ const Logo: FC<Props> = ({ className }) => {
     <Link className={className} href="/" onClick={() => handleScrollTo("banner", 0)}>
       <div className="h-full aspect-logo overflow-clip">
         <Image {...logoProps}
-          className="object-top object-cover"
+          className={`object-top object-cover ${className}`}
         />
       </div>
     </Link>
