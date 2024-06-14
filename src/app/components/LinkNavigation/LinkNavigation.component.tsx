@@ -27,14 +27,14 @@ const LinkNavigation: FC<Props> = ({ menuButton, className = '' }) => {
 
         if (route === '/') {
           return (
-            <li>
-              <Link key={index} href="/" className={`uppercase ${className}`} onClick={() => handleScrollTo("about")}>{name}</Link>
+            <li key={index} >
+              <Link href="/" className={`uppercase ${className}`} onClick={() => handleScrollTo("about")}>{name}</Link>
             </li>
           )
         } else {
           return (
             <li key={index}>
-              <Link key={index} href={route} className={`uppercase ${className}`}>{name}</Link>
+              <Link href={route} className={`uppercase ${className}`}>{name}</Link>
             </li >
           )
         }
