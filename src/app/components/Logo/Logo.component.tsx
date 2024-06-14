@@ -14,8 +14,6 @@ const Logo: FC<Props> = ({ className = "", imageClassName = "" }) => {
 
   const logoProps = {
     src: logo,
-    placeholder: "blur" as const,
-    blurDataURL: logo.blurDataURL,
     alt: "",
     sizes: "100vw",
   }
