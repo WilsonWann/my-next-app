@@ -93,6 +93,22 @@ const config: Config = {
       });
     }),
     plugin(function ({ addUtilities }: AddUtilitiesParams) {
+      addUtilities({
+        '.grid-2x2': {
+          gridTemplateColumns: '1fr 2fr',
+          gridTemplateRows: 'repeat(2, auto)',
+        },
+      });
+    }),
+    plugin(function ({ addUtilities }: AddUtilitiesParams) {
+      addUtilities({
+        '.grid-1x4': {
+          gridTemplateColumns: 'repeat(1, minmax(150px, 1fr))',
+          gridTemplateRows: 'repeat(4, auto)',
+        },
+      });
+    }),
+    plugin(function ({ addUtilities }: AddUtilitiesParams) {
       const newUtilities = {
         '.text-stroke': {
           textShadow: `
