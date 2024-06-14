@@ -4,7 +4,7 @@ import LinkNavigation from '../LinkNavigation/LinkNavigation.component';
 
 const Footer = () => {
   return (
-    <footer className="bottom-0 flex h-fit w-full flex-col items-center justify-between bg-transparent pt-8 opacity-65 
+    <footer className="relative h-fit w-full flex flex-col items-center justify-between bg-transparent pt-8 opacity-65 
     md:divide-y-0 divide-y-2
     md:gap-y-8
     ">

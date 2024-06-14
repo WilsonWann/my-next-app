@@ -18,13 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW">
-      <body className={`${inter.className} bg-theme-light`}>
+      <body className={`${inter.className} bg-theme-light min-h-screen`}>
         <ReduxProvider>
+          {/* xl:mt-16 mt-[100px]  */}
           <Header />
           <main className="relative bg-transparent 
-          xl:mt-16 mt-[100px] 
           xl:px-1 px-8
-          overflow-x-clip
+          overflow-x-clip                
+          xl:mt-16 mt-[100px]
           ">
             {children}
           </main>
