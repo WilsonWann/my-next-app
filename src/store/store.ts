@@ -8,6 +8,7 @@ import createSagaMiddleware from "redux-saga"
 // import { rootSaga } from "./root-saga"
 
 import { rootReducer } from './root-reducer'
+import { useDispatch, useSelector, useStore } from "react-redux"
 
 export type RootState = ReturnType<typeof rootReducer>
 
@@ -48,12 +49,18 @@ const composeEnhancer = (
 
 const composedEnhancers = composeEnhancer(applyMiddleware(...middleWares))
 
-export const store = createStore(
+export const store = () => createStore(
   persistedReducer,
   undefined,
   composedEnhancers
 )
 
+export type AppStore = ReturnType<typeof store>
+export type AppDispatch = AppStore['dispatch']
 // sagaMiddleware.run(rootSaga)
 
-export const persistor = persistStore(store) 
+export const persistor = persistStore(store())
+
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppSelector = useSelector.withTypes<RootState>()
+export const useAppStore = useStore.withTypes<AppStore>()

@@ -6,14 +6,16 @@ import Logo from "../Logo/Logo.component";
 import LinkNavigation from "../LinkNavigation/LinkNavigation.component";
 import HamburgerMenuIcon from "../Hamburger-Icon/Hamburger-Icon.component";
 import CloseIcon from "../Close-Icon/Close-Icon.component";
-import { useDispatch, useSelector } from "react-redux";
 import { selectIsMenuOpen } from "@/store/menu/menu.selector";
 import { setIsMenuOpen } from "@/store/menu/menu.action";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const isMenuOpen = useSelector(selectIsMenuOpen);
+  const dispatch = useAppDispatch();
+  const isMenuOpen = useAppSelector(selectIsMenuOpen);
+  // const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const toggleIsMenuOpen = () => dispatch(setIsMenuOpen(!isMenuOpen));
+  // const toggleIsMenuOpen = () => setIsMenuOpen(prev => !prev);
 
   const openButton = <HamburgerMenuIcon onClick={toggleIsMenuOpen} />;
   const closeButton = <CloseIcon onClick={toggleIsMenuOpen} />;
