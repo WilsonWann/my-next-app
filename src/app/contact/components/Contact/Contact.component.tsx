@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC, useEffect } from 'react'
 import { noto } from '@/app/fonts'
 import Link from 'next/link'
@@ -47,7 +49,7 @@ const Contact: FC<Props> = ({ className = '' }) => {
     if (contactInView) {
       controlsContact.start({ x: 0, opacity: 1 });
     } else {
-      controlsContact.start({ x: -200, opacity: 0 });
+      controlsContact.start({ x: -100, opacity: 0 });
     }
   }, [controlsContact, contactInView]);
 
@@ -61,7 +63,7 @@ const Contact: FC<Props> = ({ className = '' }) => {
     if (contactDetailInView) {
       controlsContactDetail.start({ y: 0, opacity: 1 });
     } else {
-      controlsContactDetail.start({ y: -200, opacity: 0 });
+      controlsContactDetail.start({ y: -100, opacity: 0 });
     }
   }, [controlsContactDetail, contactDetailInView]);
 

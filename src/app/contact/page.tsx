@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import { scheherazade } from '@/app/fonts'
 import GoogleMap from './components/GoogleMap/GoogleMap.component'

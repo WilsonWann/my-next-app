@@ -1,4 +1,4 @@
-import Head, { type Metadata } from "next";
+import { type Metadata } from "next";
 import { inter } from '@/app/fonts'
 import "./globals.css";
 import ReduxProvider from "./ReduxProvider";

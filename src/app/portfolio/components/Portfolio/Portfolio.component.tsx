@@ -1,3 +1,4 @@
+'use client'
 import React, { FC } from 'react'
 import Image from 'next/image'
 import type { PortfolioType } from '@/app/imageHandler'
@@ -8,6 +9,7 @@ type Props = {
 }
 
 const Portfolio: FC<Props> = ({ portfolioImages, className = '' }) => {
+
   return (
     <div className={`grid 
       md:grid-cols-3-rows-2 grid-cols-2-rows-3

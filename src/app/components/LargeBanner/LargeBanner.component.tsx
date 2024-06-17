@@ -1,3 +1,5 @@
+'use client'
+
 import { motion, useAnimation } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import React, { FC, useEffect } from 'react'

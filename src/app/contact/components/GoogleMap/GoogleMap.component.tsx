@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC, useState } from 'react'
 import { GoogleMap as ReactGoogleMap, InfoWindow, LoadScript, Marker } from '@react-google-maps/api';
 import Logo from '@/app/components/Logo/Logo.component';

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3000",
     "lint": "next lint"
   },
   "dependencies": {
@@ -18,8 +18,10 @@
     "@types/slick-carousel": "^1.6.40",
     "axios": "^1.7.2",
     "babel-plugin-macros": "^3.1.0",
+    "dotenv": "^16.4.5",
     "framer-motion": "^11.2.10",
     "next": "14.2.3",
+    "nodemailer": "^6.9.13",
     "prettier": "^3.3.0",
     "prettier-plugin-tailwindcss": "^0.6.1",
     "qs": "^6.12.1",
@@ -39,6 +41,7 @@
     "redux-saga-test-plan": "^4.0.6",
     "redux-thunk": "^3.1.0",
     "reselect": "^5.1.1",
+    "sharp": "^0.33.4",
     "slick-carousel": "^1.8.1",
     "typed-redux-saga": "^1.5.0"
   },

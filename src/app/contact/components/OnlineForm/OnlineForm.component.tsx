@@ -1,8 +1,11 @@
+'use client'
+
 import React, { FC, FormEvent, useRef } from 'react'
 import { noto } from '@/app/fonts'
-import { useForm, Resolver, Controller } from 'react-hook-form';
+import { useForm, Resolver, Controller, FieldErrors } from 'react-hook-form';
 import Captcha from '../Captcha/Captcha.component'
 import HCaptcha from '@hcaptcha/react-hcaptcha'
+import ErrorMessage from '../ErrorMessage/ErrorMessage.component';
 
 const ContactFormArray = [
   {
@@ -23,7 +26,7 @@ const ContactFormArray = [
   }
 ]
 
-type FormValues = {
+export type FormValues = {
   name: string;
   phone: string;
   lineId: string;
@@ -106,7 +109,7 @@ const OnlineForm: FC<OnlineFormProps> = ({ className = '' }) => {
           <div key={index} className="flex flex-col justify-between items-baseline">
             <label htmlFor={id}>{label}</label>
             <input {...register(id)} className="bg-transparent w-96 border-b border-title focus:outline-none" />
-            {(errors && errors[id]) && <p>{errors[id].message}</p>}
+            <ErrorMessage errors={errors} id={id} />
           </div>
         )
       })}
@@ -128,3 +131,6 @@ const OnlineForm: FC<OnlineFormProps> = ({ className = '' }) => {
 }
 
 export default OnlineForm
+
+
+

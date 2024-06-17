@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC } from 'react'
 import { josefin } from '@/app/fonts'
 import LargeBanner from '@/app/components/LargeBanner/LargeBanner.component'
