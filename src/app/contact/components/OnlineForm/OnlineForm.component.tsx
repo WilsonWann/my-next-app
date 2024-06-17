@@ -1,11 +1,10 @@
 'use client'
 
-import React, { FC, FormEvent, useRef } from 'react'
+import React, { FC, useRef } from 'react'
 import { noto } from '@/app/fonts'
-import { useForm, Resolver, Controller, FieldErrors } from 'react-hook-form';
+import { useForm, Resolver, SubmitHandler } from 'react-hook-form';
 import Captcha from '../Captcha/Captcha.component'
 import HCaptcha from '@hcaptcha/react-hcaptcha'
-import ErrorMessage from '../ErrorMessage/ErrorMessage.component';
 import { verifyCaptcha } from '@/app/action/verifyCaptcha';
 
 const ContactFormArray = [
@@ -32,13 +31,28 @@ export type FormValues = {
   phone: string;
   lineId: string;
   message: string;
-  hcaptcha: string | null;
 };
 
 const resolver: Resolver<FormValues> = async (values) => {
+  const errors: Record<string, { type: string; message: string }> = {};
+
+  if (!values.name) {
+    errors.name = {
+      type: 'required',
+      message: '請輸入姓名',
+    }
+  }
+
+  if (!values.phone) {
+    errors.phone = {
+      type: 'required',
+      message: '請輸入聯絡電話',
+    }
+  }
+
   return {
-    values: {},
-    errors: {},
+    values: Object.keys(errors).length === 0 ? values : {},
+    errors,
   };
 };
 
@@ -49,43 +63,44 @@ const OnlineForm: FC<OnlineFormProps> = ({ className = '' }) => {
 
   const {
     getValues,
-    control,
     register,
-    setValue,
+    handleSubmit,
     formState: { errors }
-  } = useForm<FormValues>({ resolver });
+  } = useForm<FormValues>({
+    resolver,
+    shouldFocusError: true,
+  });
 
   const captchaRef = useRef<HCaptcha>(null);
 
-  const handleCaptchaChange = (token: string | null) => {
-    setValue('hcaptcha', token);
+  const handleCaptchaChange = async (token: string | null) => {
+
     if (token && captchaRef.current) {
-      onSubmit(); // 驗證成功後調用 handleSubmit
+      const data = getValues()
+      const responseData = await verifyCaptcha(token)
+
+      if (responseData.success) {
+        alert(`Form submitted successfully.
+客戶名稱/NAME: ${data.name}
+聯絡電話/PHONE: ${data.phone}
+LINE ID: ${data.lineId}
+留言/MESSAGE: ${data.message}
+          ` );
+        //* do something... 
+        //* submit form here...
+      } else {
+        alert('Captcha verification failed.');
+      }
     }
   };
 
-  const onSubmit = async () => {
-    const data = getValues()
+  const onSubmit: SubmitHandler<FormValues> = async (values) => {
+    console.log('🚀 ~ const onSubmit:SubmitHandler<FormValues> = ~ values:', values)
 
-    const { hcaptcha } = data
-    console.log('🚀 ~ onSubmit ~ hcaptcha:', hcaptcha)
+    handleFormSubmitWithCaptcha()
 
-    if (!hcaptcha) {
-      alert('Please complete the captcha.');
-      return;
-    }
-
-    const responseData = await verifyCaptcha(hcaptcha)
-
-    if (responseData.success) {
-      alert('Form submitted successfully.');
-      //* do something... 
-    } else {
-      alert('Captcha verification failed.');
-    }
   };
-  const handleFormSubmitWithCaptcha = async (event: FormEvent) => {
-    event.preventDefault();
+  const handleFormSubmitWithCaptcha = async () => {
     if (captchaRef.current) {
       captchaRef.current.execute()
     }
@@ -95,32 +110,27 @@ const OnlineForm: FC<OnlineFormProps> = ({ className = '' }) => {
     <h2 className="text-title">線上表單</h2>
     <form
       className={`${noto.className} flex flex-col justify-between items-baseline gap-12`}
-      onSubmit={handleFormSubmitWithCaptcha}
+      onSubmit={handleSubmit(onSubmit)}
     >
-
       {ContactFormArray.map((contactForm, index) => {
         const { id, label } = contactForm
+        const error = errors[id]
+        const className = error ? 'border-red-500' : ''
+        const errorMessage = error?.message
         return (
-          <div key={index} className="flex flex-col justify-between items-baseline">
+          <div key={index} className={`flex flex-col justify-between items-baseline `}>
             <label htmlFor={id}>{label}</label>
-            <input {...register(id)} className="bg-transparent w-96 border-b border-title focus:outline-none" />
-            <ErrorMessage errors={errors} id={id} />
+            <input {...register(id)} className={`bg-transparent w-96 border-b border-title focus:outline-none ${className}`} />
+            <p className="text-red-500">{errorMessage}</p>
           </div>
         )
       })}
       <div className="flex flex-col justify-between items-baseline">
-        <Controller
-          name="hcaptcha"
-          control={control}
-          render={({ field }) => (
-            <Captcha
-              ref={captchaRef}
-              onVerify={handleCaptchaChange} />
-          )} />
-        {errors?.hcaptcha && <p>{errors.hcaptcha.message}</p>}
+        <Captcha
+          ref={captchaRef}
+          onVerify={handleCaptchaChange} />
       </div>
-
-      <button type="submit" className="self-end">送出</button>
+      <button type="submit" className="self-end ring-1 ring-black px-3 rounded-md hover:text-title hover:ring-title hover:bg-slate-50 ">送出</button>
     </form>
   </div>
 }
