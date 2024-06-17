@@ -6,6 +6,7 @@ import { useForm, Resolver, Controller, FieldErrors } from 'react-hook-form';
 import Captcha from '../Captcha/Captcha.component'
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import ErrorMessage from '../ErrorMessage/ErrorMessage.component';
+import { verifyCaptcha } from '@/app/action/verifyCaptcha';
 
 const ContactFormArray = [
   {
@@ -67,21 +68,15 @@ const OnlineForm: FC<OnlineFormProps> = ({ className = '' }) => {
     const data = getValues()
 
     const { hcaptcha } = data
+    console.log('🚀 ~ onSubmit ~ hcaptcha:', hcaptcha)
 
     if (!hcaptcha) {
       alert('Please complete the captcha.');
       return;
     }
 
-    const response = await fetch('/api/verify-captcha', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ token: hcaptcha, formData: data }),
-    });
+    const responseData = await verifyCaptcha(hcaptcha)
 
-    const responseData = await response.json();
     if (responseData.success) {
       alert('Form submitted successfully.');
       //* do something... 

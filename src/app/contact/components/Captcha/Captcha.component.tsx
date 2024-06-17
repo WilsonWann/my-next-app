@@ -8,6 +8,7 @@ type CaptchaProps = {
 const Captcha = forwardRef<HCaptcha, CaptchaProps>(({ onVerify }, ref) => {
 
   const sitekey = '8c476be5-307f-477c-8d80-3574d749f544'
+  console.log('🚀 ~ Captcha ~ sitekey:', sitekey)
 
   const onExpire = () => {
     console.log("hCaptcha Token Expired");
@@ -21,7 +22,7 @@ const Captcha = forwardRef<HCaptcha, CaptchaProps>(({ onVerify }, ref) => {
     <HCaptcha
       ref={ref}
       onVerify={onVerify}
-      size="invisible"
+      // size="invisible"
       sitekey={sitekey}
       onError={onError}
       onExpire={onExpire}
