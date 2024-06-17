@@ -6,6 +6,7 @@ import { useForm, Resolver, SubmitHandler } from 'react-hook-form';
 import Captcha from '../Captcha/Captcha.component'
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import { verifyCaptcha } from '@/app/action/verifyCaptcha';
+import Button from '@/app/components/Button/Button.component';
 
 const ContactFormArray = [
   {
@@ -65,6 +66,7 @@ const OnlineForm: FC<OnlineFormProps> = ({ className = '' }) => {
     getValues,
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<FormValues>({
     resolver,
@@ -106,6 +108,7 @@ LINE ID: ${data.lineId}
     }
   };
 
+  const handleReset = () => reset()
   return <div className={`flex flex-col justify-between items-baseline gap-y-4 ${className}`}>
     <h2 className="text-title">線上表單</h2>
     <form
@@ -130,7 +133,10 @@ LINE ID: ${data.lineId}
           ref={captchaRef}
           onVerify={handleCaptchaChange} />
       </div>
-      <button type="submit" className="self-end ring-1 ring-black px-3 rounded-md hover:text-title hover:ring-title hover:bg-slate-50 ">送出</button>
+      <div className="flex justify-end items-center gap-4 w-full">
+        <Button onClick={handleReset}>清除</Button>
+        <Button type="submit">送出</Button>
+      </div>
     </form>
   </div>
 }
