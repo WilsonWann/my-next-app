@@ -5,6 +5,7 @@ import ReduxProvider from "./ReduxProvider";
 import Header from "./components/Header/Header.component";
 import Footer from "./components/Footer/Footer.component";
 import GoogleMapProvider from "./GoogleMapProvider";
+import CaptchaProvider from "./CaptchaProvider";
 
 
 export const metadata: Metadata = {
@@ -22,15 +23,17 @@ export default function RootLayout({
       <body className={`${inter.className} bg-theme-light min-h-screen`}>
         <ReduxProvider>
           <GoogleMapProvider>
-            <Header />
-            <main className="relative bg-transparent 
+            <CaptchaProvider>
+              <Header />
+              <main className="relative bg-transparent 
           xl:px-1 px-8
           overflow-x-clip
           xl:mt-16 mt-[100px]
           ">
-              {children}
-            </main>
-            <Footer />
+                {children}
+              </main>
+              <Footer />
+            </CaptchaProvider>
           </GoogleMapProvider>
         </ReduxProvider>
       </body>

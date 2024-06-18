@@ -1,13 +1,15 @@
 import HCaptcha from '@hcaptcha/react-hcaptcha'
 import React, { forwardRef } from 'react'
+import { useCaptcha } from '@/app/CaptchaProvider'
 
 type CaptchaProps = {
   onVerify: (token: string | null) => void
+  onLoad?: () => void
 }
+const sitekey = process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY!;
+const Captcha = forwardRef<HCaptcha, CaptchaProps>(({ onVerify, onLoad = () => {} }, ref) => {
 
-const Captcha = forwardRef<HCaptcha, CaptchaProps>(({ onVerify }, ref) => {
-
-  const sitekey = '8c476be5-307f-477c-8d80-3574d749f544'
+  // const { sitekey } = useCaptcha();
 
   const onExpire = () => {
     console.log("hCaptcha Token Expired");
@@ -17,6 +19,8 @@ const Captcha = forwardRef<HCaptcha, CaptchaProps>(({ onVerify }, ref) => {
     console.log(`hCaptcha Error: ${err}`);
   };
 
+  // if (!sitekey) return null
+
   return (
     <HCaptcha
       ref={ref}
@@ -25,9 +29,11 @@ const Captcha = forwardRef<HCaptcha, CaptchaProps>(({ onVerify }, ref) => {
       sitekey={sitekey}
       onError={onError}
       onExpire={onExpire}
+      onLoad={onLoad}
     />
   )
 })
+
 
 Captcha.displayName = 'Captcha';
 

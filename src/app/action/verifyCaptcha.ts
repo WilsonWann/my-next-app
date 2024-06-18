@@ -4,7 +4,7 @@ import axios from "axios";
 import qs from 'qs';
 
 export async function verifyCaptcha(token: string) {
-  console.log('🚀 ~ verifyCaptcha ~ token:', token)
+
   const secret = process.env.HCAPTCHA_SECRET!
 
   try {
