@@ -1,26 +1,26 @@
 'use client'
 
-import { FC, useRef } from "react"
-import { AppStore, persistor, store } from "@/store/store"
+import { FC, useEffect, useState } from "react"
+import { persistor, store } from "@/store/store"
 import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
 
 const ReduxProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
 
-  const storeRef = useRef<AppStore | null>(null)
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-  if (!storeRef.current) {
-    storeRef.current = store()
-  }
+  if (!isClient) return null
 
   return (
-    <Provider store={storeRef.current}>
+    <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         {children}
       </PersistGate>
     </Provider>
   )
-
 }
 
 export default ReduxProvider

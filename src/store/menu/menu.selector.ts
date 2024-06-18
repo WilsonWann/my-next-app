@@ -4,10 +4,10 @@ import { RootState } from "../store"
 
 import { MenuState } from "./menu.reducer"
 
-const selectCartReducer = (state: RootState): MenuState => state.menu;
+const selectMenuReducer = (state: RootState): MenuState => state.menu;
 
 export const selectIsMenuOpen = createSelector(
-  [selectCartReducer],
+  [selectMenuReducer],
   (menu) => menu.isMenuOpen
 )
 

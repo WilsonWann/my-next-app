@@ -24,7 +24,7 @@ export default function RootLayout({
           <Header />
           <main className="relative bg-transparent 
           xl:px-1 px-8
-          overflow-x-clip                
+          overflow-x-clip
           xl:mt-16 mt-[100px]
           ">
             {children}
