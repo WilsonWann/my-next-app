@@ -1,13 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit"
-
-// import { userReducer } from "./user/user.reducer"
-// import { categoriesReducer } from "./categories/categories.reducer"
-// import { cartReducer } from "./cart/cart.reducer"
-import { menuReducer } from "./menu/menu.reducer"
+import { menuReducer } from "./menu/menu.slice"
 
 export const rootReducer = combineReducers({
-  // user: userReducer,
-  // categories: categoriesReducer,
-  // cart: cartReducer,
   menu: menuReducer
 })

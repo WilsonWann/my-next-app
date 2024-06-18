@@ -7,16 +7,13 @@ import LinkNavigation from "../LinkNavigation/LinkNavigation.component";
 import HamburgerMenuIcon from "../Hamburger-Icon/Hamburger-Icon.component";
 import CloseIcon from "../Close-Icon/Close-Icon.component";
 import { selectIsMenuOpen } from "@/store/menu/menu.selector";
-import { setIsMenuOpen } from "@/store/menu/menu.reducer";
+import { setIsMenuOpen } from "@/store/menu/menu.slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
   const dispatch = useDispatch();
   const isMenuOpen = useSelector(selectIsMenuOpen);
-  const toggleIsMenuOpen = () => dispatch(setIsMenuOpen(!isMenuOpen));
-
-  const openButton = <HamburgerMenuIcon onClick={toggleIsMenuOpen} />;
-  const closeButton = <CloseIcon onClick={toggleIsMenuOpen} />;
+  const toggleIsMenuOpen = () => dispatch(setIsMenuOpen(!isMenuOpen))
 
   const [navigationClassName, setNavigationClassName] = useState("-right-2/3");
 
@@ -24,9 +21,12 @@ const Header = () => {
 
   const handleClickOutside = (event: MouseEvent | TouchEvent) => {
     if (navRef.current && !navRef.current.contains(event.target as Node)) {
-      toggleIsMenuOpen()
+      dispatch(setIsMenuOpen(false));
     }
   }
+  useEffect(() => {
+    dispatch(setIsMenuOpen(false))
+  }, []);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -59,7 +59,9 @@ const Header = () => {
     xl:h-16 h-[100px] 
     ">
       <Logo className="xl:py-4 md:py-6 py-8 h-full" />
-      <button className="md:hidden">{openButton}</button>
+      <button className="md:hidden">
+        <HamburgerMenuIcon onClick={toggleIsMenuOpen} />
+      </button>
       <ul ref={navRef} className={`
       ${scheherazade.className}
       fixed md:relative 
@@ -82,7 +84,9 @@ const Header = () => {
         <LinkNavigation
           menuButton={
             <li className="h-[100px] flex justify-center items-center md:hidden !pl-0 !border-b-transparent ">
-              <button>{closeButton}</button>
+              <button>
+                <CloseIcon onClick={toggleIsMenuOpen} />
+              </button>
             </li>
           }
           className={"hover:text-title"}

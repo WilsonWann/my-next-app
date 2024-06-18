@@ -5,8 +5,6 @@ import logger from "redux-logger"
 
 import { rootReducer } from './root-reducer'
 
-export type RootState = ReturnType<typeof rootReducer>
-
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
@@ -45,7 +43,22 @@ const middleWares = [
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(...middleWares),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [
+          'persist/PERSIST',
+          'persist/REHYDRATE',
+          'persist/REGISTER',
+          'persist/PAUSE',
+          'persist/PURGE',
+          'persist/FLUSH',
+        ],
+        ignoredPaths: ['_persist'],
+      }
+    }).concat(...middleWares),
 })
+
+
+export type RootState = ReturnType<typeof rootReducer>
 
 export const persistor = persistStore(store)
