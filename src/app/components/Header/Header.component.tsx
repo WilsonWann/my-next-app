@@ -24,9 +24,6 @@ const Header = () => {
       dispatch(setIsMenuOpen(false));
     }
   }
-  useEffect(() => {
-    dispatch(setIsMenuOpen(false))
-  }, []);
 
   useEffect(() => {
     if (isMenuOpen) {
