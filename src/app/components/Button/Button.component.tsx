@@ -24,7 +24,7 @@ const Button: FC<Props> = ({
     const buttonClassName = `hover:bg-stone-200`
     return (
       <button type="button" disabled={disabled} onClick={onClick}
-        className={`ring-1 ring-slate-300 rounded-md px-4 py-2 text-lg disabled:bg-slate-300 ${buttonClassName} ${className}`}>{children}</button>
+        className={`ring-1 ring-slate-300 rounded-md px-4 py-2 text-lg disabled:bg-slate-300 disabled:cursor-not-allowed ${buttonClassName} ${className}`}>{children}</button>
     )
   }
 
@@ -32,7 +32,7 @@ const Button: FC<Props> = ({
     const submitClassName = `bg-title text-white hover:bg-title`
     return (
       <button type="submit" disabled={disabled} onClick={onClick}
-        className={`ring-1 ring-transparent rounded-md px-4 py-2 text-lg disabled:bg-slate-300 ${submitClassName} ${className}`}>{children}</button>
+        className={`ring-1 ring-transparent rounded-md px-4 py-2 text-lg disabled:bg-title-light disabled:cursor-not-allowed ${submitClassName} ${className}`}>{children}</button>
     )
   }
 

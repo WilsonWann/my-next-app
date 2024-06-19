@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 import { noto } from '@/app/fonts'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler, FormProvider } from 'react-hook-form';
-import Button from '@/app/components/Button/Button.component';
+import { Button } from "@/components/ui/button"
 import { UserSchema } from '@/zodSchema/UserSchema';
 import { useCaptcha } from '@/app/CaptchaProvider';
 import InputWithLabel from '../InputWithLabel/InputWithLabel.component';

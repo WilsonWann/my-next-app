@@ -55,7 +55,7 @@ const Header = () => {
     bg-opacity-65 
     xl:h-16 h-[100px] 
     ">
-      <Logo className="xl:py-4 md:py-6 py-8 h-full" />
+      <Logo className="xl:py-4 md:py-6 py-8 h-full" imageClassName={'h-full'} />
       <button className="md:hidden">
         <HamburgerMenuIcon onClick={toggleIsMenuOpen} />
       </button>
