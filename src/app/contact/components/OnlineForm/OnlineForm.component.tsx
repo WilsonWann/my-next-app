@@ -43,7 +43,7 @@ const OnlineForm: FC<OnlineFormProps> = ({ className = '' }) => {
   const { renderCaptcha, verifiedResponse } = useCaptcha()
 
   const methods = useForm<FormValues>({
-    mode: 'onBlur',
+    mode: 'onSubmit',
     resolver: zodResolver(UserSchema),
     shouldFocusError: true,
   });
@@ -70,10 +70,15 @@ LINE ID: ${values.lineId}
   const handleReset = () => methods.reset()
 
   return <div className={`flex flex-col justify-between items-baseline gap-y-4 ${className}`}>
-    <h2 className="text-title">線上表單</h2>
+    <h2 className="text-title text-2xl md:text-start text-center w-full md:mb-0 mb-6">線上表單</h2>
     <FormProvider {...methods}>
       <form
-        className={`${noto.className} flex flex-col justify-between items-baseline gap-12`}
+        className={`${noto.className} 
+          flex flex-col 
+          justify-between 
+          md:items-baseline items-center
+          md:w-[450px] w-full px-4
+          gap-12`}
         onSubmit={methods.handleSubmit(onSubmit)}
       >
         {ContactFormArray.map(({ id, label }, index) =>
@@ -82,9 +87,26 @@ LINE ID: ${values.lineId}
         <div className="flex flex-col justify-between items-baseline">
           {renderCaptcha()}
         </div>
-        <div className="flex justify-end items-center gap-4 w-full">
-          <Button disabled={!verifiedResponse || !verifiedResponse.success} onClick={handleReset}>清除</Button>
-          <Button disabled={!verifiedResponse || !verifiedResponse.success} type="submit">送出</Button>
+        <div className="flex 
+        md:justify-end justify-center
+        items-center 
+        md:gap-4 gap-12
+        w-full">
+          <Button
+            type="reset"
+            className="bg-red-600 text-subtitle"
+            onClick={handleReset}
+            variant="destructive"
+          >
+            清除
+          </Button>
+          <Button
+            type="submit"
+            className="bg-title hover:bg-title-light text-subtitle"
+            disabled={!verifiedResponse || !verifiedResponse.success}
+          >
+            送出
+          </Button>
         </div>
 
       </form>

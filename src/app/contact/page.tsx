@@ -9,8 +9,8 @@ const ContactPage = () => {
   return (
     <div className={`${scheherazade.className} flex flex-col items-center`}>
       <GoogleMap className={"mb-32"} />
-      <Contact className={"mb-32"} />
-      <OnlineForm className={"mb-32"} />
+      <Contact className={"md:mb-32 mb-24"} />
+      <OnlineForm className={"md:mb-32 mb-12"} />
     </div>
   )
 

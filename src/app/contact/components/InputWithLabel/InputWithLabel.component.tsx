@@ -18,9 +18,10 @@ const InputWithLabel: FC<Props> = ({ id, label, errors }) => {
   const className = errorMessage ? '!border-red-500' : ''
 
   return (
-    <div className={`flex flex-col justify-between items-baseline `}>
+    <div className={`flex flex-col justify-between items-baseline gap-1 w-full`}>
       <label htmlFor={id}>{label}</label>
-      <input {...register(id)} className={`bg-transparent w-96 border-b border-title focus:outline-none ${className}`} />
+      <input {...register(id)} className={`bg-transparent w-full
+        border-b border-title focus:outline-none ${className}`} />
       {errorMessage && <p className="text-red-500">{errorMessage}</p>}
     </div>
   )
