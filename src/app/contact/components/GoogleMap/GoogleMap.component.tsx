@@ -4,6 +4,7 @@ import React, { FC, useState } from 'react'
 import { GoogleMap as ReactGoogleMap, InfoWindow, Marker } from '@react-google-maps/api';
 import Logo from '@/app/components/Logo/Logo.component';
 import CopyToText from '../CopyToText/CopyToText.component';
+import { useGoogleMap } from '@/app/GoogleMapProvider';
 
 const center = {
   lat: 24.150,
@@ -16,7 +17,10 @@ type Props = {
 
 const GoogleMap: FC<Props> = ({ className = '' }) => {
 
+  const { apiKey } = useGoogleMap()
   const [selected, setSelected] = useState<{ lat: number; lng: number } | null>(center);
+
+  if (!apiKey) return null
 
   return (
     <div className={`${className}`}>
