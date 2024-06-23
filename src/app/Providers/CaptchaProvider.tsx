@@ -1,24 +1,37 @@
-'use client'
+"use client";
 
-import { FC, createContext, useState, useRef, useContext, useEffect, SetStateAction, Dispatch } from "react"
-import Captcha from './contact/components/Captcha/Captcha.component';
+import {
+  FC,
+  createContext,
+  useState,
+  useRef,
+  useContext,
+  useEffect,
+  SetStateAction,
+  Dispatch,
+} from "react";
+import Captcha from "@/app/contact/components/Captcha/Captcha.component";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import { verifyCaptcha } from "./action/verifyCaptcha";
+import { verifyCaptcha } from "@/app/action/verifyCaptcha";
 import { usePathname } from "next/navigation";
 
 interface CaptchaContextProps {
   renderCaptcha: () => JSX.Element | null;
   triggerVerify: () => void;
   captchaVerified: boolean;
-  verifiedResponse: { success: boolean; message: string; } | null;
+  verifiedResponse: { success: boolean; message: string } | null;
 }
 
-const CaptchaContext = createContext<CaptchaContextProps | undefined>(undefined);
+const CaptchaContext = createContext<CaptchaContextProps | undefined>(
+  undefined,
+);
 
 const CaptchaProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
-
   const [captchaVerified, setCaptchaVerified] = useState(false);
-  const [verifiedResponse, setVerifiedResponse] = useState<{ success: boolean; message: string; } | null>(null);
+  const [verifiedResponse, setVerifiedResponse] = useState<{
+    success: boolean;
+    message: string;
+  } | null>(null);
 
   const pathname = usePathname();
 
@@ -30,17 +43,15 @@ const CaptchaProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const triggerVerify = () => {
     if (captchaRef.current) {
-      captchaRef.current.execute()
+      captchaRef.current.execute();
     }
   };
 
   const handleCaptchaChange = async (token: string | null) => {
-
     if (token && captchaRef.current) {
+      const responseData = await verifyCaptcha(token);
 
-      const responseData = await verifyCaptcha(token)
-
-      setVerifiedResponse(responseData)
+      setVerifiedResponse(responseData);
     }
   };
 
@@ -49,26 +60,33 @@ const CaptchaProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
       <Captcha
         ref={captchaRef}
         onVerify={async (token) => {
-          await handleCaptchaChange(token)
-          setCaptchaVerified(true)
+          await handleCaptchaChange(token);
+          setCaptchaVerified(true);
         }}
       />
     );
   };
 
   return (
-    <CaptchaContext.Provider value={{ renderCaptcha, triggerVerify, captchaVerified, verifiedResponse }}>
+    <CaptchaContext.Provider
+      value={{
+        renderCaptcha,
+        triggerVerify,
+        captchaVerified,
+        verifiedResponse,
+      }}
+    >
       {children}
     </CaptchaContext.Provider>
-  )
-}
+  );
+};
 
-export default CaptchaProvider
+export default CaptchaProvider;
 
 export const useCaptcha = () => {
   const context = useContext(CaptchaContext);
   if (!context) {
-    throw new Error('useCaptcha must be used within a CaptchaProvider');
+    throw new Error("useCaptcha must be used within a CaptchaProvider");
   }
   return context;
-}
+};

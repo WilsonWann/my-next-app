@@ -8,32 +8,32 @@ import HamburgerMenuIcon from "../Hamburger-Icon/Hamburger-Icon.component";
 import CloseIcon from "../Close-Icon/Close-Icon.component";
 import { selectIsMenuOpen } from "@/store/menu/menu.selector";
 import { setIsMenuOpen } from "@/store/menu/menu.slice";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/lib/redux-hooks";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const isMenuOpen = useSelector(selectIsMenuOpen);
-  const toggleIsMenuOpen = () => dispatch(setIsMenuOpen(!isMenuOpen))
+  const dispatch = useAppDispatch();
+  const isMenuOpen = useAppSelector(selectIsMenuOpen);
+  const toggleIsMenuOpen = () => dispatch(setIsMenuOpen(!isMenuOpen));
 
   const [navigationClassName, setNavigationClassName] = useState("-right-2/3");
 
-  const navRef = useRef<HTMLUListElement | null>(null)
+  const navRef = useRef<HTMLUListElement | null>(null);
 
   const handleClickOutside = (event: MouseEvent | TouchEvent) => {
     if (navRef.current && !navRef.current.contains(event.target as Node)) {
       dispatch(setIsMenuOpen(false));
     }
-  }
+  };
 
   useEffect(() => {
     if (isMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('wheel', handleClickOutside);
-      document.addEventListener('touchstart', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("wheel", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
       return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-        document.removeEventListener('wheel', handleClickOutside);
-        document.removeEventListener('touchstart', handleClickOutside);
+        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener("wheel", handleClickOutside);
+        document.removeEventListener("touchstart", handleClickOutside);
       };
     }
   }, [isMenuOpen]);
@@ -46,42 +46,22 @@ const Header = () => {
     }
   }, [isMenuOpen]);
 
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
 
   return (
-    <header className="fixed top-0 z-50 flex w-full flex-row items-center justify-between bg-theme-light px-16 
-    bg-opacity-65 
-    xl:h-16 h-[100px] 
-    ">
-      <Logo className="xl:py-4 md:py-6 py-8 h-full" imageClassName={'h-full'} />
-      <button className="md:hidden">
+    <header className="fixed top-0 z-50 flex h-[100px] w-full flex-row items-center justify-between bg-theme-light bg-opacity-65 px-16 xl:h-16">
+      <Logo className="h-full py-8 md:py-6 xl:py-4" imageClassName={"h-full"} />
+      <button title="open button" className="md:hidden">
         <HamburgerMenuIcon onClick={toggleIsMenuOpen} />
       </button>
-      <ul ref={navRef} className={`
-      ${scheherazade.className}
-      fixed md:relative 
-      md:right-0 ${navigationClassName} 
-      flex 
-      md:h-auto h-screen  
-      md:w-auto w-2/3 
-      md:flex-row flex-col items-baseline justify-start 
-      self-start 
-      md:*:pl-0 *:pl-[13.3%]  
-      md:items-center 
-      md:justify-center 
-      xl:gap-16 md:gap-8 gap-16 
-      md:self-center 
-      md:bg-transparent bg-white opacity-100
-      md:*:border-b-transparent *:border-b *:border-slate-400
-      *:w-full 
-      `}
+      <ul
+        ref={navRef}
+        className={` ${scheherazade.className} fixed md:relative md:right-0 ${navigationClassName} flex h-screen w-2/3 flex-col items-baseline justify-start gap-16 self-start bg-white opacity-100 *:w-full *:border-b *:border-slate-400 *:pl-[13.3%] md:h-auto md:w-auto md:flex-row md:items-center md:justify-center md:gap-8 md:self-center md:bg-transparent md:*:border-b-transparent md:*:pl-0 xl:gap-16`}
       >
         <LinkNavigation
           menuButton={
-            <li className="h-[100px] flex justify-center items-center md:hidden !pl-0 !border-b-transparent ">
-              <button>
+            <li className="flex h-[100px] items-center justify-center !border-b-transparent !pl-0 md:hidden">
+              <button title="close button">
                 <CloseIcon onClick={toggleIsMenuOpen} />
               </button>
             </li>

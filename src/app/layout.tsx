@@ -1,12 +1,11 @@
 import { type Metadata } from "next";
-import { inter } from '@/app/fonts'
+import { inter } from "@/app/fonts";
 import "./globals.css";
-import ReduxProvider from "./ReduxProvider";
+import ReduxProvider from "./Providers/ReduxProvider";
 import Header from "./components/Header/Header.component";
 import Footer from "./components/Footer/Footer.component";
-import GoogleMapProvider from "./GoogleMapProvider";
-import CaptchaProvider from "./CaptchaProvider";
-
+import GoogleMapProvider from "./Providers/GoogleMapProvider";
+import CaptchaProvider from "./Providers/CaptchaProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,16 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW">
-      <body className={`${inter.className} bg-theme-light min-h-screen`}>
+      <body className={`${inter.className} min-h-screen bg-theme-light`}>
         <ReduxProvider>
           <GoogleMapProvider>
             <CaptchaProvider>
               <Header />
-              <main className="relative bg-transparent 
-          xl:px-1 px-8
-          overflow-x-clip
-          xl:mt-16 mt-[100px]
-          ">
+              <main className="relative mt-[100px] overflow-x-clip bg-transparent px-8 xl:mt-16 xl:px-1">
                 {children}
               </main>
               <Footer />
@@ -40,5 +35,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
