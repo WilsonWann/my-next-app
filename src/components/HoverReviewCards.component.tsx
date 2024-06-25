@@ -41,20 +41,13 @@ const HoverReviewCards: FC<Props> = (props) => {
   if (!props.userRatingsTotal) return null
 
   const { reviews } = props
-  const scrollAreaHeight = () => {
-    const maxReviews = 5
-    if (reviews.length > maxReviews) {
-      return `h-[${maxReviews * 70}px]`
-    } else {
-      return `h-[${reviews.length * 70}px]`
-    }
-  }
+
   return (
     <HoverCard openDelay={100} closeDelay={100}>
       <HoverCardTrigger asChild>
         <Button
           variant="link"
-          className="p-0 md:text-xs text-base text-blue-500 hover:decoration-blue-500 hover:underline"
+          className="p-0 h-fit md:text-xs text-base text-blue-500 hover:decoration-blue-500 hover:underline"
         >
           {props.userRatingsTotal} 篇評論
         </Button>

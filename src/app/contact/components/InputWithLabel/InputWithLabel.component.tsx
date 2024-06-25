@@ -21,7 +21,7 @@ const InputWithLabel: FC<Props> = ({ id, label, errors }) => {
     <div className={`flex flex-col justify-between items-baseline gap-1 w-full`}>
       <label htmlFor={id}>{label}</label>
       <input {...register(id)} className={`bg-transparent w-full
-        border-b border-title focus:outline-none ${className}`} />
+        border-b border-title rounded-none focus:outline-none ${className}`} />
       {errorMessage && <p className="text-red-500">{errorMessage}</p>}
     </div>
   )

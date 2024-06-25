@@ -84,7 +84,7 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
         `}
       </style>
       <ReactGoogleMap
-        mapContainerClassName="w-screen h-[500px]"
+        mapContainerClassName="w-screen md:h-[500px] h-[350px]"
         center={center}
         zoom={16}
         options={{
@@ -99,11 +99,13 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
           md:left-8 left-1/2
           md:translate-x-0 -translate-x-1/2
           bg-white text-xs
-            py-2 px-3 flex justify-center items-start gap-4">
-            <div className="flex flex-col justify-between align-baseline gap-2">
+            py-2 px-3 flex justify-center items-start 
+            gap-4
+            ">
+            <div className="flex flex-col justify-between align-baseline md:gap-2 gap-1">
               <h2 className="font-bold text-sm">{placeDetails.name}</h2>
-              <p>{placeDetails.formatted_address}</p>
-              <p className="flex justify-start items-center gap-1">
+              <p className="p-0">{placeDetails.formatted_address}</p>
+              <p className="p-0 flex justify-start items-center gap-1">
                 {ratingString}
                 <RatingStartWrapper ratingString={ratingString} />
                 <HoverReviewCards
@@ -121,13 +123,13 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
                   ]}
                 />
               </p>
-              <p>
+              <p className="p-0">
                 <StyledLink href="https://maps.app.goo.gl/WqhQ4mBE7WYVNNYx7" >
                   顯示詳細地圖
                 </StyledLink>
               </p>
             </div>
-            <StyledLink href="" className="flex flex-col justify-between items-center space-y-1">
+            <StyledLink href="" className="flex flex-col justify-between items-center space-y-0">
               <DirectionIcon size={48} />
               <span>路線</span>
             </StyledLink>
