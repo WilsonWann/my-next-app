@@ -10,3 +10,8 @@ export const selectMapApi = createSelector(
   [selectMapReducer],
   (map) => map.apiKey
 )
+
+export const selectMapPlaceId = createSelector(
+  [selectMapReducer],
+  (map) => map.placeId
+)

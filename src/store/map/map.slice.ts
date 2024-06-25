@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export type MapState = {
   readonly apiKey: string | null
+  readonly placeId: string | null
 }
 
 const INITIAL_STATE: MapState = {
   apiKey: null,
+  placeId: null,
 }
 
 export const mapSlice = createSlice({
@@ -14,10 +16,13 @@ export const mapSlice = createSlice({
   reducers: {
     setApiKey: (state, action) => {
       state.apiKey = action.payload
+    },
+    setPlaceId: (state, action) => {
+      state.placeId = action.payload
     }
   }
 })
 
-export const { setApiKey } = mapSlice.actions
+export const { setApiKey, setPlaceId } = mapSlice.actions
 
 export const mapReducer = mapSlice.reducer
