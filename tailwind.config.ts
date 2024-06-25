@@ -117,16 +117,6 @@ const config = {
   plugins: [
     plugin(function ({ addUtilities }: AddUtilitiesParams) {
       addUtilities({
-        '.direct-mb-32 > *': {
-          'margin-bottom': '8rem', // 相當於 mb-32
-        },
-        '.direct-mb-1 > *': {
-          'margin-bottom': '4rem', // 相當於 mb-32
-        },
-      });
-    }),
-    plugin(function ({ addUtilities }: AddUtilitiesParams) {
-      addUtilities({
         '.grid-cols-4-minmax': {
           gridTemplateColumns: 'repeat(4, minmax(150px, 1fr))',
         },

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 10.42.208.19",
     "build": "next build",
     "start": "next start -p 3000",
     "lint": "next lint"
@@ -11,6 +11,10 @@
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^1.10.1",
     "@hookform/resolvers": "^3.6.0",
+    "@radix-ui/react-avatar": "^1.1.0",
+    "@radix-ui/react-hover-card": "^1.1.1",
+    "@radix-ui/react-scroll-area": "^1.1.0",
+    "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@react-google-maps/api": "^2.19.3",
     "@reduxjs/toolkit": "^2.2.5",

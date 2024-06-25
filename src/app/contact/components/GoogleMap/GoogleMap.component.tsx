@@ -13,7 +13,7 @@ import RatingStartWrapper from "../RatingStart/RatingStart.component";
 import getRatingStarString from "@/helper/getRatingStarString";
 import DirectionIcon from "../Direction-Icon/Direction-Icon.component";
 import StyledLink from "../StyledLink/StyledLink.component";
-import Review from "../Review/Review.component";
+import HoverReviewCards from "@/components/HoverReviewCards.component";
 
 const center = {
   lat: 24.15,
@@ -29,7 +29,7 @@ type Props = {
 const GoogleMap: FC<Props> = ({ className = "" }) => {
   const { apiKey, placeId } = useGoogleMap();
   const [placeDetails, setPlaceDetails] = useState<PlaceDetails>(null);
-  const [selected, setSelected] = useState<typeof center | null>(center);
+  const [selected, setSelected] = useState<typeof center | null>(null);
 
   useEffect(() => {
     if (!placeId) return
@@ -37,7 +37,7 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
     const fetchPlaceDetails = () => {
       const service = new window.google.maps.places.PlacesService(document.createElement('div'));
       const request = {
-        placeId, // 替換為你要查詢的地點ID
+        placeId,
         fields: ['name', 'formatted_address', 'rating', 'user_ratings_total', 'reviews']
       };
 
@@ -52,6 +52,22 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
     if (window.google) {
       fetchPlaceDetails();
     }
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setSelected(null)
+      } else {
+        setSelected(center)
+      }
+    };
+    handleResize()
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   if (!apiKey) return null;
@@ -76,14 +92,13 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
           zoomControl: true
         }}
       >
-        <Marker
-          title={"陌聲行銷有限公司"}
-          position={center}
-          onClick={() => setSelected(center)}
-        />
         {placeDetails && (
-
-          <div className="absolute top-4 left-8 bg-white text-xs
+          <div className="absolute 
+          w-80
+          top-4 
+          md:left-8 left-1/2
+          md:translate-x-0 -translate-x-1/2
+          bg-white text-xs
             py-2 px-3 flex justify-center items-start gap-4">
             <div className="flex flex-col justify-between align-baseline gap-2">
               <h2 className="font-bold text-sm">{placeDetails.name}</h2>
@@ -91,9 +106,20 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
               <p className="flex justify-start items-center gap-1">
                 {ratingString}
                 <RatingStartWrapper ratingString={ratingString} />
-                <StyledLink href="">
-                  {placeDetails.user_ratings_total} 篇評論
-                </StyledLink>
+                <HoverReviewCards
+                  userRatingsTotal={placeDetails.user_ratings_total}
+                  reviews={[
+                    ...placeDetails.reviews!,
+                    ...placeDetails.reviews!,
+                    ...placeDetails.reviews!,
+                    ...placeDetails.reviews!,
+                    ...placeDetails.reviews!,
+                    ...placeDetails.reviews!,
+                    ...placeDetails.reviews!,
+                    ...placeDetails.reviews!,
+                    ...placeDetails.reviews!,
+                  ]}
+                />
               </p>
               <p>
                 <StyledLink href="https://maps.app.goo.gl/WqhQ4mBE7WYVNNYx7" >
@@ -107,6 +133,11 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
             </StyledLink>
           </div>
         )}
+        <Marker
+          title={"陌聲行銷有限公司"}
+          position={center}
+          onClick={() => setSelected(center)}
+        />
         {selected && (
           <InfoWindow
             position={selected}
@@ -138,12 +169,6 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
           </InfoWindow>
         )}
       </ReactGoogleMap>
-
-      {/* <div>
-        {placeDetails?.reviews && placeDetails?.reviews.length > 0 &&
-          placeDetails.reviews.map((review) => (<Review {...review} />))
-        }
-      </div> */}
     </div>
   );
 };
