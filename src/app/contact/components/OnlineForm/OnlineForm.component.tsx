@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { UserSchema } from "@/zodSchema/UserSchema";
-import { useCaptcha } from "@/app/Providers/CaptchaProvider";
+import useCaptcha from "@/hook/useCaptcha";
 import InputWithLabel from "../InputWithLabel/InputWithLabel.component";
 
 const ContactFormArray = [

@@ -1,10 +1,9 @@
 "use client";
 
-import { FC, createContext, useRef } from "react";
+import { FC, createContext, useEffect, useRef } from "react";
 import { LoadScript } from "@react-google-maps/api";
-import { useAppDispatch, useAppSelector } from "@/lib/redux-hooks";
-import { MapState, setApiKey, setPlaceId, setReviewUrl } from "@/store/map/map.slice";
-import { selectMapApi, selectMapPlaceId, selectMapReviewUrl } from "@/store/map/map.selector";
+import { MapState } from "@/store/map/map.slice";
+import useGoogleMap from "@/hook/useGoogleMap";
 
 const GoogleMapContext = createContext<MapState>({
   apiKey: null,
@@ -19,28 +18,47 @@ const googleMapApiKeyPlaceId = process.env.NEXT_PUBLIC_GOOGLE_MAPS_PLACE_ID!;
 const googleMapReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_REVIEW_URL!;
 
 const GoogleMapProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
-  const dispatch = useAppDispatch();
-  const apiKey = useAppSelector(selectMapApi);
-  const placeId = useAppSelector(selectMapPlaceId);
-  const reviewUrl = useAppSelector(selectMapReviewUrl);
+
+  const {
+    apiKey, placeId, reviewUrl,
+    setApiKey, setPlaceId, setReviewUrl,
+  } = useGoogleMap()
+
   const apiKeyRef = useRef<string>();
   const placeIdRef = useRef<string>();
   const reviewUrlRef = useRef<string>();
 
   if (!apiKeyRef.current) {
     apiKeyRef.current = googleMapApiKey;
-    dispatch(setApiKey(googleMapApiKey));
+    setApiKey(googleMapApiKey)
   }
 
   if (!placeIdRef.current) {
     placeIdRef.current = googleMapApiKeyPlaceId;
-    dispatch(setPlaceId(googleMapApiKeyPlaceId));
+    setPlaceId(googleMapApiKeyPlaceId)
   }
 
   if (!reviewUrlRef.current) {
     reviewUrlRef.current = googleMapReviewUrl;
-    dispatch(setReviewUrl(googleMapReviewUrl));
+    setReviewUrl(googleMapReviewUrl)
   }
+
+  useEffect(() => {
+
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        const m_googleMapReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_M_REVIEW_URL!;
+        reviewUrlRef.current = m_googleMapReviewUrl;
+        setReviewUrl(m_googleMapReviewUrl)
+      }
+    }
+    window.addEventListener("resize", handleResize)
+
+    handleResize()
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, []);
 
   return (
     <GoogleMapContext.Provider value={{ apiKey, placeId, reviewUrl }}>
@@ -50,25 +68,3 @@ const GoogleMapProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
 };
 
 export default GoogleMapProvider;
-
-export const useGoogleMap = () => {
-  const apiKey = useAppSelector(selectMapApi);
-  const placeId = useAppSelector(selectMapPlaceId);
-  const reviewUrl = useAppSelector(selectMapReviewUrl);
-  const dispatch = useAppDispatch();
-
-  return {
-    apiKey,
-    placeId,
-    reviewUrl,
-    setApiKey: (apiKey: string) => {
-      dispatch(setApiKey(apiKey));
-    },
-    setPlaceId: (placeId: string) => {
-      dispatch(setPlaceId(placeId));
-    },
-    setReviewUrl: (reviewUrl: string) => {
-      dispatch(setReviewUrl(reviewUrl));
-    },
-  };
-};

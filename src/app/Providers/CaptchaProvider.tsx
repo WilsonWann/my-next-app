@@ -22,7 +22,7 @@ interface CaptchaContextProps {
   verifiedResponse: { success: boolean; message: string } | null;
 }
 
-const CaptchaContext = createContext<CaptchaContextProps | undefined>(
+export const CaptchaContext = createContext<CaptchaContextProps | undefined>(
   undefined,
 );
 
@@ -83,10 +83,3 @@ const CaptchaProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
 
 export default CaptchaProvider;
 
-export const useCaptcha = () => {
-  const context = useContext(CaptchaContext);
-  if (!context) {
-    throw new Error("useCaptcha must be used within a CaptchaProvider");
-  }
-  return context;
-};

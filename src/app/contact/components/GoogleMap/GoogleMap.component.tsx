@@ -2,7 +2,7 @@
 
 import React, { FC, useEffect, useState } from "react";
 import { GoogleMap as ReactGoogleMap, Marker } from "@react-google-maps/api";
-import { useGoogleMap } from "@/app/Providers/GoogleMapProvider";
+import useGoogleMap from "@/hook/useGoogleMap";
 import getCenterFromLocation from "@/helper/getCenterFromLocation";
 import PlaceDetailsWrapper from "../PlaceDetailsWrapper/PlaceDetailsWrapper.component";
 
@@ -10,6 +10,7 @@ export type Center = {
   lat: number;
   lng: number;
   name?: string
+  address?: string
 }
 
 export type PlaceDetails = google.maps.places.PlaceResult | null;
@@ -34,12 +35,14 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
       };
 
       service.getDetails(request, (place, status) => {
+        console.log('🚀 ~ service.getDetails ~ place:', place)
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
 
           const location = place?.geometry?.location;
           if (!location) return
           const destination = getCenterFromLocation(location);
           destination.name = '陌聲行銷有限公司'
+          destination.address = place.formatted_address
           setDestination(destination);
           setPlaceDetails(place);
         }
