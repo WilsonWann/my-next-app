@@ -1,46 +1,51 @@
 'use client'
 import React, { FC } from "react";
-import Link from "next/link";
 import { handleScrollTo } from "@/utils/scrollTo/scrollTo.utils";
+import ListWithLink from "../ListWithLink/ListWithLink.component";
 
-const routeDetailArray = [
-  { route: '/', name: 'about' },
-  { route: '/service', name: 'service' },
-  { route: '/portfolio', name: 'portfolio' },
-  { route: '/video', name: 'video' },
-  { route: '/contact', name: 'contact' },
+export type RouteDetail = {
+  route: string,
+  main_name: string,
+  alt_name: string
+  onClick?: () => void
+}
+
+const routeDetailArray: RouteDetail[] = [
+  { route: '/', main_name: 'about', alt_name: '關於陌聲', onClick: () => handleScrollTo('about') },
+  { route: '/service', main_name: 'service', alt_name: '服務內容' },
+  { route: '/portfolio', main_name: 'portfolio', alt_name: '作品集' },
+  { route: '/video', main_name: 'video', alt_name: '案例分享' },
+  { route: '/contact', main_name: 'contact', alt_name: '聯絡我們' },
 ]
-
 
 type Props = {
   menuButton?: React.ReactNode
-  className?: string
+  listClassName?: string
+  linkClassName?: string
 };
-const LinkNavigation: FC<Props> = ({ menuButton, className = '' }) => {
+const LinkNavigation: FC<Props> = (props) => {
+
+  const {
+    menuButton,
+    listClassName = '',
+    linkClassName = '',
+  } = props
 
   return (
     <>
       {menuButton}
-      {routeDetailArray.map((routeDetail, index) => {
-
-        const { route, name } = routeDetail
-
-        if (route === '/') {
-          return (
-            <li key={index} >
-              <Link href="/" className={`uppercase ${className}`} onClick={() => handleScrollTo("about")}>{name}</Link>
-            </li>
-          )
-        } else {
-          return (
-            <li key={index}>
-              <Link href={route} className={`uppercase ${className}`}>{name}</Link>
-            </li >
-          )
-        }
-      })}
+      {routeDetailArray.map((routeDetail, index) =>
+        <ListWithLink
+          key={index}
+          routeDetail={routeDetail}
+          listClassName={listClassName}
+          linkClassName={linkClassName}
+        />
+      )}
     </>
   );
 };
 
 export default LinkNavigation;
+
+

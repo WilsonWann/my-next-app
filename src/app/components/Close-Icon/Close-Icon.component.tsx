@@ -3,8 +3,9 @@ import { GrClose } from "react-icons/gr";
 
 type Props = {
   onClick?: () => void
+  className?: string
 }
 
-const CloseIcon: FC<Props> = ({ onClick }) => <GrClose onClick={onClick} />
+const CloseIcon: FC<Props> = (props) => <GrClose {...props} />
 
 export default CloseIcon

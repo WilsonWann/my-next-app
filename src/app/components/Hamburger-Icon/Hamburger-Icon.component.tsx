@@ -3,8 +3,9 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 type Props = {
   onClick?: () => void
+  className?: string
 }
 
-const HamburgerMenuIcon: FC<Props> = ({ onClick }) => <RxHamburgerMenu height={24} width={24} onClick={onClick} />
+const HamburgerMenuIcon: FC<Props> = (props) => <RxHamburgerMenu {...props} />
 
 export default HamburgerMenuIcon

@@ -47,24 +47,25 @@ const Header = () => {
   useEffect(() => {}, []);
 
   return (
-    <header className="fixed top-0 z-50 flex h-[100px] w-full flex-row items-center justify-between bg-theme-light bg-opacity-65 px-16 xl:h-16">
+    <header className="fixed top-0 z-50 flex h-[100px] w-full flex-row items-center justify-between bg-theme-light bg-opacity-65 md:px-16 px-6 xl:h-16">
       <Logo className="h-full py-8 md:py-6 xl:py-4" imageClassName={"h-full"} />
-      <button title="open button" className="md:hidden">
-        <HamburgerMenuIcon onClick={toggleIsMenuOpen} />
+      <button title="open button" className="md:hidden md:font-normal font-bold">
+        <HamburgerMenuIcon onClick={toggleIsMenuOpen} className="size-6" />
       </button>
       <ul
         ref={navRef}
-        className={` ${scheherazade.className} fixed md:relative md:right-0 ${navigationClassName} flex h-screen w-2/3 flex-col items-baseline justify-start gap-16 self-start bg-white opacity-100 *:w-full *:border-b *:border-slate-400 *:pl-[13.3%] md:h-auto md:w-auto md:flex-row md:items-center md:justify-center md:gap-8 md:self-center md:bg-transparent md:*:border-b-transparent md:*:pl-0 xl:gap-16`}
+        className={` ${scheherazade.className} fixed md:relative md:right-0 ${navigationClassName} flex h-screen w-2/3 flex-col items-baseline justify-start gap-0 self-start bg-white opacity-100 *:w-full *:border-b *:border-slate-400 *:pl-[13.3%] md:h-auto md:w-auto md:flex-row md:items-center md:justify-center md:gap-8 md:self-center md:bg-transparent md:*:border-b-transparent md:*:pl-0 xl:gap-16`}
       >
         <LinkNavigation
           menuButton={
-            <li className="flex h-[100px] items-center justify-center !border-b-transparent !pl-0 md:hidden">
+            <li className="px-6 flex h-[100px] items-center justify-end border-b !pl-0 md:hidden">
               <button title="close button">
-                <CloseIcon onClick={toggleIsMenuOpen} />
+                <CloseIcon onClick={toggleIsMenuOpen} className="size-6" />
               </button>
             </li>
           }
-          className={"hover:text-title"}
+          listClassName={"md:bg-transparent bg-slate-50"}
+          linkClassName={"hover:text-title md:h-auto h-10 block leading-10"}
         />
       </ul>
     </header>
