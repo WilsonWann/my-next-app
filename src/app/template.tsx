@@ -1,19 +1,18 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useAppDispatch } from "@/lib/redux-hooks";
-import { setIsMenuOpen } from "@/store/menu/menu.slice";
+import useMenu from "@/hook/useMenu";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const TemplatePage: React.FC<Props> = ({ children }) => {
-  const dispatch = useAppDispatch();
+  const { setIsMenuOpen } = useMenu()
 
   useEffect(() => {
     return () => {
-      dispatch(setIsMenuOpen(false));
+      setIsMenuOpen(false)
     };
   }, []);
 

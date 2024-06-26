@@ -6,14 +6,12 @@ import Logo from "../Logo/Logo.component";
 import LinkNavigation from "../LinkNavigation/LinkNavigation.component";
 import HamburgerMenuIcon from "../Hamburger-Icon/Hamburger-Icon.component";
 import CloseIcon from "../Close-Icon/Close-Icon.component";
-import { selectIsMenuOpen } from "@/store/menu/menu.selector";
-import { setIsMenuOpen } from "@/store/menu/menu.slice";
-import { useAppDispatch, useAppSelector } from "@/lib/redux-hooks";
+import useMenu from "@/hook/useMenu";
 
 const Header = () => {
-  const dispatch = useAppDispatch();
-  const isMenuOpen = useAppSelector(selectIsMenuOpen);
-  const toggleIsMenuOpen = () => dispatch(setIsMenuOpen(!isMenuOpen));
+  const { isMenuOpen, setIsMenuOpen } = useMenu()
+
+  const toggleIsMenuOpen = () => setIsMenuOpen(!isMenuOpen)
 
   const [navigationClassName, setNavigationClassName] = useState("-right-2/3");
 
@@ -21,7 +19,7 @@ const Header = () => {
 
   const handleClickOutside = (event: MouseEvent | TouchEvent) => {
     if (navRef.current && !navRef.current.contains(event.target as Node)) {
-      dispatch(setIsMenuOpen(false));
+      setIsMenuOpen(false)
     }
   };
 
