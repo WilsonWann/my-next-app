@@ -13,7 +13,7 @@ export default async function Home() {
       <MainCarousel id="banner" bannerList={bannerList} className="mb-16 snap-start" />
       <About id="about" images={aboutImages} className="mb-48 snap-start" />
       <Company className="mb-48 snap-start" />
-      <Photos images={photosImages} className="mb-48 snap-start" />
+      <Photos images={photosImages} className="md:mb-48 mb-16 snap-start" />
       <LargeBanner image={mainBannerImage} className="mb-8 snap-start" />
     </div >
   );

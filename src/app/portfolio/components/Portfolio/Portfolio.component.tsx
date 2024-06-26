@@ -31,7 +31,7 @@ const Portfolio: FC<Props> = ({ portfolioImages, className = '' }) => {
             <Image {...imageProps} className="absolute 
               w-full h-auto 
               object-cover object-center" />
-            <div className={`absolute inset-0 bg-black/0 z-hidden group-hover:bg-black/30 group-hover:z-10`} ></div>
+            <div className={`absolute inset-0 bg-black/0 z-hidden group-hover:bg-black/60 group-hover:z-10`} ></div>
             <div className="flex justify-center items-center space-x-4 *:pl-4 divide-x-2 text-2xl text-subtitle opacity-0
               z-hidden
             group-hover:opacity-100 group-hover:z-20">
