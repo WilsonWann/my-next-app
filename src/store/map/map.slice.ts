@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 export type MapState = {
   readonly apiKey: string | null
   readonly placeId: string | null
+  readonly reviewUrl: string | null
 }
 
 const INITIAL_STATE: MapState = {
   apiKey: null,
   placeId: null,
+  reviewUrl: null,
 }
 
 export const mapSlice = createSlice({
@@ -19,10 +21,13 @@ export const mapSlice = createSlice({
     },
     setPlaceId: (state, action) => {
       state.placeId = action.payload
-    }
+    },
+    setReviewUrl: (state, action) => {
+      state.reviewUrl = action.payload
+    },
   }
 })
 
-export const { setApiKey, setPlaceId } = mapSlice.actions
+export const { setApiKey, setPlaceId, setReviewUrl } = mapSlice.actions
 
 export const mapReducer = mapSlice.reducer

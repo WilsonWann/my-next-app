@@ -15,3 +15,8 @@ export const selectMapPlaceId = createSelector(
   [selectMapReducer],
   (map) => map.placeId
 )
+
+export const selectMapReviewUrl = createSelector(
+  [selectMapReducer],
+  (map) => map.reviewUrl
+)

@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { CopyIcon } from 'lucide-react';
 
 type Props = {
   copyText: string
@@ -17,11 +18,14 @@ const CopyToText: FC<Props> = ({ copyText }) => {
 
   return (
     <CopyToClipboard
-      className={'text-blue-500 cursor-pointer'}
+      className={'flex justify-between items-center gap-1 hover:cursor-pointer hover:text-blue-500'}
       text={copyText}
       onCopy={onCopySuccess}
     >
-      <span>{copyText}</span>
+      <div>
+        <span>{copyText}</span>
+        <CopyIcon size={14} />
+      </div>
     </CopyToClipboard >
   )
 }

@@ -14,9 +14,9 @@ const RatingStartWrapper: FC<Props> = ({ ratingString }) => {
     numberOfEmptyStar
   } = getNumberOfRatingStar(ratingString)
 
-  const fullStar = Array(numberOfFullStar).fill(<StarIcon.FullStarIcon />)
+  const fullStar = Array(numberOfFullStar).fill(1).map((index) => <StarIcon.FullStarIcon key={index} />)
   const halfStar = numberOfHalfStar === 1 ? <StarIcon.HalfStarIcon /> : null
-  const emptyStar = Array(numberOfEmptyStar).fill(<StarIcon.EmptyStarIcon />)
+  const emptyStar = Array(numberOfEmptyStar).fill(1).map((index) => <StarIcon.EmptyStarIcon key={index} />)
 
   return (
     <div className="w-fit text-xs text-title flex justify-start items-center space-x-0 ">
