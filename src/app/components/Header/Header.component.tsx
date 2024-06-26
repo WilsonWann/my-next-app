@@ -54,7 +54,7 @@ const Header = () => {
       </button>
       <ul
         ref={navRef}
-        className={` ${scheherazade.className} fixed md:relative md:right-0 ${navigationClassName} flex h-screen w-2/3 flex-col items-baseline justify-start gap-0 self-start bg-white opacity-100 *:w-full *:border-b *:border-slate-400 *:pl-[13.3%] md:h-auto md:w-auto md:flex-row md:items-center md:justify-center md:gap-8 md:self-center md:bg-transparent md:*:border-b-transparent md:*:pl-0 xl:gap-16`}
+        className={` ${scheherazade.className} fixed md:relative md:right-0 ${navigationClassName} flex h-screen w-2/3 flex-col items-baseline justify-start gap-0 self-start bg-white opacity-100 *:w-full *:border-b *:border-slate-400 *:px-8 md:h-auto md:w-auto md:flex-row md:items-center md:justify-center md:gap-8 md:self-center md:bg-transparent md:*:border-b-transparent md:*:pl-0`}
       >
         <LinkNavigation
           menuButton={
@@ -65,7 +65,9 @@ const Header = () => {
             </li>
           }
           listClassName={"md:bg-transparent bg-slate-50"}
-          linkClassName={"hover:text-title md:h-auto h-10 block leading-10"}
+          linkClassName={`hover:text-title md:h-auto h-10 block leading-10 
+                md:translate-y-[2px]  md:hover:-translate-y-[37px] 
+                md:justify-center justify-between md:transition-transform`}
         />
       </ul>
     </header>

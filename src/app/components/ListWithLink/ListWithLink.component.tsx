@@ -16,8 +16,13 @@ const ListWithLink: FC<ListWithLinkLayoutProps> = (props) => {
 
   return (
     <li className={`h-10 overflow-y-clip ${listClassName}`}>
-      <Link href={route} onClick={onClick} className={`uppercase w-fit
-                flex flex-col flex-nowrap whitespace-nowrap justify-center items-center translate-y-[2px] hover:-translate-y-[37px] transition-transform
+      <Link href={route} onClick={onClick} className={`uppercase 
+                md:w-fit w-full
+                flex 
+                md:flex-col flex-row
+                gap-0
+                flex-nowrap whitespace-nowrap 
+                items-center 
                 ${linkClassName}`}>
         <>
           <b>{main_name}</b>

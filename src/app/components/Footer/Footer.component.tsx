@@ -1,13 +1,14 @@
 import React from 'react'
 import LinkNavigation from '../LinkNavigation/LinkNavigation.component';
+import { scheherazade } from '@/app/fonts';
 
 
 const Footer = () => {
   return (
-    <footer className="relative h-fit w-full flex flex-col items-center justify-between bg-transparent pt-8 opacity-65 
+    <footer className={`${scheherazade.className} relative h-fit w-full flex flex-col items-center justify-between bg-transparent pt-8 opacity-65 
     md:divide-y-0 divide-y-2
     md:gap-y-8
-    ">
+    `}>
       <div className="flex 
       flex-row *:flex *:items-start *:justify-center *:px-6 
       md:flex-nowrap flex-wrap 
@@ -32,7 +33,10 @@ const Footer = () => {
         *:justify-center 
         *:px-6 
         ">
-        <LinkNavigation />
+        <LinkNavigation
+          listClassName={`md:h-7`}
+          linkClassName={`md:h-full md:translate-y-[2px]`}
+        />
       </div>
       <div className="flex h-8 w-full flex-row items-center justify-center bg-theme *:text-xs *:text-white">
         <span>Copyright © 陌聲行銷有限公司</span>
