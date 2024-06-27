@@ -4,13 +4,18 @@ import Link from 'next/link'
 
 type ListWithLinkLayoutProps = {
   routeDetail: RouteDetail
-  listClassName: string
-  linkClassName: string
+  listClassName?: string
+  linkClassName?: string
+  hideAltName?: boolean
 }
 
-const ListWithLink: FC<ListWithLinkLayoutProps> = (props) => {
+const ListWithLink: FC<ListWithLinkLayoutProps> = ({
+  routeDetail,
+  listClassName = '',
+  linkClassName = '',
+  hideAltName = false,
+}) => {
 
-  const { routeDetail, listClassName, linkClassName } = props
 
   const { route, main_name, alt_name, onClick } = routeDetail
 
@@ -24,10 +29,8 @@ const ListWithLink: FC<ListWithLinkLayoutProps> = (props) => {
                 flex-nowrap whitespace-nowrap 
                 items-center 
                 ${linkClassName}`}>
-        <>
-          <span>{main_name}</span>
-          <b>{alt_name}</b>
-        </>
+        <span>{main_name}</span>
+        {!hideAltName && <b>{alt_name}</b>}
       </Link>
     </li>
   );

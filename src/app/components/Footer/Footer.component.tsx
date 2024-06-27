@@ -37,6 +37,7 @@ const Footer = () => {
         <LinkNavigation
           listClassName={`md:h-7`}
           linkClassName={`md:h-full md:translate-y-[2px]`}
+          hideLinkAltName
         />
       </div>
       <div className="flex h-8 w-full flex-row items-center justify-center bg-theme *:text-xs *:text-white">
