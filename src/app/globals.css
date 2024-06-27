@@ -37,7 +37,7 @@
     --title: 31 29% 40%;
     --title-light: 31 20% 53%;
 
-    --subtitle: 0 0 100%;
+    --subtitle: 0 0% 100%;
   }
 
   .dark {
@@ -72,7 +72,7 @@
     --title: 31 29% 40%;
     --title-light: 31 20% 53%;
 
-    --subtitle: 0 0 100%;
+    --subtitle: 0 0% 100%;
   }
 }
 
