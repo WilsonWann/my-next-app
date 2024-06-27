@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import useMenu from "@/hook/useMenu";
+import useScrollToTop from "@/hook/useScrollToTop"
 
 type Props = {
   children: React.ReactNode;
@@ -9,6 +10,7 @@ type Props = {
 
 const TemplatePage: React.FC<Props> = ({ children }) => {
   const { setIsMenuOpen } = useMenu()
+  useScrollToTop()
 
   useEffect(() => {
     return () => {
