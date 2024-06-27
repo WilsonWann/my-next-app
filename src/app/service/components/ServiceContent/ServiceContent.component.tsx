@@ -17,7 +17,9 @@ type Props = {
 
 const ServiceContent: FC<Props> = ({ serviceContentImages, className = '' }) => {
   return (
-    <div className={`${noto.className} ${className} w-full h-fit flex flex-col justify-start items-center space-y-4 px-12`}>
+    <div className={`${noto.className} ${className} w-full h-fit flex flex-col justify-start items-center 
+    md:gap-4 gap-20
+    xl:px-12 px-0`}>
       {
         serviceContentImages.map((serviceContentImage, index) => {
           const { image, title, content } = serviceContentImage
@@ -57,14 +59,18 @@ const ServiceImageWithContent: FC<ServiceProps> = ({ image, reverse = false, ord
     sizes: "100vw",
   }
 
-  const flexDirection = reverse ? "flex-row-reverse" : "flex-row"
+  const flexDirection = reverse ? "md:flex-row-reverse" : "md:flex-row"
 
   return (
-    <div className={`flex ${flexDirection} justify-center items-center w-full h-fit overflow-clip gap-8`}>
-      <div className="flex-grow flex-shrink-0 basis-1/2">
-        <Image {...imageProps} className="bg-cover bg-center" />
+    <div className={`flex ${flexDirection} flex-col-reverse justify-center items-center 
+    md:w-full w-screen
+    xl:h-[600px] md:h-[480px] h-[600px] overflow-clip 
+    md:gap-8 gap-20
+    `}>
+      <div className="flex-grow md:flex-shrink-0 xl:basis-1/2 md:h-full h-auto md:basis-7/12 basis-1/2 w-full relative">
+        <Image {...imageProps} fill className="object-cover object-center" />
       </div>
-      <div className="flex-grow flex-shrink-0 basis-1/2 flex flex-col items-center">
+      <div className="flex-grow md:flex-shrink-0 xl:basis-1/2 md:basis-5/12  flex flex-col items-center justify-center">
         <div className="flex flex-col justify-center items-start gap-6 w-fit">
           <h2 className="text-title font-bold text-3xl">{`0${order}. ${title}`}</h2>
           <pre className={`${noto.className} leading-8 text-base tracking-widest`}>{content}</pre>
@@ -74,16 +80,3 @@ const ServiceImageWithContent: FC<ServiceProps> = ({ image, reverse = false, ord
     </div>
   )
 }
-
-// type FlexLayoutProps = {
-//   children: React.ReactNode
-// }
-// const FlexLayout: FC<FlexLayoutProps> = ({ children }) => {
-
-//   const paddingX = reverse ? "pl-16 pr-4" : "pl-4 pr-12"
-//   return (
-//     <div className="flex-grow flex-shrink-0 basis-1/2">
-//       {children}
-//     </div>
-//   )
-// }
