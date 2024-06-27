@@ -24,6 +24,65 @@ const photosImages = [moonBracelet, goldChainNecklace, youngProfessional, galaxy
 const mainBannerImage = modernWatch;
 
 const serviceBannerImage = makeupAndJewelry
+const serviceContentImages = [
+  {
+    image: moonBracelet,
+    title: '初步諮詢',
+    content: `了解客戶的需求與喜好
+解說設計流程及細節
+設計費、付款方式說明`
+  },
+  {
+    image: goldChainNecklace,
+    title: '設計概念',
+    content: `根據客戶需求和風格進行設計草圖
+提供設計概念與建議
+確認設計方向`
+  },
+  {
+    image: youngProfessional,
+    title: '選材搭配',
+    content: `根據設計草圖選擇合適的寶石和金屬材料
+提供不同材質的搭配建議
+確認最終設計方案`
+  },
+  {
+    image: galaxyEarrings,
+    title: '設計合約',
+    content: `簽訂設計合約並收取設計費
+繪製詳細設計圖紙
+確認製作細節和時間表`
+  },
+  {
+    image: moonBracelet,
+    title: '工藝製作',
+    content: `開始進行首飾製作
+按照設計圖紙精雕細琢
+定期向客戶報告進度`
+  },
+  {
+    image: goldChainNecklace,
+    title: '品質檢驗',
+    content: `完成製作後進行質量檢查
+確保每件首飾符合高品質標準
+進行最後的細節修正`
+  },
+  {
+    image: youngProfessional,
+    title: '交付首飾',
+    content: `與客戶一起檢查完成的首飾
+確認滿意後進行交付
+收取最終付款`
+  },
+  {
+    image: galaxyEarrings,
+    title: '售後服務',
+    content: `提供完善的售後服務及保養建議
+免費諮詢及維修服務
+持續關注客戶的使用情況`
+  },
+];
+
 
 export type PortfolioType = {
   image: StaticImageData
@@ -84,5 +143,6 @@ export {
   photosImages,
   mainBannerImage,
   serviceBannerImage,
+  serviceContentImages,
   portfolioImages
 }

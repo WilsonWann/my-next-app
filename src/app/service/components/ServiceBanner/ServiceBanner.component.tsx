@@ -1,9 +1,9 @@
 'use client'
 
 import React, { FC } from 'react'
-import { josefin } from '@/app/fonts'
+import { josefin, noto } from '@/app/fonts'
 import LargeBanner from '@/app/components/LargeBanner/LargeBanner.component'
-import { StaticImageData } from 'next/image'
+import type { StaticImageData } from 'next/image'
 
 type Props = {
   serviceBannerImage: StaticImageData
@@ -33,7 +33,7 @@ const ServiceBanner: FC<Props> = ({ serviceBannerImage, className = '' }) => {
         before:content-[attr(data-attr)]`}>item</span>
         </div>
         <div >
-          <ul className={` xl:text-2xl text-xl font-bold divide-subtitle text-stroke w-auto
+          <ul className={`${noto.className} xl:text-2xl text-xl font-bold divide-subtitle text-stroke w-auto
             flex 
             md:flex-row flex-col
             justify-between 
