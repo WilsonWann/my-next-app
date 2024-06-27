@@ -4,6 +4,7 @@ import React, { FC } from 'react'
 import { josefin, noto } from '@/app/fonts'
 import LargeBanner from '@/app/components/LargeBanner/LargeBanner.component'
 import type { StaticImageData } from 'next/image'
+import HeadingWithLabels from '@/app/components/HeadingWithLabels/HeadingWithLabels.component'
 
 type Props = {
   serviceBannerImage: StaticImageData
@@ -24,14 +25,10 @@ const ServiceBanner: FC<Props> = ({ serviceBannerImage, className = '' }) => {
         xl:gap-32 gap-12
         justify-center 
         items-center `}>
-        <div className=" text-subtitle flex flex-col justify-between items-end">
-          <h2 className=" 
-        xl:text-6xl text-5xl
-        font-thin">SERVICE</h2>
-          <span data-attr="﹡" className={`${josefin.className}
-        xl:text-xl text-lg font-light
-        before:content-[attr(data-attr)]`}>item</span>
-        </div>
+        <HeadingWithLabels
+          heading={'SERVICE'}
+          className="text-white"
+        />
         <div >
           <ul className={`${noto.className} xl:text-2xl text-xl font-bold divide-subtitle text-stroke w-auto
             flex 

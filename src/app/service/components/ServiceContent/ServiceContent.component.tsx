@@ -60,7 +60,7 @@ const ServiceImageWithContent: FC<ServiceProps> = ({ image, reverse = false, ord
   const flexDirection = reverse ? "flex-row-reverse" : "flex-row"
 
   return (
-    <div className={`flex ${flexDirection} justify-center items-center w-full h-[663px] overflow-clip gap-8`}>
+    <div className={`flex ${flexDirection} justify-center items-center w-full h-fit overflow-clip gap-8`}>
       <div className="flex-grow flex-shrink-0 basis-1/2">
         <Image {...imageProps} className="bg-cover bg-center" />
       </div>

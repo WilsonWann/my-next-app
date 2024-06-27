@@ -9,6 +9,7 @@ import FacebookIcon from '../Facebook-Icon/Facebook-Icon.component'
 import LocationIcon from '../Location-Icon/Location-Icon.component'
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import HeadingWithLabels from '@/app/components/HeadingWithLabels/HeadingWithLabels.component'
 
 const contactDetailArray = [
   {
@@ -78,11 +79,13 @@ const Contact: FC<Props> = ({ className = '' }) => {
         animate={controlsContact}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="flex flex-col justify-between items-center gap-2">
-          <h2 className="text-xl font-bold self-start">聯絡我們</h2>
-          <h2 className="text-5xl font-thin text-title">CONTACT</h2>
-          <div data-attr="﹡" className="text-lg before:content-[attr(data-attr)] self-end">musense</div>
-        </div>
+        <HeadingWithLabels
+          heading={'CONTACT'}
+          upperLabel={'聯絡我們'}
+          bottomLabel={'musense'}
+          className="text-black"
+          headingClassName={'text-title'}
+        />
       </motion.div>
       <motion.div
         ref={refContactDetail}
