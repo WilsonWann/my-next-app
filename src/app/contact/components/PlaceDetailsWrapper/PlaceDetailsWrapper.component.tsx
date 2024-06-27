@@ -48,13 +48,13 @@ const PlaceDetailsWrapper: FC<Props> = (props) => {
       <div className="flex flex-col justify-between align-baseline md:gap-2 gap-1">
         <h2 className="font-bold text-base">{placeDetails.name}</h2>
         <p className="p-0">{placeDetails.formatted_address}</p>
-        <p className="p-0 flex justify-start items-center gap-1">
+        <div className="p-0 flex justify-start items-center gap-1">
           {ratingString}
           <RatingStartWrapper ratingString={ratingString} />
           <StyledLink href={reviewUrl}>
             {`${placeDetails.user_ratings_total} 篇評論`}
           </StyledLink>
-        </p>
+        </div>
         <p className="p-0">
           <StyledLink href={placeUrl} >
             顯示詳細地圖

@@ -70,14 +70,14 @@ LINE ID: ${values.lineId}
 
   return (
     <div
-      className={`flex flex-col items-baseline justify-between gap-y-4 ${className}`}
+      className={`flex flex-col items-baseline justify-between gap-y-8 ${className}`}
     >
-      <h2 className="mb-6 w-full text-center text-2xl text-title md:mb-0 md:text-start">
+      <h2 className="w-full text-center text-3xl font-bold text-title md:mb-0 md:text-start">
         線上表單
       </h2>
       <FormProvider {...methods}>
         <form
-          className={`${noto.className} flex w-full flex-col items-center justify-between gap-12 px-4 md:w-[450px] md:items-baseline`}
+          className={`${noto.className} flex w-full flex-col items-center justify-between gap-12 md:w-[450px] md:items-baseline`}
           onSubmit={methods.handleSubmit(onSubmit)}
         >
           {ContactFormArray.map(({ id, label }, index) => (
