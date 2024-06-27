@@ -25,7 +25,7 @@ const ListWithLink: FC<ListWithLinkLayoutProps> = (props) => {
                 items-center 
                 ${linkClassName}`}>
         <>
-          <b>{main_name}</b>
+          <span>{main_name}</span>
           <b>{alt_name}</b>
         </>
       </Link>

@@ -67,7 +67,7 @@ const Header = () => {
           listClassName={"md:bg-transparent bg-slate-50"}
           linkClassName={`hover:text-title md:h-auto h-10 block leading-10 
                 md:translate-y-[2px]  md:hover:-translate-y-[37px] 
-                md:justify-center justify-between md:transition-transform`}
+                md:justify-center justify-between md:link-transition`}
         />
       </ul>
     </header>

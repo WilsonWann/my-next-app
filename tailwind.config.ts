@@ -179,6 +179,18 @@ const config = {
         },
       });
     }),
+    plugin(function ({ addUtilities }: AddUtilitiesParams) {
+      addUtilities({
+        '.link-transition': {
+          'transition-duration': '420ms',
+          'transition-timing-function': 'cubic-bezier(0.4, 0, 0.2, 1)',
+          'transition-property': 'all',
+        },
+        '.text-transparent': {
+          'color': 'transparent',
+        },
+      });
+    }),
   ],
 } satisfies Config;
 
