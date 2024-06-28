@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW">
-      <body className={`${inter.className} min-h-screen bg-theme-light`}>
+      <body className={`${inter.className} min-h-screen bg-primary`}>
         <ReduxProvider>
           <GoogleMapProvider>
             <CaptchaProvider>

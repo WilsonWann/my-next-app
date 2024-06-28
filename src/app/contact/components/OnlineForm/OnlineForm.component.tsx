@@ -72,7 +72,7 @@ LINE ID: ${values.lineId}
     <div
       className={`flex flex-col items-baseline justify-between gap-y-8 ${className}`}
     >
-      <h2 className="w-full text-center text-3xl font-bold text-title md:mb-0 md:text-start">
+      <h2 className="w-full text-center text-3xl font-bold text-secondary md:mb-0 md:text-start">
         線上表單
       </h2>
       <FormProvider {...methods}>
@@ -94,7 +94,7 @@ LINE ID: ${values.lineId}
           <div className="flex w-full items-center justify-center gap-12 md:justify-end md:gap-4">
             <Button
               type="reset"
-              className="bg-red-600 text-subtitle"
+              className="bg-red-600 text-white"
               onClick={handleReset}
               variant="destructive"
             >
@@ -102,7 +102,7 @@ LINE ID: ${values.lineId}
             </Button>
             <Button
               type="submit"
-              className="bg-title text-subtitle hover:bg-title-light"
+              className="bg-secondary text-white hover:bg-secondary-foreground"
               disabled={!verifiedResponse || !verifiedResponse.success}
             >
               送出

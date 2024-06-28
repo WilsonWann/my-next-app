@@ -65,16 +65,6 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        title: {
-          light: "hsl(var(--title-light))",
-          DEFAULT: "hsl(var(--title))",
-        },
-        subtitle: "hsl(var(--subtitle))",
-        theme: {
-          light: colors.slate[300],
-          DEFAULT: colors.slate[500],
-          dark: colors.slate[600],
-        },
       },
       borderRadius: {
         lg: "var(--radius)",

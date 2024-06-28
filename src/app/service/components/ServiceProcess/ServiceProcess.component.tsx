@@ -13,9 +13,9 @@ const ServiceProcess: FC<Props> = ({ className = '' }) => {
     <div className={className}>
       <HeadingWithLabels
         heading={'Process'}
-        className="text-theme-dark"
+        className="text-primary-foreground"
       />
-      <div className="w-full flex flex-col justify-center items-center animate-bounce text-title *:size-6">
+      <div className="w-full flex flex-col justify-center items-center animate-bounce text-secondary *:size-6">
         <TriangleIcon />
         <TriangleIcon className="-mt-2" />
       </div>

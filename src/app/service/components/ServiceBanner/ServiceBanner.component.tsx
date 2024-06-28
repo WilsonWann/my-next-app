@@ -30,7 +30,7 @@ const ServiceBanner: FC<Props> = ({ serviceBannerImage, className = '' }) => {
           className="text-white"
         />
         <div >
-          <ul className={`${noto.className} xl:text-2xl text-xl font-bold divide-subtitle text-stroke w-auto
+          <ul className={`${noto.className} xl:text-2xl text-xl font-bold divide-primary-foreground text-primary-foreground text-stroke w-auto
             flex 
             md:flex-row flex-col
             justify-between 
@@ -38,8 +38,7 @@ const ServiceBanner: FC<Props> = ({ serviceBannerImage, className = '' }) => {
             md:divide-x-2 
             xl:space-x-16 md:space-x-8 
             md:space-y-0 space-y-6
-            xl:*:pl-16 md:*:pl-8
-            text-subtitle text-center 
+            xl:*:pl-16 md:*:pl-8 text-center 
             `}>
             <li className="!pl-0">定制設計</li>
             <li>製作生產</li>

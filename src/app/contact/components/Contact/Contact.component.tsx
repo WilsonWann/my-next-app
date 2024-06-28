@@ -84,7 +84,7 @@ const Contact: FC<Props> = ({ className = '' }) => {
           upperLabel={'聯絡我們'}
           bottomLabel={'musense'}
           className="text-black"
-          headingClassName={'text-title'}
+          headingClassName={'text-secondary'}
         />
       </motion.div>
       <motion.div
@@ -106,7 +106,7 @@ const Contact: FC<Props> = ({ className = '' }) => {
               <Link key={index} href={href} target="_blank" rel="noreferrer" className="w-fit h-fit">
                 <div className={`${noto.className} flex justify-start items-start gap-4 group         
                   xl:text-2xl md:text-xl text-lg
-                      text-title font-semibold`}>
+                      text-secondary font-semibold`}>
                   <span className="pt-1 md:group-hover:animate-bounce ">{icon}</span>
                   <span>{text}</span>
                 </div>

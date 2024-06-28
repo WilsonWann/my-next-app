@@ -47,7 +47,7 @@ const Header = () => {
   useEffect(() => {}, []);
 
   return (
-    <header className="fixed top-0 z-50 flex h-[100px] w-full flex-row items-center justify-between bg-theme-light bg-opacity-65 md:px-16 px-6 xl:h-16">
+    <header className="fixed top-0 z-50 flex h-[100px] w-full flex-row items-center justify-between bg-primary-foreground bg-opacity-65 md:px-16 px-6 xl:h-16">
       <Logo className="h-full py-8 md:py-6 xl:py-4" imageClassName={"h-full"} />
       <button title="open button" className="md:hidden md:font-normal font-bold">
         <HamburgerMenuIcon onClick={toggleIsMenuOpen} className="size-6" />
@@ -65,7 +65,7 @@ const Header = () => {
             </li>
           }
           listClassName={"md:bg-transparent bg-slate-50"}
-          linkClassName={`hover:text-title md:h-auto h-10 block leading-10 
+          linkClassName={`hover:text-secondary md:h-auto h-10 block leading-10 
                 md:translate-y-[2px]  md:hover:-translate-y-[37px] 
                 md:justify-center justify-between md:link-transition`}
         />

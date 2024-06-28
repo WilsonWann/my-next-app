@@ -57,9 +57,9 @@ const ServiceImageWithContent: FC<ServiceProps> = ({ image, reverse = false, ord
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="flex flex-col justify-center items-start gap-6 w-fit">
-            <h2 className="text-title font-bold text-3xl">{`0${order}. ${title}`}</h2>
+            <h2 className="text-secondary font-bold text-3xl">{`0${order}. ${title}`}</h2>
             <pre className={`${noto.className} leading-8 text-base tracking-widest`}>{content}</pre>
-            <Separator className="bg-title w-12 h-1" />
+            <Separator className="bg-secondary w-12 h-1" />
           </div>
         </motion.div>
       </div>

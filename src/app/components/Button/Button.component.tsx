@@ -18,7 +18,7 @@ const Button: FC<Props> = ({
 }) => {
 
   //* add disabled styles for each button type
-  const buttonClassName = `hover:text-title hover:bg-stone-300 ${className}`
+  const buttonClassName = `hover:text-secondary hover:bg-stone-300 ${className}`
 
   if (type === 'button') {
     const buttonClassName = `hover:bg-stone-200`
@@ -29,10 +29,10 @@ const Button: FC<Props> = ({
   }
 
   if (type === 'submit') {
-    const submitClassName = `bg-title text-white hover:bg-title`
+    const submitClassName = `bg-secondary text-white hover:bg-secondary`
     return (
       <button type="submit" disabled={disabled} onClick={onClick}
-        className={`ring-1 ring-transparent rounded-md px-4 py-2 text-lg disabled:bg-title-light disabled:cursor-not-allowed ${submitClassName} ${className}`}>{children}</button>
+        className={`ring-1 ring-transparent rounded-md px-4 py-2 text-lg disabled:bg-secondary-foreground disabled:cursor-not-allowed ${submitClassName} ${className}`}>{children}</button>
     )
   }
 

@@ -26,7 +26,7 @@ const Company: FC<Props> = ({ className = '' }) => {
   return <div className={`
   w-full 
   xl:h-screen h-fit
-  flex justify-center items-center ${className}`}>
+  flex justify-center items-center ${className} text-secondary`}>
     <div className="
     flex 
     md:flex-row flex-col
@@ -39,9 +39,9 @@ const Company: FC<Props> = ({ className = '' }) => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
 
-        <h2 className="text-7xl font-thin text-nowrap text-title">陌聲行銷</h2>
+        <h2 className="text-7xl font-thin text-nowrap ">陌聲行銷</h2>
       </motion.div>
-      <h2 className="text-5xl font-light text-title">﹡</h2>
+      <h2 className="text-5xl font-light">﹡</h2>
       <div className="flex flex-col justify-start items-baseline">
         <div className="text-xl font-bold">數字行銷，智能決策，創意無限</div>
         <div className="text-lg font-normal">數據驅動，智能行銷，創意無限，助力品牌實現精準決策與卓越成效。</div>

@@ -1,7 +1,6 @@
 'use client'
 
 import React, { FC } from 'react'
-import { josefin } from '@/app/fonts'
 import { motion } from "framer-motion"
 import MotionDivLayout from './MotionDivLayout.component';
 import Image, { StaticImageData } from 'next/image';
@@ -37,19 +36,19 @@ const Photos: FC<Props> = ({ images, className = '' }) => {
           let additionalClassName
           if (index === 0) {
             additionalClassName = `xl:mr-2 xl:mb-8
-                                   md:mr-1 md:mb-4 
+                                   md:mr-1 md:mb-4
                                    mr-1    mb-4`
           } else if (index === 1) {
             additionalClassName = `xl:mr-2 xl:ml-2 xl:mt-8
-                                   md:mr-1 md:ml-1 md:mt-4 md:mb-0   
+                                   md:mr-1 md:ml-1 md:mt-4 md:mb-0
                                    mr-0    ml-1    mt-4    mb-4 `
           } else if (index === 2) {
-            additionalClassName = `xl:mr-2 xl:ml-2 xl:mb-8 
-                                   md:mr-1 md:ml-1 md:mb-4  md:mt-0
-                                   mr-1                     -mt-4`
+            additionalClassName = `xl:mr-2 xl:ml-2 xl:mb-8
+                                   md:mr-1 md:ml-1 md:mb-4 md:mt-0
+                                   mr-1                    -mt-4`
           } else if (index === 3) {
             additionalClassName = `xl:ml-2 xl:mt-8
-                                   md:ml-1 md:mt-4 
+                                   md:ml-1 md:mt-4
                                    ml-1    mt-0`
           }
 
@@ -77,12 +76,8 @@ const Photos: FC<Props> = ({ images, className = '' }) => {
       }
     </motion.div>
     <div className="flex justify-end items-center xl:gap-16 md:gap-8 gap-4 w-full">
-      <HeadingWithLabels
-        heading={'PHOTO'}
-        bottomLabel={'view'}
-        className="text-theme-dark"
-      />
-      <div className={`bg-theme w-[1450px] h-1 rounded-md`}></div>
+      <HeadingWithLabels heading={'PHOTO'} bottomLabel={'view'} className="text-primary-foreground" />
+      <div className={`bg-primary-foreground w-[1450px] h-1 rounded-md`}></div>
     </div>
   </div>;
 }

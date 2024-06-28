@@ -59,10 +59,10 @@ const Carousel: FC<CarouselProps> = ({ bannerList }) => {
   };
 
   const handleCustomPaging = (i: number) => {
-    let backgroundColor = i === activeIndex ? "bg-theme" : "bg-theme-light";
+    let backgroundColor = i === activeIndex ? "bg-primary" : "bg-primary-foreground";
     return (
       <div
-        className={`h-2 w-2 cursor-pointer select-none rounded-full ${backgroundColor} hover:bg-theme`}
+        className={`h-2 w-2 cursor-pointer select-none rounded-full ${backgroundColor} hover:bg-primary`}
       />
     );
   };
