@@ -22,7 +22,7 @@ const PortfolioLinkWithImage: FC<Props> = ({ portfolioImage }) => {
   const { title, description } = portfolioImage.children
 
   return (
-    <Link href={`/portfolio/${title}`} className={`group relative flex justify-center items-center *:transition-all *:duration-500 overflow-clip`}>
+    <Link href={`/portfolio/${title.toLocaleLowerCase()}`} className={`group relative flex justify-center items-center *:transition-all *:duration-500 overflow-clip`}>
       <Image {...imageProps} className="absolute w-full h-auto object-cover object-center" />
       <div className={`absolute inset-0 bg-black/0 z-hidden group-hover:bg-black/60 group-hover:z-10`} ></div>
       <div className="flex justify-center items-center space-x-4 *:pl-4 divide-x-2 text-2xl text-primary-foreground opacity-0 z-hidden group-hover:opacity-100 group-hover:z-20">

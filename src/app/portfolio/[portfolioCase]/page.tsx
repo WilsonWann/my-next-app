@@ -1,8 +1,7 @@
-'use client'
-
 import React, { FC } from 'react'
-import { useRouter } from 'next/navigation'
-import { Button } from '@/components/ui/button'
+import { getPortfolioCaseByName } from '@/app/action/getPortfolioCaseByName'
+import GoBackButton from '@/components/GoBackButton.component'
+import CustomImage from '@/app/components/CustomImage/CustomImage.component'
 
 type Props = {
   params: {
@@ -10,15 +9,31 @@ type Props = {
   }
 }
 
-const PortfolioCasePage: FC<Props> = ({ params: { portfolioCase } }) => {
-  const router = useRouter()
+const PortfolioCasePage: FC<Props> = async ({ params: { portfolioCase } }) => {
 
+  const portfolio = await getPortfolioCaseByName(portfolioCase)
 
+  if (!portfolio.success) return null
+  if (!portfolio.data) return null
+
+  const { title, tags, images } = portfolio.data
 
   return (
-    <div>
-      <div>{portfolioCase}</div>
-      <Button type="button" onClick={() => router.back()}>回上一頁</Button >
+    <div className="max-w-3xl mx-auto pt-16 flex flex-col justify-start items-start gap-8">
+      <section className="flex flex-col justify-start items-start gap-2">
+        <h2>{title}</h2>
+        {tags.map((tag, index) => (
+          <span key={index}>{`# ${tag}`}</span>
+        ))}
+      </section>
+      {
+        images.map((image, index) => (
+          <div key={index} className="relative w-full h-[500px] overflow-clip">
+            <CustomImage image={image} fill />
+          </div>
+        ))
+      }
+      <GoBackButton />
     </div >
   )
 }
