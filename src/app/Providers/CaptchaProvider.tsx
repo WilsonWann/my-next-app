@@ -18,6 +18,7 @@ import { usePathname } from "next/navigation";
 interface CaptchaContextProps {
   renderCaptcha: () => JSX.Element | null;
   triggerVerify: () => void;
+  resetVerify: () => void;
   captchaVerified: boolean;
   verifiedResponse: { success: boolean; message: string } | null;
 }
@@ -47,6 +48,14 @@ const CaptchaProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     }
   };
 
+  const resetVerify = () => {
+    if (captchaRef.current) {
+      captchaRef.current.resetCaptcha();
+      setVerifiedResponse(null);
+      setCaptchaVerified(false);
+    }
+  };
+
   const handleCaptchaChange = async (token: string | null) => {
     if (token && captchaRef.current) {
       const responseData = await verifyCaptcha(token);
@@ -72,6 +81,7 @@ const CaptchaProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
       value={{
         renderCaptcha,
         triggerVerify,
+        resetVerify,
         captchaVerified,
         verifiedResponse,
       }}
