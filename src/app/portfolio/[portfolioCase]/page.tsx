@@ -2,14 +2,7 @@ import React, { FC } from 'react'
 import { scheherazade } from '@/app/fonts'
 import GoBackButton from '@/components/GoBackButton.component'
 import CustomImage from '@/app/components/CustomImage/CustomImage.component'
-import { kv } from "@vercel/kv";
-
-type PortfolioCaseType = {
-  name: string
-  title: string
-  tags: string[]
-  images: string[]
-}
+import { getPortfolioCaseByName } from '@/app/action/getPortfolioCaseByName'
 
 type Props = {
   params: {
@@ -19,11 +12,12 @@ type Props = {
 
 const PortfolioCasePage: FC<Props> = async ({ params: { portfolioCase } }) => {
 
-  const portfolio = await kv.get<PortfolioCaseType>(`portfolioCase:${portfolioCase}`);
+  const response = await getPortfolioCaseByName(portfolioCase)
 
-  if (!portfolio) return null
+  if (!response.success) return null
+  if (!response.data) return null
 
-  const { title, tags, images } = portfolio
+  const { title, tags, images } = response.data
 
   return (
     <div className="max-w-3xl mx-auto pt-16 flex flex-col justify-start items-start gap-8">
