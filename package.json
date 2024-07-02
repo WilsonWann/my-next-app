@@ -6,7 +6,9 @@
     "dev": "next dev -H 10.42.208.19",
     "build": "next build",
     "start": "next start -p 3000",
-    "lint": "next lint"
+    "lint": "next lint",
+    "upload": "tsc src/lib/uploadData.ts && node -r dotenv/config src/lib/uploadData.js dotenv_config_path=.env.local",
+    "checkData": "tsc src/lib/checkData.ts && node -r dotenv/config src/lib/checkData.js dotenv_config_path=.env.local "
   },
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^1.10.1",
@@ -26,6 +28,7 @@
     "@types/react-slick": "^0.23.13",
     "@types/redux-logger": "^3.0.13",
     "@types/slick-carousel": "^1.6.40",
+    "@vercel/kv": "^2.0.0",
     "axios": "^1.7.2",
     "babel-plugin-macros": "^3.1.0",
     "class-variance-authority": "^0.7.0",
@@ -33,6 +36,7 @@
     "dotenv": "^16.4.5",
     "firebase": "^10.12.2",
     "framer-motion": "^11.2.10",
+    "ioredis": "^5.4.1",
     "lucide-react": "^0.395.0",
     "next": "14.2.3",
     "nodemailer": "^6.9.13",
@@ -60,18 +64,19 @@
     "slick-carousel": "^1.8.1",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "ts-node": "^10.9.2",
     "typed-redux-saga": "^1.5.0",
     "zod": "^3.23.8",
     "zod-fetch": "^0.1.1"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.14.9",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5.5.3"
   }
 }

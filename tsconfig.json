@@ -29,7 +29,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/react-copy-to-clipboard.d.ts",
-    "src/Providers/*"
+    "src/Providers/*",
+    "src/lib/redis.ts",
+    "src/lib/uploadData.ts"
   ],
   "exclude": ["node_modules"]
 }
