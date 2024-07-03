@@ -1,8 +1,15 @@
+import { ResponseType } from "@/types"
 import { getPlaiceholder } from "plaiceholder"
 
-export default async function getBase64(imageUrl: string) {
+export type BlurImageType = {
+  src: string
+  blurDataURL: string
+  height: number
+  width: number
+}
 
-  let blurDataURL, imageHeight, imageWidth
+export default async function getBase64(imageUrl: string): Promise<ResponseType<BlurImageType | null>> {
+
   try {
 
     const res = await fetch(imageUrl)
@@ -18,18 +25,18 @@ export default async function getBase64(imageUrl: string) {
       base64
     } = await getPlaiceholder(Buffer.from(buffer))
 
-    blurDataURL = base64
-    imageHeight = height
-    imageWidth = width
-  } catch (e) {
-    if (e instanceof Error) console.log(e.stack)
-  }
-  finally {
     return {
-      blurDataURL,
-      imageUrl,
-      height: imageHeight,
-      width: imageWidth,
-    };
+      success: true,
+      data: {
+        src: imageUrl,
+        blurDataURL: base64,
+        height,
+        width,
+      }
+    }
+  } catch (e) {
+    if (e instanceof Error) return { success: false, message: e.message, }
+
+    return { success: false, message: e as string }
   }
 };

@@ -25,6 +25,7 @@ import jewelersWorkDesk from "@/assets/jewelers-work-desk.jpg"
 import preparingToFinishARing from "@/assets/preparing-to-finish-a-ring.jpg"
 import goldRingWithWiteDiamondsAndALargeStone from "@/assets/gold-ring-with-white-diamonds-and-a-large-stone.jpg"
 import professionalSmilingWoman from "@/assets/professional-smiling-woman.jpg"
+import aLetterBoardSpellsOutNotToday from "@/assets/a-letter-board-spells-out-not-today.jpg"
 
 import { StaticImageData } from "next/image";
 
@@ -92,7 +93,7 @@ const serviceContentImages = [
 持續關注客戶的使用情況`
   },
 ];
-
+const fallbackImage = aLetterBoardSpellsOutNotToday
 
 export type PortfolioType = {
   image: StaticImageData
@@ -154,5 +155,6 @@ export {
   mainBannerImage,
   serviceBannerImage,
   serviceContentImages,
-  portfolioImages
+  portfolioImages,
+  fallbackImage
 }

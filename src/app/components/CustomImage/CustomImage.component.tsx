@@ -1,18 +1,20 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 import getBase64 from '@/helper/getLocalBase64'
+import FallbackImage from '../FallbackImage/FallbackImage.component'
 
-type Props = {
+export type CustomImageProps = {
   image: string
   fill?: boolean
 }
 
-const CustomImage: FC<Props> = async ({ image, fill = false }) => {
+const CustomImage: FC<CustomImageProps> = async ({ image, fill = false }) => {
 
-  const {
-    blurDataURL,
-    imageUrl: src,
-  } = await getBase64(image)
+  const response = await getBase64(image)
+
+  if (!response.success || !response.data) return <FallbackImage fill={fill} />
+
+  const { src, blurDataURL } = response.data
 
   const imageProps = {
     src,
