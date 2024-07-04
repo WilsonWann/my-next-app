@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
-import { FiFacebook } from "react-icons/fi";
+import { Facebook } from 'lucide-react';
 
 type Props = {
   onClick?: () => void
 }
 
-const FacebookIcon: FC<Props> = ({ onClick }) => <FiFacebook onClick={onClick} />
+const FacebookIcon: FC<Props> = (props) => <Facebook {...props} />
 
 export default FacebookIcon

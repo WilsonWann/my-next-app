@@ -17,7 +17,7 @@ const Photos: FC<Props> = ({ images, className = '' }) => {
 
   return <div className={`w-full h-auto 
   flex flex-col justify-start items-end 
-  xl:gap-16 md:gap-8 gap-4 
+  xl:gap-16 md:gap-8 gap-16 
   xl:pl-64 md:pl-4 pl-0
   ${className}`}>
 
@@ -76,8 +76,8 @@ const Photos: FC<Props> = ({ images, className = '' }) => {
       }
     </motion.div>
     <div className="flex justify-end items-center xl:gap-16 md:gap-8 gap-4 w-full">
-      <HeadingWithLabels heading={'PHOTO'} bottomLabel={'view'} className="text-primary-foreground" />
-      <div className={`bg-primary-foreground w-[1450px] h-1 rounded-md`}></div>
+      <HeadingWithLabels heading={'PHOTO'} bottomLabel={'view'} className="text-secondary" />
+      <div className={`bg-secondary w-[1450px] h-1 rounded-md`}></div>
     </div>
   </div>;
 }

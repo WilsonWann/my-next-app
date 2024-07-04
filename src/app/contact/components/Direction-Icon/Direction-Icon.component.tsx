@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { LiaDirectionsSolid } from "react-icons/lia";
+import { Navigation } from 'lucide-react';
 
 
 type Props = {
@@ -9,6 +9,6 @@ type Props = {
   cursor?: string
 }
 
-const DirectionIcon: FC<Props> = (props) => <LiaDirectionsSolid {...props} />
+const DirectionIcon: FC<Props> = (props) => <Navigation  {...props} />
 
 export default DirectionIcon

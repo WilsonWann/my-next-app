@@ -40,7 +40,7 @@ const Footer = () => {
           hideLinkAltName
         />
       </div>
-      <div className="flex h-8 w-full flex-row items-center justify-center bg-primary *:text-xs *:text-secondary font-bold">
+      <div className="flex h-8 w-full flex-row items-center justify-center bg-primary-foreground *:text-xs *:text-secondary font-bold">
         <span>Copyright © 陌聲行銷有限公司</span>
       </div>
     </footer>

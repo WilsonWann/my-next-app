@@ -6,7 +6,7 @@ import Company from "./components/Company/Company.component";
 import Photos from "./components/Photos/Photos.component";
 import LargeBanner from "./components/LargeBanner/LargeBanner.component";
 
-export default async function Home() {
+export default function Home() {
 
   return (
     <div className={`${noto.className} flex flex-col items-center justify-between snap-y`}>

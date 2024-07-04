@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
-import { RxTriangleDown } from "react-icons/rx";
+import { ChevronsDown } from 'lucide-react';
 
 type Props = {
   className?: string
 }
 
-const TriangleIcon: FC<Props> = (props) => <RxTriangleDown {...props} />
+const TriangleIcon: FC<Props> = (props) => <ChevronsDown {...props} />
 
 export default TriangleIcon

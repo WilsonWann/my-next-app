@@ -17,7 +17,6 @@ const ServiceProcess: FC<Props> = ({ className = '' }) => {
       />
       <div className="w-full flex flex-col justify-center items-center animate-bounce text-secondary *:size-6">
         <TriangleIcon />
-        <TriangleIcon className="-mt-2" />
       </div>
     </div>
   )

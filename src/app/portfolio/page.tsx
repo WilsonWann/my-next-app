@@ -1,6 +1,5 @@
 import React from 'react'
 import { scheherazade } from '@/app/fonts'
-
 import { portfolioImages } from '@/app/imageHandler'
 import PortfolioLinkWithImage from './components/PortfolioLinkWithImage/PortfolioLinkWithImage.component'
 import GridLayout from './components/GridLayout/GridLayout.component'

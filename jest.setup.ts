@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom/extend-expect'
-import "jest-canvas-mock";
 import 'whatwg-fetch';
 import fetchMock from 'jest-fetch-mock';
 

@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
-import { FiInstagram } from "react-icons/fi";
+import { Instagram } from 'lucide-react';
 
 type Props = {
   onClick?: () => void
 }
 
-const InstagramIcon: FC<Props> = ({ onClick }) => <FiInstagram onClick={onClick} />
+const InstagramIcon: FC<Props> = (props) => <Instagram {...props} />
 
 export default InstagramIcon

@@ -61,8 +61,8 @@ const PlaceDetailsWrapper: FC<Props> = (props) => {
           </StyledLink>
         </p>
       </div>
-      <StyledLink href={navigationUrl} className="flex flex-col justify-between items-center space-y-0">
-        <DirectionIcon size={48} />
+      <StyledLink href={navigationUrl} className="flex flex-col justify-between items-center space-y-1">
+        <DirectionIcon size={28} />
         <span>路線</span>
       </StyledLink>
     </div>

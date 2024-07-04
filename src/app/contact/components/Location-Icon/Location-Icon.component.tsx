@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
-import { IoLocationOutline } from "react-icons/io5";
+import { MapPin } from 'lucide-react';
 
 type Props = {
   onClick?: () => void
 }
 
-const LocationIcon: FC<Props> = ({ onClick }) => <IoLocationOutline onClick={onClick} />
+const LocationIcon: FC<Props> = (props) => <MapPin {...props} />
 
 export default LocationIcon
