@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { josefin, noto } from '@/app/fonts'
 import HeadingWithLabels from '@/app/components/HeadingWithLabels/HeadingWithLabels.component'
 import TriangleIcon from '../Triangle-Icon/Triangle-Icon.component'
 

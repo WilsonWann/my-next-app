@@ -16,9 +16,7 @@ type Props = {
 
 const ServiceContent: FC<Props> = ({ serviceContentImages, className = '' }) => {
   return (
-    <div className={`${noto.className} ${className} w-full h-fit flex flex-col justify-start items-center 
-    md:gap-4 gap-20
-    xl:px-12 px-0`}>
+    <div className={`${noto.className} ${className} w-full h-fit flex flex-col justify-start items-center md:gap-4 gap-20 xl:px-12 px-0`}>
       {
         serviceContentImages.map((serviceContentImage, index) => {
           const { image, title, content } = serviceContentImage
