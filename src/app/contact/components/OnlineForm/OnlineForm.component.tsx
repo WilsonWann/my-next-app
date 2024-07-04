@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useCallback } from "react";
+import React, { FC } from "react";
 import { noto } from "@/app/fonts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
@@ -37,10 +37,10 @@ export type FormValues = {
   message: string;
 };
 
-type OnlineFormProps = {
+type Props = {
   className?: string;
 };
-const OnlineForm: FC<OnlineFormProps> = ({ className = "" }) => {
+const OnlineForm: FC<Props> = ({ className = "" }) => {
   const { renderCaptcha, resetVerify, verifiedResponse } = useCaptcha();
   const { dialogOpen, openDialog, closeDialog } = useDialog();
 

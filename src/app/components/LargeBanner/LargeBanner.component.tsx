@@ -1,10 +1,9 @@
 'use client'
 
+import React, { FC } from 'react'
+import { motion } from 'framer-motion';
 import useFramerMotion from '@/hook/useFramerMotion';
-import { motion, useAnimation } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
-import React, { FC, useEffect } from 'react'
-import { useInView } from 'react-intersection-observer';
 
 type Props = {
   image: StaticImageData
