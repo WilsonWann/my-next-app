@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { scheherazade } from "@/app/fonts";
 import Logo from "../Logo/Logo.component";
 import LinkNavigation from "../LinkNavigation/LinkNavigation.component";
@@ -8,46 +8,18 @@ import HamburgerMenuIcon from "../Hamburger-Icon/Hamburger-Icon.component";
 import CloseIcon from "../Close-Icon/Close-Icon.component";
 import useMenu from "@/hook/useMenu";
 import usePreventScroll from "@/hook/usePreventScroll";
+import useCloseMenuOnClickOutside from "@/hook/useCloseMenuOnClickOutside";
 
 const Header = () => {
   const { isMenuOpen, setIsMenuOpen } = useMenu()
 
   const toggleIsMenuOpen = () => setIsMenuOpen(!isMenuOpen)
 
-  const [navigationClassName, setNavigationClassName] = useState("-right-2/3");
-
-  const navRef = useRef<HTMLUListElement | null>(null);
-
-  const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-    if (navRef.current && !navRef.current.contains(event.target as Node)) {
-      setIsMenuOpen(false)
-    }
-  };
-
   usePreventScroll(isMenuOpen)
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("wheel", handleClickOutside);
-      document.addEventListener("touchstart", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-        document.removeEventListener("wheel", handleClickOutside);
-        document.removeEventListener("touchstart", handleClickOutside);
-      };
-    }
-  }, [isMenuOpen]);
+  const navRef = useCloseMenuOnClickOutside(isMenuOpen, setIsMenuOpen)
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      setNavigationClassName("right-0");
-    } else {
-      setNavigationClassName("-right-2/3");
-    }
-  }, [isMenuOpen]);
-
-  useEffect(() => {}, []);
+  const navigationClassName = isMenuOpen ? "right-0" : "-right-2/3"
 
   return (
     <header className="fixed top-0 z-50 flex h-[100px] w-full flex-row items-center justify-between bg-primary-foreground bg-opacity-65 md:px-16 px-6 xl:h-16">
@@ -57,7 +29,7 @@ const Header = () => {
       </button>
       <ul
         ref={navRef}
-        className={` ${scheherazade.className} fixed md:relative md:right-0 ${navigationClassName} flex h-screen w-2/3 flex-col items-baseline justify-start gap-0 self-start bg-white opacity-100 *:w-full *:border-b *:border-slate-400 *:px-8 md:h-auto md:w-auto md:flex-row md:items-center md:justify-center md:gap-8 md:self-center md:bg-transparent md:*:border-b-transparent md:*:pl-0`}
+        className={`${scheherazade.className} fixed md:relative md:right-0 ${navigationClassName} flex h-screen w-2/3 flex-col items-baseline justify-start gap-0 self-start bg-white opacity-100 *:w-full *:border-b *:border-slate-400 *:px-8 md:h-auto md:w-auto md:flex-row md:items-center md:justify-center md:gap-8 md:self-center md:bg-transparent md:*:border-b-transparent md:*:pl-0`}
       >
         <LinkNavigation
           menuButton={
