@@ -25,9 +25,9 @@ const ServiceImageWithContent: FC<ServiceProps> = ({ image, reverse = false, ord
 
   useEffect(() => {
     if (contentInView) {
-      controlsContent.start({ x: 0, opacity: 1 });
+      controlsContent.start({ translateX: 0, opacity: 1 });
     } else {
-      controlsContent.start({ x: reverse ? -100 : 100, opacity: 0 });
+      controlsContent.start({ translateX: reverse ? -100 : 100, opacity: 0 });
     }
   }, [controlsContent, contentInView, reverse]);
 

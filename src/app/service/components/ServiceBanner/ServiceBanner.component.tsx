@@ -27,7 +27,7 @@ const ServiceBanner: FC<Props> = ({ serviceBannerImage, className = '' }) => {
         items-center `}>
         <HeadingWithLabels
           heading={'SERVICE'}
-          className="text-white"
+          className="text-primary-foreground"
         />
         <div >
           <ul className={`${noto.className} xl:text-2xl text-xl font-bold divide-primary-foreground text-primary-foreground text-stroke w-auto

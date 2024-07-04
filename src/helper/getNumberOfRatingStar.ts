@@ -1,3 +1,5 @@
+import getRatingStarString from "./getRatingStarString";
+
 const ratingStarMap = {
   RATING_MAX_NUMBER: 5,
   numberOfFullStar: 0,
@@ -10,10 +12,14 @@ const ratingStarMap = {
   }
 }
 
-const getNumberOfRatingStar = (ratingStarString: string) => {
+const getNumberOfRatingStar = (ratingNumber: number) => {
 
-  ratingStarMap.numberOfFullStar = parseInt(ratingStarString.charAt(0))
-  ratingStarMap.numberOfHalfStar = ratingStarString.slice(-1) === '0' ? 0 : 1
+  if (!ratingNumber) return ratingStarMap
+
+  const ratingString = getRatingStarString(ratingNumber);
+
+  ratingStarMap.numberOfFullStar = parseInt(ratingString.charAt(0))
+  ratingStarMap.numberOfHalfStar = ratingString.slice(-1) === '0' ? 0 : 1
 
   return ratingStarMap
 }

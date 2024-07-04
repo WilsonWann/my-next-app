@@ -1,14 +1,21 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Star, StarHalf } from 'lucide-react';
 
-type Props = {
-  onClick?: () => void
-  color?: string
+const fullProps = {
+  fill: "#40362D",
+  color: "#40362D",
+  size: 12
 }
 
-const FullStarIcon: FC<Props> = (props) => <Star {...props} />
-const HalfStarIcon: FC<Props> = (props) => <StarHalf {...props} />
-const EmptyStarIcon: FC<Props> = (props) => <Star  {...props} />
+const emptyProps = {
+  fill: "#D9C7C1",
+  color: "#D9C7C1",
+  size: 12
+}
+
+const FullStarIcon = () => <Star {...fullProps} />
+const HalfStarIcon = () => <StarHalf {...fullProps} />
+const EmptyStarIcon = () => <Star {...emptyProps} />
 
 export {
   FullStarIcon,

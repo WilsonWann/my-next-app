@@ -48,9 +48,9 @@ const Contact: FC<Props> = ({ className = '' }) => {
 
   useEffect(() => {
     if (contactInView) {
-      controlsContact.start({ x: 0, opacity: 1 });
+      controlsContact.start({ y: 0, opacity: 1 });
     } else {
-      controlsContact.start({ x: -100, opacity: 0 });
+      controlsContact.start({ y: -100, opacity: 0 });
     }
   }, [controlsContact, contactInView]);
 

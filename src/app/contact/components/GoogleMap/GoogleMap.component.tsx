@@ -69,7 +69,7 @@ const GoogleMap: FC<Props> = ({ className = "" }) => {
         `}
       </style>
       <ReactGoogleMap
-        mapContainerClassName="w-screen md:h-[500px] h-[350px]"
+        mapContainerClassName="w-screen xl:h-[490px] h-[438px]"
         center={destination}
         zoom={17}
         options={{

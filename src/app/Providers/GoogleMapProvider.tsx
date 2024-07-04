@@ -1,9 +1,10 @@
 "use client";
 
-import { FC, createContext, useEffect, useRef } from "react";
+import { FC, createContext, useRef } from "react";
 import { LoadScript } from "@react-google-maps/api";
 import { MapState } from "@/store/map/map.slice";
 import useGoogleMap from "@/hook/useGoogleMap";
+import useMobileView from "@/hook/useMobileView";
 
 const GoogleMapContext = createContext<MapState>({
   apiKey: null,
@@ -43,22 +44,13 @@ const GoogleMapProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     setReviewUrl(googleMapReviewUrl)
   }
 
-  useEffect(() => {
+  const setReviewUrlForMobile = () => {
+    const m_googleMapReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_M_REVIEW_URL!;
+    reviewUrlRef.current = m_googleMapReviewUrl;
+    setReviewUrl(m_googleMapReviewUrl)
+  }
 
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        const m_googleMapReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_M_REVIEW_URL!;
-        reviewUrlRef.current = m_googleMapReviewUrl;
-        setReviewUrl(m_googleMapReviewUrl)
-      }
-    }
-    window.addEventListener("resize", handleResize)
-
-    handleResize()
-    return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, []);
+  useMobileView(setReviewUrlForMobile)
 
   return (
     <GoogleMapContext.Provider value={{ apiKey, placeId, reviewUrl }}>

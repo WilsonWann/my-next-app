@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import StyledLink from '../StyledLink/StyledLink.component'
 import DirectionIcon from '../Direction-Icon/Direction-Icon.component'
-import getRatingStarString from '@/helper/getRatingStarString'
 import useGoogleMap from '@/hook/useGoogleMap'
 import getNavigationUrl from '@/helper/getNavigationUrl'
 import getPlaceUrl from '@/helper/getPlaceUrl'
@@ -39,7 +38,6 @@ const PlaceDetailsWrapper: FC<Props> = (props) => {
 
   if (!placeDetails) return null
 
-  const ratingString = getRatingStarString(placeDetails.rating);
   const navigationUrl = getNavigationUrl(origin, destination)
   const placeUrl = getPlaceUrl(destination.address!, placeId);
 
@@ -49,8 +47,8 @@ const PlaceDetailsWrapper: FC<Props> = (props) => {
         <h2 className="font-bold text-base">{placeDetails.name}</h2>
         <p className="p-0">{placeDetails.formatted_address}</p>
         <div className="p-0 flex justify-start items-center gap-1">
-          {ratingString}
-          <RatingStartWrapper ratingString={ratingString} />
+          {placeDetails.rating}
+          <RatingStartWrapper ratingNumber={placeDetails.rating} />
           <StyledLink href={reviewUrl}>
             {`${placeDetails.user_ratings_total} 篇評論`}
           </StyledLink>

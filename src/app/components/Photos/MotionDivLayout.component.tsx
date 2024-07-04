@@ -1,39 +1,22 @@
-import { motion, useAnimation, Variants } from 'framer-motion';
-import React, { FC, useEffect } from 'react'
-import { useInView } from 'react-intersection-observer';
+import React, { FC } from 'react'
+import { motion } from 'framer-motion';
+import useFramerMotion from '@/hook/useFramerMotion';
 
 type Props = {
   initialY: number,
   children: React.ReactNode,
-  additionalClassName?: string
+  className?: string
 }
 
-const MotionDivLayout: FC<Props> = ({ initialY, children, additionalClassName = '' }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
+const MotionDivLayout: FC<Props> = ({ initialY, children, className = '' }) => {
 
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    } else {
-      controls.start('hidden');
-    }
-  }, [controls, inView]);
-
-  const variants: Variants = {
-    hidden: { translateY: initialY, opacity: 0 },
-    visible: { translateY: 0, opacity: 1 },
-  };
+  const motionProps = useFramerMotion({
+    inViewState: { translateY: 0, opacity: 1 },
+    outViewState: { translateY: initialY, opacity: 0 }
+  })
 
   return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      variants={variants}
-      transition={{ duration: 0.8 }}
-      className={` rounded-md ${additionalClassName}`}
-    >
+    <motion.div {...motionProps} className={`rounded-md ${className}`}>
       {children}
     </motion.div>
   );

@@ -1,9 +1,9 @@
 'use client'
 
-import React, { FC, useEffect } from 'react'
-import { motion, useAnimation } from 'framer-motion';
+import React, { FC } from 'react'
+import { motion } from 'framer-motion';
 import Image, { type StaticImageData } from 'next/image';
-import { useInView } from 'react-intersection-observer';
+import useFramerMotion from '@/hook/useFramerMotion';
 
 type Props = {
   id: string,
@@ -12,19 +12,11 @@ type Props = {
 }
 
 const About: FC<Props> = ({ id, images, className = '' }) => {
-  const controlsAbout = useAnimation();
-  const [refAbout, aboutInView] = useInView({
-    triggerOnce: false, // 每次進入視口時都觸發
-    threshold: 0.1, // 只有10%可見時就觸發
-  });
 
-  useEffect(() => {
-    if (aboutInView) {
-      controlsAbout.start({ x: 0, opacity: 1 });
-    } else {
-      controlsAbout.start({ x: 100, opacity: 0 });
-    }
-  }, [controlsAbout, aboutInView]);
+  const motionProps = useFramerMotion({
+    inViewState: { translateX: 0, opacity: 1 },
+    outViewState: { translateX: 100, opacity: 0 }
+  })
 
   const showImages = images.slice(0, 2).reverse()
 
@@ -60,11 +52,7 @@ const About: FC<Props> = ({ id, images, className = '' }) => {
         <Image  {...subImageProps} className="absolute md:left-0 -left-12 top-12 z-0 object-center md:h-auto md:w-[1010px] aspect-video object-cover" />
       </aside>
       <div className="md:pt-48 pt-0">
-        <motion.div
-          ref={refAbout}
-          animate={controlsAbout}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
+        <motion.div {...motionProps}>
           <section className="text-secondary item-start flex flex-col gap-8">
             <div className="flex flex-row items-baseline gap-4">
               <h2 className="text-5xl font-thin ">ABOUT</h2>
