@@ -5,10 +5,7 @@ import {
   createContext,
   useState,
   useRef,
-  useContext,
   useEffect,
-  SetStateAction,
-  Dispatch,
 } from "react";
 import Captcha from "@/app/contact/components/Captcha/Captcha.component";
 import HCaptcha from "@hcaptcha/react-hcaptcha";

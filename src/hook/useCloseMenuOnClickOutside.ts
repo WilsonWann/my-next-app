@@ -26,7 +26,7 @@ const useCloseMenuOnClickOutside = (
     }
   }, [isMenuOpen]);
 
-  return navRef
+  return { navRef }
 }
 
 export default useCloseMenuOnClickOutside

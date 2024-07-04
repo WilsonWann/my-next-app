@@ -17,7 +17,7 @@ const Header = () => {
 
   usePreventScroll(isMenuOpen)
 
-  const navRef = useCloseMenuOnClickOutside(isMenuOpen, setIsMenuOpen)
+  const { navRef } = useCloseMenuOnClickOutside(isMenuOpen, setIsMenuOpen)
 
   const navigationClassName = isMenuOpen ? "right-0" : "-right-2/3"
 

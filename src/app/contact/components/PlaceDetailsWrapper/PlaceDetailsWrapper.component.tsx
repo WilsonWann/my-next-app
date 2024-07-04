@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import StyledLink from '../StyledLink/StyledLink.component'
 import DirectionIcon from '../Direction-Icon/Direction-Icon.component'
 import useGoogleMap from '@/hook/useGoogleMap'
@@ -6,7 +6,7 @@ import getNavigationUrl from '@/helper/getNavigationUrl'
 import getPlaceUrl from '@/helper/getPlaceUrl'
 import { Center, PlaceDetails } from '../GoogleMap/GoogleMap.component'
 import RatingStartWrapper from '../RatingStart/RatingStart.component'
-import getCenterFromLocation from '@/helper/getCenterFromLocation'
+import useOrigin from '@/hook/useOrigin'
 
 type Props = {
   placeDetails: PlaceDetails
@@ -18,23 +18,7 @@ const PlaceDetailsWrapper: FC<Props> = (props) => {
 
   const { placeDetails, destination, placeId } = props
   const { reviewUrl } = useGoogleMap();
-
-  const [origin, setOrigin] = useState<Center | null>(null);
-
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        if (!position) return
-        const userOrigin = getCenterFromLocation(position);
-        setOrigin(userOrigin);
-      }, (error) => {
-        console.error('Error getting user location:', error);
-        setOrigin(null);
-      });
-    } else {
-      console.error('Geolocation is not supported by this browser.');
-    }
-  }, []);
+  const { origin } = useOrigin()
 
   if (!placeDetails) return null
 
@@ -47,7 +31,7 @@ const PlaceDetailsWrapper: FC<Props> = (props) => {
         <h2 className="font-bold text-base">{placeDetails.name}</h2>
         <p className="p-0">{placeDetails.formatted_address}</p>
         <div className="p-0 flex justify-start items-center gap-1">
-          {placeDetails.rating}
+          {placeDetails.rating?.toFixed(1)}
           <RatingStartWrapper ratingNumber={placeDetails.rating} />
           <StyledLink href={reviewUrl}>
             {`${placeDetails.user_ratings_total} 篇評論`}

@@ -24,13 +24,10 @@ const twAnimate = [
 ] as const;
 
 const Carousel: FC<CarouselProps> = ({ bannerList }) => {
-  const randomAnimate = () =>
-    twAnimate[getRandomNumber(0, twAnimate.length - 1)];
+  const randomAnimate = () => twAnimate[getRandomNumber(0, twAnimate.length - 1)];
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const [uniqueKeys, setUniqueKeys] = useState<number[]>(
-    bannerList.map(() => Math.random()),
-  );
+  const [uniqueKeys, setUniqueKeys] = useState<number[]>(bannerList.map(() => Math.random()),);
 
   const [animations, setAnimations] = useState<string[]>([]);
   const handleBeforeChange = (current: number, next: number) => {
@@ -91,15 +88,20 @@ const Carousel: FC<CarouselProps> = ({ bannerList }) => {
       {...settings}
       className="relative h-auto max-h-screen w-full overflow-clip aspect-video"
     >
-      {bannerList.map((banner, index: number) => {
+      {bannerList.map((banner, index) => {
+
+        const imageProps = {
+          src: banner,
+          placeholder: "blur" as const,
+          blurDataURL: banner.blurDataURL,
+          alt: "",
+          sizes: "100vw",
+        }
+
         return (
           <Image
+            {...imageProps}
             key={uniqueKeys[index]}
-            src={banner}
-            placeholder={"blur"}
-            blurDataURL={banner.blurDataURL}
-            alt={""}
-            sizes="100vw"
             className={`${animations[index]} select-none object-cover object-center `}
           />
         );

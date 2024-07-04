@@ -1,22 +1,17 @@
 "use client";
 
-import React, { useEffect } from "react";
-import useMenu from "@/hook/useMenu";
+import React from "react";
 import useScrollToTop from "@/hook/useScrollToTop"
+import useCloseMenu from "@/hook/useCloseMenu";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const TemplatePage: React.FC<Props> = ({ children }) => {
-  const { setIsMenuOpen } = useMenu()
-  useScrollToTop()
 
-  useEffect(() => {
-    return () => {
-      setIsMenuOpen(false)
-    };
-  }, []);
+  useScrollToTop()
+  useCloseMenu()
 
   return children;
 };
