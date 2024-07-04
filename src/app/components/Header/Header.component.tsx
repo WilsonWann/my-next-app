@@ -7,6 +7,7 @@ import LinkNavigation from "../LinkNavigation/LinkNavigation.component";
 import HamburgerMenuIcon from "../Hamburger-Icon/Hamburger-Icon.component";
 import CloseIcon from "../Close-Icon/Close-Icon.component";
 import useMenu from "@/hook/useMenu";
+import usePreventScroll from "@/hook/usePreventScroll";
 
 const Header = () => {
   const { isMenuOpen, setIsMenuOpen } = useMenu()
@@ -22,6 +23,8 @@ const Header = () => {
       setIsMenuOpen(false)
     }
   };
+
+  usePreventScroll(isMenuOpen)
 
   useEffect(() => {
     if (isMenuOpen) {
