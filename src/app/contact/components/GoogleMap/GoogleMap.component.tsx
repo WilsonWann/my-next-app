@@ -1,10 +1,10 @@
 "use client";
 
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { GoogleMap as ReactGoogleMap, Marker } from "@react-google-maps/api";
 import useGoogleMap from "@/hook/useGoogleMap";
-import getCenterFromLocation from "@/helper/getCenterFromLocation";
 import PlaceDetailsWrapper from "../PlaceDetailsWrapper/PlaceDetailsWrapper.component";
+import useFetchPlaceDetails from "@/hook/useFetchPlaceDetails";
 
 export type Center = {
   lat: number;
@@ -21,53 +21,14 @@ type Props = {
 
 const GoogleMap: FC<Props> = ({ className = "" }) => {
   const { apiKey, placeId } = useGoogleMap();
-  const [placeDetails, setPlaceDetails] = useState<PlaceDetails>(null);
-  const [destination, setDestination] = useState<Center | null>(null);
 
-  useEffect(() => {
-    if (!placeId) return
-
-    const fetchPlaceDetails = () => {
-      const service = new window.google.maps.places.PlacesService(document.createElement('div'));
-      const request = {
-        placeId,
-        fields: ['name', 'formatted_address', 'rating', 'user_ratings_total', 'geometry.location']
-      };
-
-      service.getDetails(request, (place, status) => {
-        console.log('🚀 ~ service.getDetails ~ place:', place)
-        if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-
-          const location = place?.geometry?.location;
-          if (!location) return
-          const destination = getCenterFromLocation(location);
-          destination.name = '陌聲行銷有限公司'
-          destination.address = place.formatted_address
-          setDestination(destination);
-          setPlaceDetails(place);
-        }
-      });
-    };
-
-    if (window.google) {
-      fetchPlaceDetails();
-    }
-  }, []);
-
-
+  const { placeDetails, destination } = useFetchPlaceDetails(placeId)
 
   if (!apiKey || !placeId) return null;
   if (!destination) return null
 
   return (
     <div className={`${className}`}>
-      <style>
-        {`
-          .gmnoprint .gm-style-mtc {
-            display: none;
-          }
-        `}
-      </style>
       <ReactGoogleMap
         mapContainerClassName="w-screen xl:h-[490px] h-[438px]"
         center={destination}
