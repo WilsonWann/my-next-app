@@ -7,14 +7,17 @@ import fs from "node:fs/promises";
 
 export default async function getLocalBase64(imageFolder: string): Promise<ResponseType<BlurImageType[]>> {
 
-  try {
-    const files = glob.sync(`./public${imageFolder}/*.{jpg,png}`)
+  console.log('🚀 ~ getLocalBase64 ~ imageFolder:', imageFolder)
 
+  try {
+    const files = glob.sync(`public${imageFolder}/*.{jpg,png}`)
     console.log('🚀 ~ getLocalBase64 ~ files:', files)
+
     const dataArray = await Promise.all(
       files.map(async file => {
         const src = file.replace("public", "").replace(/\\/g, "/");
         console.log('🚀 ~ getLocalBase64 ~ src:', src)
+
         const buffer = await fs.readFile(file);
         console.log('🚀 ~ getLocalBase64 ~ buffer:', buffer)
 
