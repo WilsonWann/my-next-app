@@ -1,0 +1,76 @@
+{
+  "portfolioCase": [
+    {
+      "name": "rings",
+      "images": [
+        "http://10.42.208.19:3000/portfolio/rings/wedding-vows-and-wedding-rings.jpg",
+        "http://10.42.208.19:3000/portfolio/rings/bridal-wedding-flatlay.jpg",
+        "http://10.42.208.19:3000/portfolio/rings/i-do-with-wedding-rings.jpg",
+        "http://10.42.208.19:3000/portfolio/rings/newly-weds-hold-hands-close-up.jpg",
+        "http://10.42.208.19:3000/portfolio/rings/wedding-vows-and-wedding-rings.jpg"
+      ],
+      "title": "VOWS | RINGS",
+      "tags": ["鑽戒", "婚禮", "RINGS"]
+    },
+    {
+      "name": "necklace",
+      "images": [
+        "http://10.42.208.19:3000/portfolio/necklace/gold-chain-necklace-on-corner.jpg",
+        "http://10.42.208.19:3000/portfolio/necklace/young-professional.jpg",
+        "http://10.42.208.19:3000/portfolio/necklace/stylish-summer-necklace.jpg",
+        "http://10.42.208.19:3000/portfolio/necklace/dreamcatcher-pendant-necklace.jpg",
+        "http://10.42.208.19:3000/portfolio/necklace/womans-necklace.jpg",
+        "http://10.42.208.19:3000/portfolio/necklace/dainty-gold-necklace.jpg"
+      ],
+      "title": "GOLD CHAIN | NECKLACE",
+      "tags": ["手工項鍊", "珍珠項鍊", "NECKLACE"]
+    },
+    {
+      "name": "jewelry",
+      "images": [
+        "http://10.42.208.19:3000/portfolio/jewelry/gemstones-and-tools-flatlay.jpg",
+        "http://10.42.208.19:3000/portfolio/jewelry/blue-gemstone-pendant.jpg",
+        "http://10.42.208.19:3000/portfolio/jewelry/ornately-designed-jewelry-with-colored-stones.jpg"
+      ],
+      "title": "GEMSTONES | JEWELRY",
+      "tags": ["珠寶", "玉石", "JEWELRY"]
+    },
+    {
+      "name": "bracelet",
+      "images": [
+        "http://10.42.208.19:3000/portfolio/bracelet/womens-hand-moon-bracelet-.jpg",
+        "http://10.42.208.19:3000/portfolio/bracelet/bohemian-bracelets-bangles.jpg",
+        "http://10.42.208.19:3000/portfolio/bracelet/buddha-bracelet-for-men.jpg",
+        "http://10.42.208.19:3000/portfolio/bracelet/chakra-bracelet-product-shot.jpg",
+        "http://10.42.208.19:3000/portfolio/bracelet/seven-chakra-bracelet.jpg",
+        "http://10.42.208.19:3000/portfolio/bracelet/stacked-bracelets.jpg"
+      ],
+      "title": "LEISURE | BRACELET",
+      "tags": ["手環", "個性", "BRACELET"]
+    },
+    {
+      "name": "earrings",
+      "images": [
+        "http://10.42.208.19:3000/portfolio/earrings/blue-and-pink-background-with-earrings-in-a-line.jpg",
+        "http://10.42.208.19:3000/portfolio/earrings/boho-earrings.jpg",
+        "http://10.42.208.19:3000/portfolio/earrings/double-pearl-earrings.jpg",
+        "http://10.42.208.19:3000/portfolio/earrings/elephant-earrings.jpg",
+        "http://10.42.208.19:3000/portfolio/earrings/galaxy-earrings.jpg",
+        "http://10.42.208.19:3000/portfolio/earrings/half-blue-half-green-background-with-earrings-and-a-ring.jpg"
+      ],
+      "title": "MODERN | EARRINGS",
+      "tags": ["耳環", "場合", "EARRINGS"]
+    },
+    {
+      "name": "watch",
+      "images": [
+        "http://10.42.208.19:3000/portfolio/watch/modern-jewelry-and-accessories-on-display.jpg",
+        "http://10.42.208.19:3000/portfolio/watch/white-faced-watch.jpg",
+        "http://10.42.208.19:3000/portfolio/watch/grooms-prep-kit-for-wedding-10.jpg",
+        "http://10.42.208.19:3000/portfolio/watch/makeup-and-jewelry-4.jpg"
+      ],
+      "title": "VOWS | WATCH",
+      "tags": ["手錶", "形象", "WATCH"]
+    }
+  ]
+}

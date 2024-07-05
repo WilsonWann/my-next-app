@@ -13,8 +13,7 @@ export type PortfolioCaseType = {
 export async function getPortfolioCaseByName(portfolioCase: string): Promise<ResponseType<PortfolioCaseType | null>> {
 
   try {
-    const portfolio = await kv.get<PortfolioCaseType>(`portfolioCase:${portfolioCase}`);
-    // const portfolio = await kv.get<PortfolioCaseType>();
+    const portfolio = await kv.hgetall<PortfolioCaseType>(`portfolio:name:${portfolioCase}`);
 
     if (!portfolio) return { success: true, data: null }
 

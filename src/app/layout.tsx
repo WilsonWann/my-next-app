@@ -6,6 +6,7 @@ import Header from "./components/Header/Header.component";
 import Footer from "./components/Footer/Footer.component";
 import GoogleMapProvider from "./Providers/GoogleMapProvider";
 import CaptchaProvider from "./Providers/CaptchaProvider";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,6 +27,7 @@ export default function RootLayout({
               <Header />
               <main className="relative mt-[100px] overflow-x-clip bg-transparent px-8 xl:mt-16 xl:px-1">
                 {children}
+                <SpeedInsights />
               </main>
               <Footer />
             </CaptchaProvider>

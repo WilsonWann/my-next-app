@@ -38,28 +38,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
 var path = require("path");
-var redis_1 = require("./redis");
+var kv_1 = require("@vercel/kv");
 var filePath = path.join(path.resolve(__dirname, '../../'), 'data/portfolioCase.json');
 var uploadData = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var data, _i, _a, item, result;
+    var data, pipeline, _i, _a, item;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-                _i = 0, _a = data.portfolioCase;
-                _b.label = 1;
+                pipeline = kv_1.kv.pipeline();
+                for (_i = 0, _a = data.portfolioCase; _i < _a.length; _i++) {
+                    item = _a[_i];
+                    console.log('🚀 ~ uploadData ~ item:', item);
+                    console.log('🚀 ~ uploadData ~ item.name:', item.name);
+                    pipeline.hset("portfolio:name:".concat(item.name), item);
+                }
+                return [4 /*yield*/, pipeline.exec()];
             case 1:
-                if (!(_i < _a.length)) return [3 /*break*/, 4];
-                item = _a[_i];
-                return [4 /*yield*/, redis_1.default.set("portfolioCase:".concat(item.name), JSON.stringify(item))];
-            case 2:
-                result = _b.sent();
-                console.log('🚀 ~ uploadData ~ result:', result);
-                _b.label = 3;
-            case 3:
-                _i++;
-                return [3 /*break*/, 1];
-            case 4:
+                _b.sent();
                 console.log('Data uploaded successfully!');
                 return [2 /*return*/];
         }

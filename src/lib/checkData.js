@@ -36,20 +36,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var redis_1 = require("./redis");
+var kv_1 = require("@vercel/kv");
 function checkData() {
     return __awaiter(this, void 0, void 0, function () {
-        var data, portfolioCaseData, error_1;
+        var data, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, redis_1.default.get("portfolioCase:rings")];
+                    return [4 /*yield*/, kv_1.kv.hgetall("portfolio:name:rings")];
                 case 1:
                     data = _a.sent();
                     if (data) {
-                        portfolioCaseData = JSON.parse(data);
-                        return [2 /*return*/, { success: true, data: portfolioCaseData }];
+                        return [2 /*return*/, { success: true, data: data }];
                     }
                     else {
                         return [2 /*return*/, { success: false, message: 'Something went wrong.' }];

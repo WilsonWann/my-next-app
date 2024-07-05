@@ -1,4 +1,4 @@
-import redis from './redis'
+import { kv } from '@vercel/kv'
 
 type PortfolioCaseType = {
   name: string
@@ -9,11 +9,10 @@ type PortfolioCaseType = {
 
 async function checkData() {
   try {
-    const data = await redis.get(`portfolioCase:rings`);
+    const data = await kv.hgetall(`portfolio:name:rings`);
 
     if (data) {
-      const portfolioCaseData: PortfolioCaseType = JSON.parse(data);
-      return { success: true, data: portfolioCaseData }
+      return { success: true, data: data }
     } else {
       return { success: false, message: 'Something went wrong.' }
     }
