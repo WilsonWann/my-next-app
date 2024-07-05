@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss"
 const plugin = require('tailwindcss/plugin');
 import { customKeyframes, customAnimation } from './src/helper/tailwind-function.helper'
-import colors from 'tailwindcss/colors'
 
 type PluginFunctionParams = {
   addVariant: (name: string, callback: (options: { modifySelectors: (modifier: ({ className }: { className: string }) => string) => void; separator: string }) => void) => void;

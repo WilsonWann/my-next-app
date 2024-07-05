@@ -1,12 +1,5 @@
 import { kv } from '@vercel/kv'
 
-type PortfolioCaseType = {
-  name: string
-  title: string
-  tags: string[]
-  images: string[]
-}
-
 async function checkData() {
   try {
     const data = await kv.hgetall(`portfolio:name:rings`);

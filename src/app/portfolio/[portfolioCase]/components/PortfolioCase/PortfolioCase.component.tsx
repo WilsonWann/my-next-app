@@ -1,8 +1,9 @@
 import React, { FC } from 'react'
 import { scheherazade } from '@/app/fonts'
-import CustomImage from '@/app/components/CustomImage/CustomImage.component'
 import { getPortfolioCaseByName } from '@/app/action/getPortfolioCaseByName'
 import { notFound } from 'next/navigation'
+import getLocalBase64 from '@/helper/getLocalBase64'
+import LocalImage from '@/app/components/LocalImage/LocalImage.component'
 
 type Props = {
   portfolioCase: string
@@ -11,14 +12,18 @@ type Props = {
 const PortfolioCase: FC<Props> = async ({ portfolioCase }) => {
 
   const response = await getPortfolioCaseByName(portfolioCase)
-  console.log('🚀 ~ const PortfolioCase:FC<Props> = ~ response:', response)
-  if (!response.success) {
-    console.error('🚀 ~ const PortfolioCase:FC<Props> = ~ response.success:', response.success)
-    throw new Error(response.message)
-  }
+
+  if (!response.success) throw new Error(response.message)
   if (!response.data) return notFound()
-  const { title, tags, images } = response.data
+
+  const { title, tags, imageFolder } = response.data
   console.log('🚀 ~ const PortfolioCase:FC<Props> = ~ response.data:', response.data)
+
+  const imagesResponse = await getLocalBase64(imageFolder)
+  console.log('🚀 ~ const PortfolioCase:FC<Props> = ~ imagesResponse:', imagesResponse)
+  // const images = imagesResponse.data
+  if (imagesResponse.success === false) return
+
 
   return (
     <>
@@ -29,9 +34,10 @@ const PortfolioCase: FC<Props> = async ({ portfolioCase }) => {
         ))}
       </section>
       {
-        images.map((image, index) => (
+        imagesResponse.data.map((image, index) => (
           <div key={index} className="relative w-full h-[500px] overflow-clip">
-            <CustomImage image={image} fill />
+            <LocalImage image={image} fill />
+            {/* <CustomImage image={image} fill /> */}
           </div>
         ))
       }

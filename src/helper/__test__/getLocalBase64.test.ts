@@ -1,5 +1,5 @@
 import { getPlaiceholder } from 'plaiceholder';
-import getBase64, { type BlurImageType } from '../getLocalBase64';
+import getLocalBase64, { type BlurImageType } from '../getLocalBase64';
 import fetchMock from 'jest-fetch-mock';
 import { ResponseType } from "@/types"
 
@@ -51,7 +51,7 @@ describe('getBase64', () => {
 
     getPlaiceholderMockFn.mockResolvedValueOnce(mockResolveValue);
 
-    const result = await getBase64(imageUrl);
+    const result = await getLocalBase64(imageUrl);
 
     expect(result).toEqual(mockSuccessResponse);
   });
@@ -60,7 +60,7 @@ describe('getBase64', () => {
 
     fetchMock.mockRejectOnce(new Error('Failed to fetch'));
 
-    const result = await getBase64(imageUrl);
+    const result = await getLocalBase64(imageUrl);
 
     expect(global.fetch).toHaveBeenCalledWith(imageUrl);
 
@@ -73,7 +73,7 @@ describe('getBase64', () => {
     fetchMock.mockResolvedValueOnce(new Response(new ArrayBuffer(8)));
     getPlaiceholderMockFn.mockRejectedValue(new Error('getPlaiceholder error'));
 
-    const result = await getBase64(imageUrl);
+    const result = await getLocalBase64(imageUrl);
 
     expect(global.fetch).toHaveBeenCalledWith(imageUrl);
     expect(getPlaiceholder).toHaveBeenCalledWith(Buffer.from(mockBuffer));

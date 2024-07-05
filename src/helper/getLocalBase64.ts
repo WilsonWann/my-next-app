@@ -1,40 +1,36 @@
-import { ResponseType } from "@/types"
+'use server'
+
+import { BlurImageType, ResponseType } from "@/types"
 import { getPlaiceholder } from "plaiceholder"
+import { glob } from 'glob'
+import fs from "node:fs/promises";
 
-export type BlurImageType = {
-  src: string
-  blurDataURL: string
-  height: number
-  width: number
-}
-
-export default async function getBase64(imageUrl: string): Promise<ResponseType<BlurImageType | null>> {
+export default async function getLocalBase64(imageFolder: string): Promise<ResponseType<BlurImageType[]>> {
 
   try {
+    const files = glob.sync(`./public${imageFolder}/*.{jpg,png}`)
 
-    const res = await fetch(imageUrl)
+    const dataArray = await Promise.all(
+      files.map(async file => {
+        const src = file.replace("public", "").replace(/\\/g, "/");
+        const buffer = await fs.readFile(file);
 
-    if (!res.ok) {
-      throw new Error(`Failed to fetch image: ${res.status} ${res.statusText}`)
-    }
+        const {
+          metadata: { height, width },
+          base64: blurDataURL
+        } = await getPlaiceholder(buffer)
 
-    const buffer = await res.arrayBuffer()
-
-    const {
-      metadata: { height, width },
-      base64
-    } = await getPlaiceholder(Buffer.from(buffer))
+        return { src, blurDataURL, height, width, }
+      })
+    )
 
     return {
       success: true,
-      data: {
-        src: imageUrl,
-        blurDataURL: base64,
-        height,
-        width,
-      }
+      data: dataArray
     }
+
   } catch (e) {
+    console.log('🚀 ~ getBase64 ~ e:', e)
     if (e instanceof Error) return { success: false, message: e.message, }
 
     return { success: false, message: e as string }

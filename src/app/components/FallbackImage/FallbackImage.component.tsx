@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { fallbackImage } from '@/app/imageHandler'
-import { CustomImageProps } from '../CustomImage/CustomImage.component'
 import Image from 'next/image'
+import { RemoteImageProps } from '@/types'
 
-const FallbackImage: FC<Pick<CustomImageProps, 'fill'>> = (props) => {
+const FallbackImage: FC<Pick<RemoteImageProps, 'fill'>> = (props) => {
   const fallbackProps = {
     src: fallbackImage,
     placeholder: "blur" as const,

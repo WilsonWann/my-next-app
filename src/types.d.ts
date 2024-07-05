@@ -9,3 +9,15 @@ export type ErrorResponseType = {
   success: false
   message: string
 }
+
+export type BlurImageType = {
+  src: string
+  blurDataURL: string
+  height: number
+  width: number
+}
+
+export type RemoteImageProps = {
+  image: string
+  fill?: boolean
+}

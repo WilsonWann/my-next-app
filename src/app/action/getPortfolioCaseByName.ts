@@ -2,25 +2,21 @@
 
 import { ResponseType } from '@/types';
 import { kv } from '@vercel/kv';
-import { revalidatePath } from 'next/cache'
 
 export type PortfolioCaseType = {
   name: string
   title: string
   tags: string[]
   images: string[]
+  imageFolder: string
 }
 
 export async function getPortfolioCaseByName(portfolioCase: string): Promise<ResponseType<PortfolioCaseType | null>> {
 
-  revalidatePath(`/portfolio/${portfolioCase}`)
   try {
     const portfolio = await kv.hgetall(`portfolio:name:${portfolioCase}`);
 
-    if (!portfolio) {
-      console.log(`No portfolio found for name: ${portfolioCase}`);
-      return { success: true, data: null };
-    }
+    if (!portfolio) return { success: true, data: null };
 
     return { success: true, data: portfolio as PortfolioCaseType }
   } catch (error) {

@@ -16,7 +16,7 @@ module.exports = (phase, { defaultConfig }) => {
           protocol: 'http',
           hostname: '10.42.208.19',
           port: '3000'
-        }
+        },
       ],
     },
   }
