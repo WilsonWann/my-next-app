@@ -13,11 +13,11 @@ export type PortfolioCaseType = {
 export async function getPortfolioCaseByName(portfolioCase: string): Promise<ResponseType<PortfolioCaseType | null>> {
 
   try {
-    const portfolio = await kv.hgetall<PortfolioCaseType>(`portfolio:name:${portfolioCase}`);
+    const portfolio = await kv.hgetall(`portfolio:name:${portfolioCase}`);
 
     if (!portfolio) return { success: true, data: null }
 
-    return { success: true, data: portfolio }
+    return { success: true, data: portfolio as PortfolioCaseType }
   } catch (error) {
     if (error instanceof Error && error.name === 'UpstashError') {
       return { success: false, message: error.message }
