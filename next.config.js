@@ -36,9 +36,6 @@ module.exports = (phase, { defaultConfig }) => {
 
   return {
     ...nextConfig,
-    compiler: {
-      removeConsole: true,
-    }
   }
 };
 
