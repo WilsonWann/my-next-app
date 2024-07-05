@@ -11,9 +11,14 @@ type Props = {
 const PortfolioCase: FC<Props> = async ({ portfolioCase }) => {
 
   const response = await getPortfolioCaseByName(portfolioCase)
-  if (!response.success) throw new Error(response.message)
+  console.log('🚀 ~ const PortfolioCase:FC<Props> = ~ response:', response)
+  if (!response.success) {
+    console.error('🚀 ~ const PortfolioCase:FC<Props> = ~ response.success:', response.success)
+    throw new Error(response.message)
+  }
   if (!response.data) return notFound()
   const { title, tags, images } = response.data
+  console.log('🚀 ~ const PortfolioCase:FC<Props> = ~ response.data:', response.data)
 
   return (
     <>
