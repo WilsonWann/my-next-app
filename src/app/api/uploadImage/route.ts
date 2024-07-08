@@ -1,12 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import uploadImage from '@/lib/aws/uploadImage';
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 export async function POST(req: NextRequest) {
 
   const formData = await req.formData();
