@@ -2,7 +2,7 @@ import React, { FC, Suspense } from 'react'
 import Loading from './loading'
 import PortfolioCase from './components/PortfolioCase/PortfolioCase.component'
 
-export const maxDuration = 300
+export const maxDuration = 60
 
 type Props = {
   params: {
