@@ -2,8 +2,7 @@
 
 import { ResponseType } from '@/types';
 import { kv } from '@vercel/kv';
-
-export const revalidate = 60
+import { revalidatePath } from 'next/cache'
 
 export type PortfolioCaseType = {
   name: string
@@ -15,6 +14,7 @@ export type PortfolioCaseType = {
 
 export async function getPortfolioCaseByName(portfolioCase: string): Promise<ResponseType<PortfolioCaseType | null>> {
 
+  revalidatePath(`portfolio:name:${portfolioCase}`)
   try {
     const portfolio = await kv.hgetall(`portfolio:name:${portfolioCase}`);
 
