@@ -3,6 +3,8 @@
 import { ResponseType } from '@/types';
 import { kv } from '@vercel/kv';
 
+export const revalidate = 60
+
 export type PortfolioCaseType = {
   name: string
   title: string
