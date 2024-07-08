@@ -8,6 +8,7 @@ export async function getS3Image(s3Path: string): Promise<ResponseType<BlurImage
   try {
     const { src, buffer } = await getBufferFromS3Path(s3Path)
     const blurImageProps = await getBlurImageFromBuffer(buffer)
+    console.log('🚀 ~ getS3Image ~ blurImageProps:', blurImageProps)
 
     return {
       success: true,
