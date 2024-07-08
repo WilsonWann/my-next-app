@@ -2,7 +2,7 @@
   "portfolioCase": [
     {
       "name": "rings",
-      "imageFolder": "/portfolio/rings",
+      "imageFolder": "portfolio/rings",
       "images": [
         "wedding-vows-and-wedding-rings.jpg",
         "bridal-wedding-flatlay.jpg",
@@ -15,7 +15,7 @@
     },
     {
       "name": "necklace",
-      "imageFolder": "/portfolio/necklace",
+      "imageFolder": "portfolio/necklace",
       "images": [
         "gold-chain-necklace-on-corner.jpg",
         "young-professional.jpg",
@@ -29,7 +29,7 @@
     },
     {
       "name": "jewelry",
-      "imageFolder": "/portfolio/jewelry",
+      "imageFolder": "portfolio/jewelry",
       "images": [
         "gemstones-and-tools-flatlay.jpg",
         "blue-gemstone-pendant.jpg",
@@ -40,7 +40,7 @@
     },
     {
       "name": "bracelet",
-      "imageFolder": "/portfolio/bracelet",
+      "imageFolder": "portfolio/bracelet",
       "images": [
         "/portfolio/bracelet/womens-hand-moon-bracelet-.jpg",
         "/portfolio/bracelet/bohemian-bracelets-bangles.jpg",
@@ -54,7 +54,7 @@
     },
     {
       "name": "earrings",
-      "imageFolder": "/portfolio/earrings",
+      "imageFolder": "portfolio/earrings",
       "images": [
         "blue-and-pink-background-with-earrings-in-a-line.jpg",
         "boho-earrings.jpg",
@@ -68,7 +68,7 @@
     },
     {
       "name": "watch",
-      "imageFolder": "/portfolio/watch",
+      "imageFolder": "portfolio/watch",
       "images": [
         "modern-jewelry-and-accessories-on-display.jpg",
         "white-faced-watch.jpg",

@@ -31,7 +31,7 @@
     "src/react-copy-to-clipboard.d.ts",
     "src/Providers/*",
     "src/lib/redis.ts",
-    "src/lib/uploadData.ts"
+    "src/lib/vercel/kv/uploadData.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -21,3 +21,8 @@ export type RemoteImageProps = {
   image: string
   fill?: boolean
 }
+
+export type BufferWithSrc = {
+  src: string
+  buffer: Buffer
+}

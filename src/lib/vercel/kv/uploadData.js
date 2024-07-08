@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
 var path = require("path");
 var kv_1 = require("@vercel/kv");
-var filePath = path.join(path.resolve(__dirname, '../../'), 'data/portfolioCase.json');
+var filePath = path.join(path.resolve(__dirname, '../../../../'), 'data/portfolioCase.json');
 var uploadData = function () { return __awaiter(void 0, void 0, void 0, function () {
     var data, pipeline, _i, _a, item;
     return __generator(this, function (_b) {

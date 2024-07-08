@@ -17,7 +17,16 @@ module.exports = (phase, { defaultConfig }) => {
           hostname: '10.42.208.19',
           port: '3000'
         },
+        {
+          protocol: 'https',
+          hostname: 'my-next-app-99.s3.ap-northeast-1.amazonaws.com',
+        },
       ],
+    },
+    experimental: {
+      serverActions: {
+        bodySizeLimit: '2mb',
+      },
     },
   }
 

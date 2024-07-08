@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC } from 'react'
 import Image from 'next/image'
 import FallbackImage from '../FallbackImage/FallbackImage.component'
@@ -8,7 +10,7 @@ export type CustomImageProps = {
   fill?: boolean
 }
 
-const LocalImage: FC<CustomImageProps> = async ({ image, fill = false }) => {
+const LocalImage: FC<CustomImageProps> = ({ image, fill = false }) => {
 
   const imageProps = {
     src: image.src,

@@ -9,10 +9,12 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "upload": "tsc src/lib/uploadData.ts && node -r dotenv/config src/lib/uploadData.js dotenv_config_path=.env.local",
-    "checkData": "tsc src/lib/checkData.ts && node -r dotenv/config src/lib/checkData.js dotenv_config_path=.env.local "
+    "uploadData": "tsc src/lib/vercel/kv/uploadData.ts && node -r dotenv/config src/lib/vercel/kv/uploadData.js dotenv_config_path=.env.local",
+    "checkData": "tsc src/lib/vercel/kv/checkData.ts && node -r dotenv/config src/lib/vercel/kv/checkData.js dotenv_config_path=.env.local ",
+    "deleteData": "tsc src/lib/vercel/kv/deleteData.ts && node -r dotenv/config src/lib/vercel/kv/deleteData.js dotenv_config_path=.env.local "
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.609.0",
     "@hcaptcha/react-hcaptcha": "^1.10.1",
     "@hookform/resolvers": "^3.6.0",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -33,12 +35,12 @@
     "@types/slick-carousel": "^1.6.40",
     "@vercel/kv": "^2.0.0",
     "@vercel/speed-insights": "^1.0.12",
+    "aws-sdk": "^2.1655.0",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.2.10",
-    "glob": "^10.4.2",
     "ioredis": "^5.4.1",
     "lucide-react": "^0.395.0",
     "next": "14.2.3",

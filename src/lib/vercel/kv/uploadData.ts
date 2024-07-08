@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { kv } from '@vercel/kv'
 
-const filePath = path.join(path.resolve(__dirname, '../../'), 'data/portfolioCase.json');
+const filePath = path.join(path.resolve(__dirname, '../../../../'), 'data/portfolioCase.json');
 
 const uploadData = async () => {
   const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
