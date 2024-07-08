@@ -1,6 +1,8 @@
 import GoBackButton from '@/components/GoBackButton.component'
 import React, { FC } from 'react'
 
+export const revalidate = 60
+
 type Props = {
   children: React.ReactNode
 }
