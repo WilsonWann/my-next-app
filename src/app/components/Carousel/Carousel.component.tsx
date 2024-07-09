@@ -5,23 +5,11 @@ import "slick-carousel/slick/slick-theme.css";
 import React, { FC, useEffect, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
 import getRandomNumber from "@/helper/getRandomNumber.helper";
+import { twAnimate } from "@/app/const/TwAnimate";
 
 type CarouselProps = {
   bannerList: StaticImageData[];
 };
-
-const twAnimate = [
-  "animate-toUp",
-  "animate-toRightUp",
-  "animate-toRight",
-  "animate-toRightDown",
-  "animate-toDown",
-  "animate-toLeftDown",
-  "animate-toLeft",
-  "animate-toLeftUp",
-  "animate-scaleUp",
-  "animate-scaleDown",
-] as const;
 
 const Carousel: FC<CarouselProps> = ({ bannerList }) => {
   const randomAnimate = () => twAnimate[getRandomNumber(0, twAnimate.length - 1)];

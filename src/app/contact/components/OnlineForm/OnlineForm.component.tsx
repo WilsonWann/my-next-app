@@ -10,25 +10,7 @@ import useCaptcha from "@/hook/useCaptcha";
 import InputWithLabel from "../InputWithLabel/InputWithLabel.component";
 import useDialog from "@/hook/useDialog";
 import MessageDialog from "@/components/MessageDialog.component";
-
-const ContactFormArray = [
-  {
-    id: "name" as const,
-    label: "客戶名稱/NAME",
-  },
-  {
-    id: "phone" as const,
-    label: "聯絡電話/PHONE",
-  },
-  {
-    id: "lineId" as const,
-    label: "LINE ID",
-  },
-  {
-    id: "message" as const,
-    label: "留言/MESSAGE",
-  },
-];
+import { ContactFormArray } from "@/app/const/ContactFormArray";
 
 export type FormValues = {
   name: string;
