@@ -26,3 +26,20 @@ export type BufferWithSrc = {
   src: string
   buffer: Buffer
 }
+
+
+export type RouteDetail = {
+  mainName: string
+  altName: string
+  onClick?: () => void
+  routes?: Route[]
+} & (IndexType | NonIndexType)
+
+type IndexType = {
+  index: true
+}
+
+type NonIndexType = {
+  index?: false
+  route: string
+}
