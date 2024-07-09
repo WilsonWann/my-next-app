@@ -1,6 +1,6 @@
 import { RouteDetail } from '@/types'
 import Link from 'next/link'
-import React, { FC } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 type Props = {
   isMenuOpen: boolean
@@ -13,10 +13,26 @@ const HoverRoutesMenu: FC<Props> = (props) => {
 
   const { isMenuOpen, openMenu, closeMenu, routes } = props
 
-  const className = isMenuOpen ? 'opacity-100' : 'opacity-0'
+  const [className, setClassName] = useState('opacity-0 hidden');
+
+  let timeout: NodeJS.Timeout | null = null
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      setClassName('opacity-100');
+    } else {
+      setClassName('opacity-0');
+      timeout = setTimeout(() => {
+        setClassName('opacity-0 hidden')
+      }, 300);
+    }
+    return () => {
+      timeout && clearTimeout(timeout)
+    }
+  }, [isMenuOpen, timeout]);
 
   return (
-    <div className={`${className} absolute overflow-clip bg-primary-foreground rounded-sm flex flex-col justify-start whitespace-nowrap items-baseline divide-y-2 divide-secondary left-1/2 -translate-x-1/2 top-16 w-fit h-fit z-50 *:px-8 *:py-4 transition-opacity delay-300`}
+    <div className={`${className} top-16 z-50 absolute overflow-clip bg-primary-foreground rounded-sm flex flex-col justify-start whitespace-nowrap items-baseline divide-y-2 divide-secondary left-1/2 -translate-x-1/2 w-fit h-fit *:px-8 *:py-4 transition-opacity delay-300`}
       onMouseEnter={openMenu}
       onMouseLeave={closeMenu}
     >
