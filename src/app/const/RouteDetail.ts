@@ -6,7 +6,7 @@ export const routes: RouteDetail[] = [
   { route: '/service', mainName: 'service', altName: '服務內容' },
   { route: '/portfolio', mainName: 'portfolio', altName: '作品集' },
   {
-    index: true, mainName: 'video', altName: '影音分享',
+    indexPage: true, mainName: 'video', altName: '影音分享',
     routes: [
       { route: '/news', mainName: 'news', altName: '最新消息' },
       { route: '/articles', mainName: 'articles', altName: '相關文章' },

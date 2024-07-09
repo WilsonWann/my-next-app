@@ -1,30 +1,42 @@
 import React, { FC } from 'react'
 import { RouteDetail } from '@/types'
-import NavLinkLayout from '../NavLinkLayout/NavLinkLayout.component'
+import LinkWithRoutesMenu from '../LinkWithRoutesMenu/LinkWithRoutesMenu.component'
+import LinkRoute from '../LinkRoute/LinkRoute.component'
 
-type ListWithLinkLayoutProps = {
+type Props = {
   routeDetail: RouteDetail
   listClassName?: string
   linkClassName?: string
-  hideAltName?: boolean
+  header?: boolean
 }
 
-const ListWithLink: FC<ListWithLinkLayoutProps> = ({
+const ListWithLink: FC<Props> = ({
   routeDetail,
   listClassName = '',
   linkClassName = '',
-  hideAltName = false,
+  header = false,
 }) => {
-  const { index, mainName, altName, ...props } = routeDetail
 
   return (
-    <NavLinkLayout index={index} linkClassName={linkClassName} listClassName={listClassName} {...props}>
-      <span>{mainName}</span>
-      {!hideAltName && <b>{altName}</b>}
-    </NavLinkLayout>
+    <li className={`h-10 relative ${listClassName}`}>
+      {
+        routeDetail.routes ? (
+          <LinkWithRoutesMenu
+            linkClassName={linkClassName}
+            routeDetail={routeDetail}
+            routes={routeDetail.routes}
+            header={header}
+          />
+        ) : (
+          <LinkRoute
+            linkClassName={linkClassName}
+            routeDetail={routeDetail}
+            header={header}
+          />
+        )
+      }
+    </li>
   );
 }
 
 export default ListWithLink
-
-

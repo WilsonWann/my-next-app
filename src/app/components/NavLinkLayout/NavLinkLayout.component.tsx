@@ -1,11 +1,12 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
+import { RouteDetail } from '@/types'
 
 type NavLinkLayoutProps = {
-  index: boolean | undefined
-  listClassName?: string
+  indexPage: boolean | undefined
   linkClassName?: string
   route?: string
+  routes?: RouteDetail[]
   onClick?: () => void
   children: React.ReactNode
 }
@@ -23,21 +24,18 @@ const NavLinkLayout: FC<NavLinkLayoutProps> = (props) => {
                 select-none
                 ${props.linkClassName}`
 
-  const linkSpanSwitcher = (props: NavLinkLayoutProps) =>
-    props.index ? (
+  if (props.indexPage) {
+    return (
       <span onClick={props.onClick} className={commonClasses}>
         {props.children}
       </span>
-    ) : (
-      <Link href={props.route || '#'} onClick={props.onClick} className={commonClasses}>
-        {props.children}
-      </Link>
     )
+  }
 
   return (
-    <li className={`h-10 overflow-y-clip ${props.listClassName}`}>
-      {linkSpanSwitcher(props)}
-    </li>
+    <Link href={props.route || '#'} onClick={props.onClick} className={commonClasses}>
+      {props.children}
+    </Link>
   )
 }
 

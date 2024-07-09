@@ -7,7 +7,7 @@ type Props = {
   menuButton?: React.ReactNode
   listClassName?: string
   linkClassName?: string
-  hideLinkAltName?: boolean
+  header?: boolean
 };
 const LinkNavigation: FC<Props> = (props) => {
 
@@ -15,7 +15,7 @@ const LinkNavigation: FC<Props> = (props) => {
     menuButton,
     listClassName = '',
     linkClassName = '',
-    hideLinkAltName: hideAltName = false
+    header = false
   } = props
 
   return (
@@ -27,7 +27,7 @@ const LinkNavigation: FC<Props> = (props) => {
           routeDetail={routeDetail}
           listClassName={listClassName}
           linkClassName={linkClassName}
-          hideAltName={hideAltName}
+          header={header}
         />
       )}
     </>

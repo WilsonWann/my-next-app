@@ -36,10 +36,17 @@ export type RouteDetail = {
 } & (IndexType | NonIndexType)
 
 type IndexType = {
-  index: true
+  indexPage: true
 }
 
 type NonIndexType = {
-  index?: false
+  indexPage?: false
   route: string
+}
+
+export type LinkWithRoutesProps = {
+  linkClassName?: string
+  routeDetail: RouteDetail
+  routes: RouteDetail[]
+  header: boolean | undefined
 }
