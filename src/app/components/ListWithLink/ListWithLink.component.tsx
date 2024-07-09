@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
-import Link from 'next/link'
 import { RouteDetail } from '@/types'
+import NavLinkLayout from '../NavLinkLayout/NavLinkLayout.component'
 
 type ListWithLinkLayoutProps = {
   routeDetail: RouteDetail
@@ -18,49 +18,13 @@ const ListWithLink: FC<ListWithLinkLayoutProps> = ({
   const { index, mainName, altName, ...props } = routeDetail
 
   return (
-    <li className={`h-10 overflow-y-clip ${listClassName}`}>
-      <NavLinkLayout index={index} linkClassName={linkClassName} {...props}>
-        <span>{mainName}</span>
-        {!hideAltName && <b>{altName}</b>}
-      </NavLinkLayout>
-    </li>
+    <NavLinkLayout index={index} linkClassName={linkClassName} listClassName={listClassName} {...props}>
+      <span>{mainName}</span>
+      {!hideAltName && <b>{altName}</b>}
+    </NavLinkLayout>
   );
 }
 
 export default ListWithLink
 
-type NavLinkLayoutProps = {
-  index: boolean | undefined
-  linkClassName?: string
-  route?: string
-  onClick?: () => void
-  children: React.ReactNode
-}
 
-const NavLinkLayout: FC<NavLinkLayoutProps> = (props) => {
-
-  const commonClasses = `uppercase 
-                md:w-fit w-full
-                flex 
-                md:flex-col flex-row
-                gap-0
-                flex-nowrap whitespace-nowrap 
-                items-center 
-                cursor-pointer
-                select-none
-                ${props.linkClassName}`
-
-  if (props.index) {
-    return (
-      <span onClick={props.onClick} className={commonClasses}>
-        {props.children}
-      </span>
-    )
-  }
-
-  return (
-    <Link href={props.route || '#'} onClick={props.onClick} className={commonClasses}>
-      {props.children}
-    </Link>
-  )
-}
