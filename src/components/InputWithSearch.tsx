@@ -22,4 +22,6 @@ const InputWithSearch = forwardRef<HTMLInputElement, Props>(
   }
 )
 
+InputWithSearch.displayName = "InputWithSearch"
+
 export default InputWithSearch
