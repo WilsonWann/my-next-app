@@ -10,7 +10,7 @@ export const routes: RouteDetail[] = [
     routes: [
       { route: '/news', mainName: 'news', altName: '最新消息' },
       { route: '/articles', mainName: 'articles', altName: '相關文章' },
-      { route: '/cases', mainName: 'cases', altName: '最新消息' },
+      { route: '/cases', mainName: 'cases', altName: '案例分享' },
     ]
   },
   { route: '/contact', mainName: 'contact', altName: '聯絡我們' },

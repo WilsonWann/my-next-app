@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import firstCharUpperCase from "@/helper/firstCharUpperCase"
 import { FC } from "react"
 
 type Props = {
@@ -31,7 +32,7 @@ const MessageDialog: FC<Props> = ({ open, closeDialog, content }) => {
             Object.entries(content).map((([key, value], index) => (
               <div key={index} className="grid grid-cols-4 items-center gap-4">
                 <Label htmlFor={key} className="text-right">
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
+                  {firstCharUpperCase(key)}
                 </Label>
                 <Input id={key} value={value} className="col-span-3" disabled />
               </div>
