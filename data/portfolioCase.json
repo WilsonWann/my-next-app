@@ -42,12 +42,12 @@
       "name": "bracelet",
       "imageFolder": "portfolio/bracelet",
       "images": [
-        "/portfolio/bracelet/womens-hand-moon-bracelet-.jpg",
-        "/portfolio/bracelet/bohemian-bracelets-bangles.jpg",
-        "/portfolio/bracelet/buddha-bracelet-for-men.jpg",
-        "/portfolio/bracelet/chakra-bracelet-product-shot.jpg",
-        "/portfolio/bracelet/seven-chakra-bracelet.jpg",
-        "/portfolio/bracelet/stacked-bracelets.jpg"
+        "womens-hand-moon-bracelet-.jpg",
+        "bohemian-bracelets-bangles.jpg",
+        "buddha-bracelet-for-men.jpg",
+        "chakra-bracelet-product-shot.jpg",
+        "seven-chakra-bracelet.jpg",
+        "stacked-bracelets.jpg"
       ],
       "title": "LEISURE | BRACELET",
       "tags": ["手環", "個性", "BRACELET"]
@@ -72,8 +72,8 @@
       "images": [
         "modern-jewelry-and-accessories-on-display.jpg",
         "white-faced-watch.jpg",
-        "grooms-prep-kit-for-wedding-10.jpg",
-        "makeup-and-jewelry-4.jpg"
+        "grooms-prep-kit-for-wedding.jpg",
+        "makeup-and-jewelry.jpg"
       ],
       "title": "VOWS | WATCH",
       "tags": ["手錶", "形象", "WATCH"]
