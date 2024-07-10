@@ -26,7 +26,7 @@ const AsideInputWithSearch: FC<Props> = (props) => {
 
   if (!videoRoute) return null
   if (!videoRoute.routes) return null
-  const routeDetail = videoRoute.routes.find(route => route.route === props.pathname) as RouteDetail
+  const routeDetail = videoRoute.routes.find(route => !route.indexPage && route.route === props.pathname) as RouteDetail
 
   const title = `${firstCharUpperCase(routeDetail.mainName)} ${routeDetail.altName}`
 
