@@ -1,10 +1,16 @@
+'use client'
+
 import React from 'react'
+import CardDemo from '../components/CardDemo/CardDemo.component'
+import { serviceContentImages } from "@/app/imageHandler"
 
-type Props = {}
-
-const NewsPage = (props: Props) => {
+const NewsPage = () => {
   return (
-    <div>NewsPage</div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {serviceContentImages.map((serviceContentImage, index) => (
+        <CardDemo key={index} image={serviceContentImage.image} />
+      ))}
+    </div>
   )
 }
 

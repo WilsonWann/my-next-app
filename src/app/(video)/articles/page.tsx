@@ -1,15 +1,19 @@
 'use client'
 
-import InputWithSearch from '@/components/InputWithSearch'
-import React, { useState } from 'react'
-import { routes } from '@/app/const/RouteDetail'
-import Link from 'next/link'
+import React from 'react'
+import CardDemo from '../components/CardDemo/CardDemo.component'
+import { portfolioImages } from "@/app/imageHandler"
 
-type Props = {}
+const ArticlesPage = () => {
 
-const ArticlesPage = (props: Props) => {
-
-  return <div>ArticlesPage</div>
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {portfolioImages.map((portfolioImage, index) => (
+        <CardDemo key={index} image={portfolioImage.image} />
+      ))}
+    </div>
+  )
 }
 
 export default ArticlesPage
+
