@@ -32,7 +32,7 @@ export type RouteDetail = {
   mainName: string
   altName: string
   onClick?: () => void
-  routes?: Route[]
+  routes?: RouteDetail[]
 } & (IndexType | NonIndexType)
 
 type IndexType = {
