@@ -24,12 +24,9 @@ const LinkNavigation: FC<Props> = (props) => {
     linkClassName
   }
   return (
-    <>
-      {menuButton}
-      {header
-        ? <HeaderListLinkWrapper {...classNameProps} />
-        : <ListLinkWrapper {...classNameProps} />}
-    </>
+    header
+      ? <HeaderListLinkWrapper {...classNameProps} menuButton={menuButton} />
+      : <ListLinkWrapper {...classNameProps} />
   );
 };
 

@@ -3,16 +3,22 @@ import { routes } from "@/app/const/RouteDetail";
 import { NavigationListProps } from '@/types';
 import HeaderListWithLink from '../HeaderListWithLink/HeaderListWithLink.component';
 
-const HeaderListLinkWrapper: FC<Omit<NavigationListProps, 'routeDetail'>> = (props) => {
+type HeaderListLinkWrapperProps = Omit<NavigationListProps, 'routeDetail'> & {
+  menuButton: React.ReactNode
+}
+const HeaderListLinkWrapper: FC<HeaderListLinkWrapperProps> = (props) => {
 
   return (
-    routes.map((routeDetail, index) => (
-      <HeaderListWithLink
-        key={index}
-        routeDetail={routeDetail}
-        {...props}
-      />
-    ))
+    <>
+      {props.menuButton}
+      {routes.map((routeDetail, index) => (
+        <HeaderListWithLink
+          key={index}
+          routeDetail={routeDetail}
+          {...props}
+        />
+      ))}
+    </>
   )
 }
 
