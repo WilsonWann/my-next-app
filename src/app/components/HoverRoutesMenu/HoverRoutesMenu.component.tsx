@@ -1,15 +1,8 @@
-import { RouteDetail } from '@/types'
+import { OpenRouteMenu } from '@/types'
 import Link from 'next/link'
 import React, { FC, useEffect, useState } from 'react'
 
-type Props = {
-  isMenuOpen: boolean
-  openMenu: () => void
-  closeMenu: () => void
-  routes: RouteDetail[]
-}
-
-const HoverRoutesMenu: FC<Props> = (props) => {
+const HoverRoutesMenu: FC<OpenRouteMenu> = (props) => {
 
   const { isMenuOpen, openMenu, closeMenu, routes } = props
 

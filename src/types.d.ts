@@ -44,9 +44,22 @@ type NonIndexType = {
   route: string
 }
 
+export type NavigationListProps = {
+  routeDetail: RouteDetail
+  listClassName?: string
+  linkClassName?: string
+}
+
 export type LinkWithRoutesProps = {
   linkClassName?: string
+  listClassName?: string
   routeDetail: RouteDetail
   routes: RouteDetail[]
-  header: boolean | undefined
+}
+
+export type OpenRouteMenu = {
+  isMenuOpen: boolean
+  openMenu: () => void
+  closeMenu: () => void
+  routes: RouteDetail[]
 }

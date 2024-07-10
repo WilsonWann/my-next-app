@@ -12,7 +12,7 @@ const VideoLayout = (props: Props) => {
   const pathname = usePathname()
 
   return (
-    <div className="max-w-6xl mx-auto pt-16 flex flex-row justify-center items-start gap-8">
+    <div className="max-w-6xl mx-auto pt-16 flex xl:flex-row flex-col justify-center items-start gap-8">
       <AsideInputWithSearch pathname={pathname} />
       {props.children}
     </div>

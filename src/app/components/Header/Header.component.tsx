@@ -9,6 +9,7 @@ import CloseIcon from "../Close-Icon/Close-Icon.component";
 import useMenu from "@/hook/useMenu";
 import usePreventScroll from "@/hook/usePreventScroll";
 import useCloseMenuOnClickOutside from "@/hook/useCloseMenuOnClickOutside";
+import { cn } from "@/lib/utils"
 
 const Header = () => {
   const { isMenuOpen, setIsMenuOpen } = useMenu()
@@ -19,8 +20,6 @@ const Header = () => {
 
   const { navRef } = useCloseMenuOnClickOutside(isMenuOpen, setIsMenuOpen)
 
-  const navigationClassName = isMenuOpen ? "right-0" : "-right-2/3"
-
   return (
     <header className="fixed top-0 z-50 flex h-[100px] w-full flex-row items-center justify-between bg-primary-foreground bg-opacity-65 md:px-16 px-6 xl:h-16">
       <Logo className="h-full py-8 md:py-6 xl:py-4" imageClassName={"h-full"} />
@@ -29,9 +28,9 @@ const Header = () => {
       </button>
       <ul
         ref={navRef}
-        className={`${scheherazade.className} 
-          fixed md:relative md:right-0 ${navigationClassName} flex h-screen w-2/3 flex-col items-baseline 
-          justify-center gap-0 bg-white opacity-100 *:w-full *:border-b *:border-slate-400 md:h-auto md:w-auto md:flex-row md:items-center md:justify-center md:gap-20 md:bg-transparent md:*:border-b-transparent md:*:pl-0`}
+        className={cn("fixed md:relative md:right-0 flex h-screen w-2/3 flex-col items-baseline justify-center gap-0 bg-white opacity-100 *:w-full *:border-b *:border-slate-400 md:h-auto md:w-auto md:flex-row md:items-center md:justify-center md:gap-20 md:bg-transparent md:*:border-b-transparent md:*:pl-0",
+          scheherazade.className,
+          { "right-0": isMenuOpen, "-right-2/3": !isMenuOpen })}
       >
         <LinkNavigation
           menuButton={
@@ -48,7 +47,7 @@ const Header = () => {
           header
         />
       </ul>
-    </header>
+    </header >
   );
 };
 
