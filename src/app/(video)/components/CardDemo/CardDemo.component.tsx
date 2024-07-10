@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { cn } from "@/lib/utils"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
@@ -19,8 +19,26 @@ const CardDemo: FC<Props> = (props) => {
   const isOverCard = () => setHoverState(true);
   const isLeaveCard = () => setHoverState(false);
 
+  const [aspect, setAspect] = useState<number>(3 / 4);
+  useEffect(() => {
+    const handleSetAspectRatio = () => {
+      if (window.innerWidth > 768) {
+        setAspect(3 / 4)
+      } else {
+        setAspect(16 / 9)
+      }
+    }
+
+    window.addEventListener("resize", handleSetAspectRatio)
+
+    handleSetAspectRatio()
+    return () => {
+      window.removeEventListener("resize", handleSetAspectRatio)
+    }
+  }, [props]);
+
   return (
-    <Card className={cn("w-[250px] overflow-clip cursor-pointer group outline-none text-sm",
+    <Card className={cn("md:w-[250px] w-full overflow-clip cursor-pointer group outline-none md:text-sm text-base",
       scheherazade.className,
       { "outline-2 outline-offset-2 outline-secondary": hoverState },
     )}
@@ -29,7 +47,7 @@ const CardDemo: FC<Props> = (props) => {
     >
       <CardHeader className={cn("p-2 group-hover:transition-all duration-300 brightness-100",
         { "brightness-110": hoverState })}>
-        <AspectRatio ratio={3 / 4}>
+        <AspectRatio ratio={aspect}>
           {image ? <Image
             src={image.src}
             placeholder={"blur"}
@@ -47,7 +65,7 @@ const CardDemo: FC<Props> = (props) => {
           />}
         </AspectRatio>
       </CardHeader>
-      <CardContent className={cn("p-2 flex flex-col justify-start items-baseline text-sm gap-2 group-hover:transition-all duration-300 brightness-100",
+      <CardContent className={cn("p-2 flex flex-col justify-start items-baseline gap-2 group-hover:transition-all duration-300 brightness-100",
         { "brightness-110": hoverState }
       )}>
         <p>

@@ -7,11 +7,9 @@ import { portfolioImages } from "@/app/imageHandler"
 const ArticlesPage = () => {
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-      {portfolioImages.map((portfolioImage, index) => (
-        <CardDemo key={index} image={portfolioImage.image} />
-      ))}
-    </div>
+    portfolioImages.map((portfolioImage, index) => (
+      <CardDemo key={index} image={portfolioImage.image} />
+    ))
   )
 }
 
