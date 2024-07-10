@@ -28,6 +28,16 @@ module.exports = (phase, { defaultConfig }) => {
         bodySizeLimit: '2mb',
       },
     },
+    async redirects() {
+      return [
+        // Basic redirect
+        {
+          source: '/about',
+          destination: '/',
+          permanent: true,
+        },
+      ]
+    },
   }
 
   if (phase === PHASE_DEVELOPMENT_SERVER) {
