@@ -34,7 +34,7 @@ const AsideInputWithSearch: FC<Props> = (props) => {
     <aside className="flex flex-col justify-start items-baseline gap-6">
       <h2 className="text-2xl text-center w-full -mb-2">{title}</h2>
       <InputWithSearch ref={inputRef} onSearchClick={onSearchClick} />
-      <Menu routes={videoRoute.routes} />
+      <Menu routes={videoRoute.routes} pathname={props.pathname} />
     </aside>
   )
 }
