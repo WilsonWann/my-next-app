@@ -63,3 +63,7 @@ export type OpenRouteMenu = {
   closeMenu: () => void
   routes: RouteDetail[]
 }
+
+export type HeaderListLinkWrapperProps = Omit<NavigationListProps, 'routeDetail'> & {
+  menuButton: React.ReactNode
+}
