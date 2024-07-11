@@ -2,14 +2,12 @@
 
 import { LinkWithRoutesProps } from '@/types'
 import React, { FC, useState } from 'react'
-import NavLinkLayout from '../NavLinkLayout/NavLinkLayout.component'
+import NavLink from '../NavLink/NavLink.component'
 import HoverRoutesMenu from '../HoverRoutesMenu/HoverRoutesMenu.component'
 
 const HeaderLinkWithRoutesMenu: FC<LinkWithRoutesProps> = (props) => {
 
-  const { linkClassName, routeDetail, routes } = props
-
-  const { indexPage, mainName, altName, ...rest } = routeDetail
+  const { routes, ...rest } = props
 
   const [hoverState, setHoverState] = useState<boolean>(false);
 
@@ -29,10 +27,7 @@ const HeaderLinkWithRoutesMenu: FC<LinkWithRoutesProps> = (props) => {
         onMouseEnter={openMenu}
         onMouseLeave={closeMenu}
       >
-        <NavLinkLayout indexPage={indexPage} linkClassName={linkClassName} {...rest} >
-          <span>{mainName}</span>
-          <b>{altName}</b>
-        </NavLinkLayout>
+        <NavLink {...rest} />
       </div>
       <HoverRoutesMenu {...routesMenuProps} />
     </li>

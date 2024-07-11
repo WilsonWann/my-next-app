@@ -55,6 +55,7 @@ const HeaderListWithLinkAccordion: FC<HeaderListLinkWrapperProps> = (props) => {
                   !routeDetail.indexPage && (
                     <Link
                       key={index}
+                      aria-label={`${routeDetail.altName} 連結`}
                       href={routeDetail.route}
                       className={`${commonClasses} `}
                     >{routeDetail.altName}</Link>
