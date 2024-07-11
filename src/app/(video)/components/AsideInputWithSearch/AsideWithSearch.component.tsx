@@ -9,6 +9,7 @@ import Menu from '../Menu/Menu.component'
 
 type Props = {
   pathname: string
+  className?: string
 }
 
 const AsideInputWithSearch: FC<Props> = (props) => {
@@ -31,7 +32,7 @@ const AsideInputWithSearch: FC<Props> = (props) => {
   const title = `${firstCharUpperCase(routeDetail.mainName)} ${routeDetail.altName}`
 
   return (
-    <aside className="flex flex-col justify-start items-baseline gap-6">
+    <aside className={`${props.className} flex flex-col justify-start items-baseline gap-6`}>
       <h2 className="text-2xl text-center w-full -mb-2">{title}</h2>
       <InputWithSearch ref={inputRef} onSearchClick={onSearchClick} />
       <Menu routes={videoRoute.routes} pathname={props.pathname} />

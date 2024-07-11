@@ -36,6 +36,11 @@ module.exports = (phase, { defaultConfig }) => {
           destination: '/',
           permanent: true,
         },
+        {
+          source: '/video',
+          destination: '/news',
+          permanent: true,
+        },
       ]
     },
   }
