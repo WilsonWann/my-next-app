@@ -25,7 +25,7 @@ export default function RootLayout({
           <GoogleMapProvider>
             <CaptchaProvider>
               <Header />
-              <main className="relative mt-[100px] overflow-x-clip bg-transparent px-8 xl:mt-16 xl:px-1">
+              <main className="xl:mt-16 mt-[100px] xl:px-1 px-8 overflow-x-clip bg-transparent">
                 {children}
                 <SpeedInsights />
               </main>
