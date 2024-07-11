@@ -4,13 +4,13 @@ import PortfolioCase from './components/PortfolioCase/PortfolioCase.component'
 
 export const maxDuration = 60
 
-type Props = {
+export type PortfolioCaseParamsProps = {
   params: {
     portfolioCase: string
   }
 }
 
-const PortfolioCasePage: FC<Props> = ({ params: { portfolioCase } }) => {
+const PortfolioCasePage: FC<PortfolioCaseParamsProps> = ({ params: { portfolioCase } }) => {
 
   return (
     <Suspense fallback={<Loading />}>
