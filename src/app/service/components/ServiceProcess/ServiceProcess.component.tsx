@@ -12,7 +12,7 @@ const ServiceProcess: FC<Props> = ({ className = '' }) => {
     <div className={className}>
       <HeadingWithLabels
         heading={'Process'}
-        className="text-primary-foreground"
+        className="text-secondary"
       />
       <div className="w-full flex flex-col justify-center items-center animate-bounce text-secondary *:size-6">
         <TriangleIcon />
