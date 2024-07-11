@@ -14,16 +14,14 @@ const Logo: FC<Props> = ({ className = "", imageClassName = "" }) => {
 
   const logoProps = {
     src: logo,
-    alt: "",
+    alt: "Musense Logo",
     sizes: "100vw",
   }
 
   return (
-    <Link className={className} href="/" onClick={() => handleScrollTo("banner", 0)}>
+    <Link className={className} href="/" onClick={() => handleScrollTo("banner", 0)} aria-label={"回到首頁，觀看我們更多的故事"}>
       <div className="h-full aspect-logo overflow-clip">
-        <Image {...logoProps}
-          className={`object-top object-cover ${imageClassName}`}
-        />
+        <Image {...logoProps} className={`object-top object-cover ${imageClassName}`} />
       </div>
     </Link>
   );
