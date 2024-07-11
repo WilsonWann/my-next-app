@@ -20,7 +20,7 @@ const InputWithLabel: FC<Props> = ({ id, label, errors }) => {
   return (
     <div className={`flex flex-col justify-between items-baseline gap-1 w-full`}>
       <label htmlFor={id}>{label}</label>
-      <input {...register(id)} aria-labelledby={id} className={`bg-transparent w-full
+      <input {...register(id)} id={id} aria-labelledby={id} className={`bg-transparent w-full
         border-b border-secondary rounded-none focus:outline-none ${className}`} />
       {errorMessage && <p className="text-red-500">{errorMessage}</p>}
     </div>
