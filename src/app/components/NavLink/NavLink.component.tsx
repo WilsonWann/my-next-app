@@ -26,17 +26,17 @@ const NavLink: FC<NavLinkProps> = (props) => {
 
   if (isNonIndexType(routeDetail)) {
     return (
-      <Link href={routeDetail.route || '#'} aria-label={`${rest.mainName} ${altName}`} onClick={rest.onClick} className={commonClasses}>
+      <Link href={routeDetail.route || '#'} onClick={rest.onClick} className={commonClasses} aria-label={rest.mainName}>
         <span>{rest.mainName}</span>
-        {altName && <b>{altName}</b>}
+        {altName && <b aria-hidden="true">{altName}</b>}
       </Link>
     )
   }
 
   return (
-    <Link href={`/${routeDetail.mainName}`} aria-label={`${rest.mainName} ${altName}`} className={commonClasses}>
+    <Link href={`/${routeDetail.mainName}`} className={commonClasses} aria-label={rest.mainName}>
       <span>{rest.mainName}</span>
-      {altName && <b>{altName}</b>}
+      {altName && <b aria-hidden="true">{altName}</b>}
     </Link>
   )
 }
