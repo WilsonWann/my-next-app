@@ -9,7 +9,7 @@ import LargeBanner from "./components/LargeBanner/LargeBanner.component";
 
 const title = "陌聲行銷 – 珠寶設計｜珠寶生產｜珠寶保養｜珠寶課程"
 
-const mainPageOgImageObj = {
+const ogImageObj = {
   alt: title,
   url: '/portfolio/bracelet/stacked-bracelets.jpg',
   width: 1200,
@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     title: title,
     description: "珠寶設計與生產首選陌聲行銷！陌聲提供專業珠寶設計、珠寶生產、珠寶保養、珠寶課程等服務，致力於傾聽客戶需求、展現精湛工藝和卓越品質。",
     siteName: "Musense Jewelry Design",
-    images: [mainPageOgImageObj],
+    images: [ogImageObj],
   },
   twitter: {
-    images: [mainPageOgImageObj]
+    images: [ogImageObj]
   },
 };
 

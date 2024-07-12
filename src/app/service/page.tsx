@@ -7,7 +7,7 @@ import ServiceContent from './components/ServiceContent/ServiceContent.component
 
 const title = "服務內容 – 定制設計 | 製作生產 | 維護保養 | 趨勢分析"
 
-const serviceOgImageObj = {
+const ogImageObj = {
   alt: title,
   url: '/portfolio/watch/makeup-and-jewelry.jpg',
   width: 1200,
@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     title: title,
     description: "珠寶設計與生產首選陌聲行銷！陌聲提供專業珠寶設計、珠寶生產、珠寶保養、珠寶課程等服務，致力於傾聽客戶需求、展現精湛工藝和卓越品質。",
     siteName: "Musense Jewelry Design",
-    images: [serviceOgImageObj],
+    images: [ogImageObj],
   },
   twitter: {
-    images: [serviceOgImageObj]
+    images: [ogImageObj]
   },
 };
 
