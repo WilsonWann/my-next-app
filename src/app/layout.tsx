@@ -7,10 +7,12 @@ import Footer from "./components/Footer/Footer.component";
 import GoogleMapProvider from "./Providers/GoogleMapProvider";
 import CaptchaProvider from "./Providers/CaptchaProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { BASE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: "陌聲行銷 – 珠寶設計｜珠寶生產｜珠寶保養｜珠寶課程",
   description: "珠寶設計與生產首選陌聲行銷！陌聲提供專業珠寶設計、珠寶生產、珠寶保養、珠寶課程等服務，致力於傾聽客戶需求、展現精湛工藝和卓越品質。",
+  metadataBase: new URL(BASE_URL),
 };
 
 export default function RootLayout({
