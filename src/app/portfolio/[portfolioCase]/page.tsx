@@ -1,9 +1,7 @@
 import { type Metadata } from 'next'
-import React, { FC, Suspense } from 'react'
-import Loading from '../../../portfolioCaseLoading'
+import React, { FC } from 'react'
 import PortfolioCase from './components/PortfolioCase/PortfolioCase.component'
 import { PORTFOLIO_CASES } from '@/lib/constants'
-import wait from '@/helper/wait'
 
 const defaultTitle = "作品集 – rings | necklace | jewelry | bracelet | earrings | watch"
 const defaultDescription = `珠寶設計與生產首選陌聲行銷！陌聲提供專業珠寶設計、珠寶生產、珠寶保養、珠寶課程等服務，致力於傾聽客戶需求、展現精湛工藝和卓越品質。`

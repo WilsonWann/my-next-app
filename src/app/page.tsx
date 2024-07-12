@@ -6,7 +6,6 @@ import About from "./components/About/About.component";
 import Company from "./components/Company/Company.component";
 import Photos from "./components/Photos/Photos.component";
 import LargeBanner from "./components/LargeBanner/LargeBanner.component";
-import wait from '@/helper/wait';
 
 const title = "陌聲行銷 – 珠寶設計｜珠寶生產｜珠寶保養｜珠寶課程"
 
@@ -31,8 +30,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-
-  await wait(3)
 
   return (
     <div className={`${noto.className} flex flex-col items-center justify-between snap-y`}>
