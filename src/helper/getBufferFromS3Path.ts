@@ -1,7 +1,7 @@
 'use server'
 
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
-import streamToBuffer from "./streamToString";
+import streamToBuffer from "./streamToBuffer";
 import { Readable } from "stream";
 import { BufferWithSrc } from "@/types";
 

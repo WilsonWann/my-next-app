@@ -8,14 +8,14 @@ export const {
   contentType
 } = ogConfig;
 
-export const alt = 'Portfolio'
+export const alt = 'Contact'
 
 export default async function Image() {
 
   const interSemiBold = await readFontHelper('Inter-SemiBold.ttf')
 
   return getNewOgImage({
-    ogImageTitle: 'Portfolio',
+    ogImageTitle: 'Contact',
     fontData: interSemiBold,
     size: size,
   })

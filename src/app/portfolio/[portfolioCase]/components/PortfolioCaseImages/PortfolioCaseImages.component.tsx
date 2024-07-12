@@ -14,7 +14,6 @@ const PortfolioCaseImages = async (props: Props) => {
 
   const allImagesWithBlurDataUrl = await Promise.all(images.map(async image => await getS3Image(`${imageFolder}/${image}`)))
 
-  console.log('🚀 ~ PortfolioCaseImages ~ allImagesWithBlurDataUrl:', allImagesWithBlurDataUrl)
   return (
     allImagesWithBlurDataUrl.map((image, index) => (
       <div key={index} className="relative w-full h-[500px] overflow-clip">
