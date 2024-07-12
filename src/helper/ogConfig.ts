@@ -1,4 +1,4 @@
-const runtime = 'nodejs';
+const runtime = 'edge';
 
 const size = {
   width: 1200,

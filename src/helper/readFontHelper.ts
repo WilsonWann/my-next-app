@@ -1,11 +1,10 @@
 
-import path from 'path';
-import fs from 'fs/promises';
+import { BASE_URL } from "@/lib/constants"
 
 const readFontHelper = async (font: string) => {
-  const fontPath = path.join(process.cwd(), 'public', 'fonts', font);
 
-  const interSemiBold = await fs.readFile(fontPath);
+  const interSemiBold = fetch(new URL(`/fonts/${font}`, BASE_URL))
+    .then((res) => res.arrayBuffer())
 
   return interSemiBold
 }
