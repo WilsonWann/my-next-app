@@ -14,8 +14,7 @@ const defaultOgImageObj = {
   height: 630
 }
 
-export async function generateMetadata({ params: { portfolioCase } }: PortfolioCaseParamsProps): Promise<Metadata> {
-
+export function generateMetadata({ params: { portfolioCase } }: PortfolioCaseParamsProps): Metadata {
 
   const portfolioCaseItem = PORTFOLIO_CASES.find(item => item.name === portfolioCase)
 
