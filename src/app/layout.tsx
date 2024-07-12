@@ -4,10 +4,10 @@ import "./globals.css";
 import ReduxProvider from "./Providers/ReduxProvider";
 import Header from "./components/Header/Header.component";
 import Footer from "./components/Footer/Footer.component";
-import GoogleMapProvider from "./Providers/GoogleMapProvider";
-import CaptchaProvider from "./Providers/CaptchaProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { BASE_URL } from '@/lib/constants';
+import { Suspense } from "react";
+import Loading from "../loading";
 
 export const metadata: Metadata = {
   title: "陌聲行銷 – 珠寶設計｜珠寶生產｜珠寶保養｜珠寶課程",
@@ -24,16 +24,14 @@ export default function RootLayout({
     <html lang="zh-TW">
       <body className={`${inter.className} min-h-dvh bg-primary`}>
         <ReduxProvider>
-          <GoogleMapProvider>
-            <CaptchaProvider>
-              <Header />
-              <main className="xl:mt-16 mt-[100px] xl:px-1 px-8 overflow-x-clip bg-transparent">
-                {children}
-                <SpeedInsights />
-              </main>
-              <Footer />
-            </CaptchaProvider>
-          </GoogleMapProvider>
+          <Header />
+          <Suspense fallback={<Loading />}>
+            <main className="xl:mt-16 mt-[100px] xl:px-1 px-8 overflow-x-clip bg-transparent">
+              {children}
+              <SpeedInsights />
+            </main>
+            <Footer />
+          </Suspense>
         </ReduxProvider>
       </body>
     </html>

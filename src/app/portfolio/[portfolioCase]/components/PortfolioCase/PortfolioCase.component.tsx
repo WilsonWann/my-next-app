@@ -16,7 +16,6 @@ const PortfolioCase: FC<Props> = async ({ portfolioCase }) => {
   if (!response.data) return notFound()
 
   const { title, tags, imageFolder, images } = response.data
-  console.log('🚀 ~ const PortfolioCase:FC<Props> = ~ response.data:', response.data)
 
   return (
     <>
