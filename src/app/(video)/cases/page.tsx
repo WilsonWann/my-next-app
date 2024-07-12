@@ -1,5 +1,3 @@
-'use client'
-
 import { type Metadata } from 'next'
 import React from 'react'
 import CardDemo from '../components/CardDemo/CardDemo.component'
@@ -28,7 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-const CasesPage = () => {
+const CasesPage = async () => {
   return (
     photosImages.map((image, index) => (
       <CardDemo key={index} image={image} />
