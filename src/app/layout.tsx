@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW">
-      <body className={`${inter.className} min-h-screen bg-primary`}>
+      <body className={`${inter.className} min-h-dvh bg-primary`}>
         <ReduxProvider>
           <GoogleMapProvider>
             <CaptchaProvider>
