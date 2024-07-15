@@ -34,11 +34,9 @@ const ContactPage = () => {
     <div className={`${scheherazade.className} flex flex-col items-center`}>
       <GoogleMap className={"mb-32"} />
       <Contact className={"md:mb-32 mb-24"} />
-      <OnlineForm className={"md:mb-32 mb-12"} />
+      <OnlineForm />
     </div>
   )
-
-
 }
 
 export default ContactPage

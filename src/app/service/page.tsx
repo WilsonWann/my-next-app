@@ -34,7 +34,7 @@ const ServicePage = () => {
     <div className={`flex flex-col items-center justify-between`}>
       <ServiceBanner serviceBannerImage={serviceBannerImage} className="mb-24" />
       <ServiceProcess className="mb-24" />
-      <ServiceContent serviceContentImages={serviceContentImages} className="md:mb-24 mb-12" />
+      <ServiceContent serviceContentImages={serviceContentImages} />
     </div >
   )
 }

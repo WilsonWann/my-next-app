@@ -32,7 +32,7 @@ const PortfolioPage = () => {
 
   return (
     <div className={`${scheherazade.className} flex flex-col items-center`}>
-      <GridLayout className={"md:mb-56 mb-28"}>
+      <GridLayout>
         {
           portfolioImages.map((portfolioImage, index) =>
             <PortfolioLinkWithImage key={index} portfolioImage={portfolioImage} />

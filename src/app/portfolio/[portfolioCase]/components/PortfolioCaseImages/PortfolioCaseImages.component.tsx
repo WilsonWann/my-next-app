@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import LocalImage from '@/app/components/LocalImage/LocalImage.component'
 import { getS3Image } from '@/app/action/getS3Object'
 import FallbackImage from '@/app/components/FallbackImage/FallbackImage.component'
