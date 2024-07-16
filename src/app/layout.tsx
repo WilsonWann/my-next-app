@@ -2,6 +2,8 @@ import { type Metadata } from "next";
 import { inter } from "@/app/fonts";
 import "./globals.css";
 import ReduxProvider from "./Providers/ReduxProvider";
+import GoogleMapProvider from "@/app/Providers/GoogleMapProvider";
+import CaptchaProvider from "@/app/Providers/CaptchaProvider";
 import Header from "./components/Header/Header.component";
 import Footer from "./components/Footer/Footer.component";
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -20,14 +22,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW">
-      <body className={`${inter.className} min-h-max bg-primary`}>
+      <body className={`${inter.className} min-h-screen bg-primary`}>
         <ReduxProvider>
-          <Header />
-          <main className="xl:mt-16 mt-[100px] xl:px-1 px-8 overflow-x-clip bg-transparent md:mb-24 mb-12">
-            {children}
-            <SpeedInsights />
-          </main>
-          <Footer />
+          <GoogleMapProvider>
+            <CaptchaProvider>
+              <Header />
+              <div className="xl:mt-16 mt-[100px] h-full">
+                <main className="overflow-x-clip bg-transparent md:mb-24 mb-12 xl:px-1 px-8">
+                  {children}
+                  <SpeedInsights />
+                </main>
+                <Footer />
+              </div>
+            </CaptchaProvider>
+          </GoogleMapProvider>
         </ReduxProvider>
       </body>
     </html>

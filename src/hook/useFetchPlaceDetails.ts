@@ -16,7 +16,7 @@ const useFetchPlaceDetails = (placeId: string | null) => {
         fields: ['name', 'formatted_address', 'rating', 'user_ratings_total', 'geometry.location']
       };
 
-      service.getDetails(request, (place, status) => {
+      service.getDetails(request, (place: google.maps.places.PlaceResult | null, status: google.maps.places.PlacesServiceStatus) => {
         if (status === window.google.maps.places.PlacesServiceStatus.OK) {
 
           const location = place?.geometry?.location;

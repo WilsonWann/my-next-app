@@ -1,30 +1,41 @@
 "use client";
 
-import {
-  FC,
-  createContext,
-  useState,
-  useRef,
-  useEffect,
-} from "react";
-import Captcha from "@/app/contact/components/Captcha/Captcha.component";
+import React, { FC, createContext, useState, useRef } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { verifyCaptcha } from "@/app/action/verifyCaptcha";
 import { usePathname } from "next/navigation";
+import useCallbackFn from "@/hook/useCallbackFn";
+import useViewCallback from "@/hook/useViewCallback";
+import useCaptcha from "@/hook/useCaptcha";
 
 interface CaptchaContextProps {
-  renderCaptcha: () => JSX.Element | null;
-  triggerVerify: () => void;
-  resetVerify: () => void;
+  captchaRef: React.RefObject<HCaptcha> | null;
+  onVerify: (token: string | null) => void;
+  triggerCaptchaExecute: () => void;
+  resetCaptcha: () => void;
   captchaVerified: boolean;
   verifiedResponse: { success: boolean; message: string } | null;
 }
 
-export const CaptchaContext = createContext<CaptchaContextProps | undefined>(
-  undefined,
-);
+export const CaptchaContext = createContext<CaptchaContextProps | undefined>(undefined);
+
+const hcaptchaSiteKey = process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY!;
 
 const CaptchaProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
+
+  const { setSiteKey, setSize } = useCaptcha()
+
+  const siteKeyRef = useRef<string>();
+  if (!siteKeyRef.current) {
+    siteKeyRef.current = hcaptchaSiteKey;
+    setSiteKey(hcaptchaSiteKey)
+  }
+
+  useViewCallback(
+    () => setSize('compact'),
+    () => setSize('normal')
+  );
+
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [verifiedResponse, setVerifiedResponse] = useState<{
     success: boolean;
@@ -35,17 +46,15 @@ const CaptchaProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const captchaRef = useRef<HCaptcha>(null);
 
-  useEffect(() => {
-    setCaptchaVerified(false);
-  }, [pathname]);
+  useCallbackFn(() => setCaptchaVerified(false), pathname)
 
-  const triggerVerify = () => {
+  const triggerCaptchaExecute = () => {
     if (captchaRef.current) {
       captchaRef.current.execute();
     }
   };
 
-  const resetVerify = () => {
+  const resetCaptcha = () => {
     if (captchaRef.current) {
       captchaRef.current.resetCaptcha();
       setVerifiedResponse(null);
@@ -61,24 +70,18 @@ const CaptchaProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     }
   };
 
-  const renderCaptcha = () => {
-    return (
-      <Captcha
-        ref={captchaRef}
-        onVerify={async (token) => {
-          await handleCaptchaChange(token);
-          setCaptchaVerified(true);
-        }}
-      />
-    );
-  };
+  const onVerify = async (token: string | null) => {
+    await handleCaptchaChange(token);
+    setCaptchaVerified(true);
+  }
 
   return (
     <CaptchaContext.Provider
       value={{
-        renderCaptcha,
-        triggerVerify,
-        resetVerify,
+        captchaRef,
+        onVerify,
+        triggerCaptchaExecute,
+        resetCaptcha,
         captchaVerified,
         verifiedResponse,
       }}

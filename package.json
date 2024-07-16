@@ -30,6 +30,7 @@
     "@radix-ui/react-switch": "^1.1.0",
     "@react-google-maps/api": "^2.19.3",
     "@reduxjs/toolkit": "^2.2.5",
+    "@types/google.maps": "^3.55.11",
     "@types/qs": "^6.9.15",
     "@types/react-copy-to-clipboard": "^5.0.7",
     "@types/react-router-dom": "^5.3.3",

@@ -1,12 +1,13 @@
 "use client";
 
-import { FC, createContext, useRef } from "react";
+import { FC, createContext, useEffect, useRef } from "react";
 import { LoadScript } from "@react-google-maps/api";
 import { MapState } from "@/store/map/map.slice";
 import useGoogleMap from "@/hook/useGoogleMap";
-import useMobileView from "@/hook/useMobileView";
+import useViewCallback from "@/hook/useViewCallback";
+import Loading from "../loading";
 
-const GoogleMapContext = createContext<MapState>({
+export const GoogleMapContext = createContext<MapState>({
   apiKey: null,
   placeId: null,
   reviewUrl: null,
@@ -17,6 +18,7 @@ const libraries: ('places')[] = ['places'];
 const googleMapApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!;
 const googleMapApiKeyPlaceId = process.env.NEXT_PUBLIC_GOOGLE_MAPS_PLACE_ID!;
 const googleMapReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_REVIEW_URL!;
+const m_googleMapReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_M_REVIEW_URL!;
 
 const GoogleMapProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
 
@@ -40,21 +42,32 @@ const GoogleMapProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   }
 
   if (!reviewUrlRef.current) {
+    setReviewUrlForLaptop()
+  }
+  function setReviewUrlForLaptop() {
     reviewUrlRef.current = googleMapReviewUrl;
     setReviewUrl(googleMapReviewUrl)
   }
 
-  const setReviewUrlForMobile = () => {
-    const m_googleMapReviewUrl = process.env.NEXT_PUBLIC_GOOGLE_MAPS_M_REVIEW_URL!;
+  function setReviewUrlForMobile() {
     reviewUrlRef.current = m_googleMapReviewUrl;
     setReviewUrl(m_googleMapReviewUrl)
   }
 
-  useMobileView(setReviewUrlForMobile)
+  useViewCallback(
+    setReviewUrlForMobile,
+    setReviewUrlForLaptop
+  )
 
   return (
     <GoogleMapContext.Provider value={{ apiKey, placeId, reviewUrl }}>
-      <LoadScript googleMapsApiKey={apiKeyRef.current!} libraries={libraries}>{children}</LoadScript>
+      <LoadScript
+        loadingElement={<Loading />}
+        googleMapsApiKey={apiKeyRef.current!}
+        libraries={libraries}
+      >
+        {children}
+      </LoadScript>
     </GoogleMapContext.Provider>
   );
 };

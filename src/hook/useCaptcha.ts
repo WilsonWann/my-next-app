@@ -1,12 +1,22 @@
-import { CaptchaContext } from "@/app/Providers/CaptchaProvider";
-import { useContext } from "react";
+import { setSiteKey, setSize } from "@/store/captcha/captcha.slice";
+import { selectSiteKey, selectSize } from "@/store/captcha/captcha.selector";
+import { useAppDispatch, useAppSelector } from "@/lib/redux-hooks";
 
 const useCaptcha = () => {
-  const context = useContext(CaptchaContext);
-  if (!context) {
-    throw new Error("useCaptcha must be used within a CaptchaProvider");
-  }
-  return context;
+  const siteKey = useAppSelector(selectSiteKey);
+  const size = useAppSelector(selectSize);
+  const dispatch = useAppDispatch();
+
+  return {
+    siteKey,
+    size,
+    setSiteKey: (siteKey: string) => {
+      dispatch(setSiteKey(siteKey));
+    },
+    setSize: (size: string) => {
+      dispatch(setSize(size));
+    }
+  };
 };
 
 export default useCaptcha

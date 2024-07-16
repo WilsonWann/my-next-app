@@ -9,9 +9,11 @@ type Props = {
 }
 
 const MainCarousel: FC<Props> = ({ id, bannerList, className = '' }) => {
-  return <div id={id} className={`relative w-svw ${className}`}>
-    <Carousel bannerList={bannerList} />
-  </div>;
+  return (
+    <div id={id} className={`relative w-svw ${className}`}>
+      <Carousel bannerList={bannerList} />
+    </div>
+  );
 }
 
 export default MainCarousel

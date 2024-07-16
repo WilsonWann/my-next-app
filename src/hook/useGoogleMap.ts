@@ -12,7 +12,7 @@ const useGoogleMap = () => {
     apiKey,
     placeId,
     reviewUrl,
-    setApiKey: (apiKey: string) => {
+    setApiKey: (apiKey: string | null) => {
       dispatch(setApiKey(apiKey));
     },
     setPlaceId: (placeId: string) => {

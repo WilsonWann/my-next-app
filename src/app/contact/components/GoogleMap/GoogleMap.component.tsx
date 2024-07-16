@@ -20,7 +20,8 @@ type Props = {
 };
 
 const GoogleMap: FC<Props> = ({ className = "" }) => {
-  const { apiKey, placeId } = useGoogleMap();
+  const { apiKey, placeId, setApiKey } = useGoogleMap();
+
 
   const { placeDetails, destination } = useFetchPlaceDetails(placeId)
 

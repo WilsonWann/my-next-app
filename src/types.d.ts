@@ -67,3 +67,5 @@ export type OpenRouteMenu = {
 export type HeaderListLinkWrapperProps = Omit<NavigationListProps, 'routeDetail'> & {
   menuButton: React.ReactNode
 }
+
+export type SizeType = 'normal' | 'compact' | 'invisible';

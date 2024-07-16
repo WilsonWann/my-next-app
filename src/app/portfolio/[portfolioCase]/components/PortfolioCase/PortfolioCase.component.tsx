@@ -1,4 +1,4 @@
-import React, { FC, Suspense } from 'react'
+import React, { FC } from 'react'
 import { scheherazade } from '@/app/fonts'
 import { getPortfolioCaseByName } from '@/app/action/getPortfolioCaseByName'
 import { notFound } from 'next/navigation'

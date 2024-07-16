@@ -8,7 +8,7 @@ export async function verifyCaptcha(token: string) {
   const secret = process.env.HCAPTCHA_SECRET!
 
   try {
-    const response = await axios.post(`https://hcaptcha.com/siteverify`,
+    const response = await axios.post(`https://api.hcaptcha.com/siteverify`,
       qs.stringify({ secret, response: token }),
       {
         headers: {

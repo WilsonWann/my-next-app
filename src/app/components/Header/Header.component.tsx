@@ -21,7 +21,7 @@ const Header = () => {
   const { navRef } = useCloseMenuOnClickOutside(isMenuOpen, setIsMenuOpen)
 
   return (
-    <header className="fixed top-0 z-50 flex h-[100px] w-full flex-row items-center justify-between bg-primary-foreground bg-opacity-65 md:px-16 px-6 xl:h-16">
+    <header className="fixed top-0 z-50 flex xl:h-16 h-[100px] w-full flex-row items-center justify-between bg-primary-foreground bg-opacity-65 md:px-16 px-6">
       <Logo className="h-full py-8 md:py-6 xl:py-4" imageClassName={"h-full"} />
       <button title="open button" className="md:hidden md:font-normal font-bold">
         <HamburgerMenuIcon onClick={toggleIsMenuOpen} className="size-6" />

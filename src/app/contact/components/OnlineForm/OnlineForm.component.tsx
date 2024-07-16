@@ -6,11 +6,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { UserSchema } from "@/zodSchema/UserSchema";
-import useCaptcha from "@/hook/useCaptcha";
 import InputWithLabel from "../InputWithLabel/InputWithLabel.component";
 import useDialog from "@/hook/useDialog";
 import MessageDialog from "@/components/MessageDialog.component";
 import { ContactFormArray } from "@/app/const/ContactFormArray";
+import useCaptchaContext from "@/hook/useCaptchaContext";
+import Captcha from "../Captcha/Captcha.component";
 
 export type FormValues = {
   name: string;
@@ -23,7 +24,8 @@ type Props = {
   className?: string;
 };
 const OnlineForm: FC<Props> = ({ className = "" }) => {
-  const { renderCaptcha, resetVerify, verifiedResponse } = useCaptcha();
+
+  const { captchaRef, onVerify, resetCaptcha, verifiedResponse } = useCaptchaContext();
   const { dialogOpen, openDialog, closeDialog } = useDialog();
 
   const methods = useForm<FormValues>({
@@ -42,12 +44,12 @@ const OnlineForm: FC<Props> = ({ className = "" }) => {
     //* await submitForm(values);
   };
 
-  const handleReset = () => methods.reset();
+  const resetForm = () => methods.reset();
 
   const onCloseDialog = () => {
     closeDialog()
-    handleReset()
-    resetVerify()
+    resetForm()
+    resetCaptcha()
   }
 
   return (
@@ -72,13 +74,16 @@ const OnlineForm: FC<Props> = ({ className = "" }) => {
               />
             ))}
             <div className="flex flex-col items-baseline justify-between">
-              {renderCaptcha()}
+              <Captcha
+                ref={captchaRef}
+                onVerify={onVerify}
+              />
             </div>
             <div className="flex w-full items-center justify-center gap-12 md:justify-end md:gap-4">
               <Button
                 type="reset"
                 className="bg-red-600 text-white"
-                onClick={handleReset}
+                onClick={resetForm}
                 variant="destructive"
               >
                 清除

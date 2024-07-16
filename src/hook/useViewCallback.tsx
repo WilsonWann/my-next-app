@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 
-const useMobileView = (callback?: () => void) => {
+const useViewCallback = (callbackForMobile?: () => void, callbackForLaptop?: () => void) => {
 
   useEffect(() => {
-    if (!callback) return
 
     const handleMobileResize = () => {
       if (window.innerWidth <= 768) {
-        callback()
+        callbackForMobile && callbackForMobile()
+      } else {
+        callbackForLaptop && callbackForLaptop()
       }
     }
 
@@ -20,4 +21,4 @@ const useMobileView = (callback?: () => void) => {
   }, []);
 }
 
-export default useMobileView
+export default useViewCallback

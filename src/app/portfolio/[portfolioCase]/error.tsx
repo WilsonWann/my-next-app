@@ -1,7 +1,8 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { FC, useEffect } from 'react'
+import useCallbackFn from '@/hook/useCallbackFn'
+import { FC } from 'react'
 
 type Props = {
   error: Error & { digest?: string }
@@ -11,9 +12,7 @@ type Props = {
 const PortfolioCaseErrorPage: FC<Props> = (props) => {
   const { error, reset } = props
 
-  useEffect(() => {
-    console.error(error)
-  }, [error])
+  useCallbackFn(() => console.error(error), error)
 
   return (
     <div className="flex justify-center items-center gap-4 w-full">
