@@ -22,13 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-TW">
-      <body className={`${inter.className} min-h-screen bg-primary`}>
+      <body className={`${inter.className} bg-primary`}>
         <ReduxProvider>
           <GoogleMapProvider>
             <CaptchaProvider>
               <Header />
-              <div className="xl:mt-16 mt-[100px] h-full">
-                <main className="overflow-x-clip bg-transparent md:mb-24 mb-12 xl:px-1 px-8">
+              <div className="xl:mt-16 mt-[100px]">
+                <main className="overflow-x-clip bg-transparent xl:px-1 px-8 md:min-h-main h-wo-main-mobile">
                   {children}
                   <SpeedInsights />
                 </main>

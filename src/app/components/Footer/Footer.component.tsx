@@ -6,7 +6,9 @@ import { scheherazade } from '@/app/fonts';
 const Footer = () => {
   return (
     <footer className={`${scheherazade.className} 
-      relative bottom-0 h-fit w-full flex flex-col items-center justify-between bg-transparent pt-8 opacity-65 
+      relative bottom-0 h-fit w-full flex flex-col items-center justify-between bg-transparent 
+      md:pt-32 pt-16 
+      opacity-65 
     md:divide-y-0 divide-y-2
     md:gap-y-8
     `}>

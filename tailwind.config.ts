@@ -132,6 +132,12 @@ const config = {
           'transition-timing-function': 'cubic-bezier(0.4, 0, 0.2, 1)',
           'transition-property': 'all',
         },
+        '.min-h-main': {
+          minHeight: 'calc(100vh - 64px - 144px - 128px)'
+        },
+        '.h-wo-main-mobile': {
+          minHeight: 'calc(100vh - 100px - 266px - 64px)'
+        },
       });
     }),
   ],
