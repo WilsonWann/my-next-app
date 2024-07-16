@@ -2,15 +2,9 @@ import type { Config } from "tailwindcss"
 const plugin = require('tailwindcss/plugin');
 import { customKeyframes, customAnimation } from './src/helper/tailwind-function.helper'
 
-type PluginFunctionParams = {
-  addVariant: (name: string, callback: (options: { modifySelectors: (modifier: ({ className }: { className: string }) => string) => void; separator: string }) => void) => void;
-  e: (className: string) => string;
-};
-
 type AddUtilitiesParams = {
   addUtilities: (utilities: Record<string, Record<string, string | number>>) => void;
 };
-
 
 const config = {
   darkMode: ["class"],
@@ -109,42 +103,22 @@ const config = {
         '.grid-cols-4-minmax': {
           gridTemplateColumns: 'repeat(4, minmax(150px, 1fr))',
         },
-      });
-    }),
-    plugin(function ({ addUtilities }: AddUtilitiesParams) {
-      addUtilities({
         '.grid-cols-3-rows-2': {
           gridTemplateColumns: 'repeat(3, minmax(150px, 1fr))',
           gridTemplateRows: 'repeat(2, 280px)',
         },
-      });
-    }),
-    plugin(function ({ addUtilities }: AddUtilitiesParams) {
-      addUtilities({
         '.grid-cols-2-rows-3': {
           gridTemplateColumns: 'repeat(2, minmax(150px, 1fr))',
           gridTemplateRows: 'repeat(3, 280px)',
         },
-      });
-    }),
-    plugin(function ({ addUtilities }: AddUtilitiesParams) {
-      addUtilities({
         '.grid-2x2': {
           gridTemplateColumns: '1fr 2fr',
           gridTemplateRows: 'repeat(2, auto)',
         },
-      });
-    }),
-    plugin(function ({ addUtilities }: AddUtilitiesParams) {
-      addUtilities({
         '.grid-1x4': {
           gridTemplateColumns: 'repeat(1, minmax(150px, 1fr))',
           gridTemplateRows: 'repeat(4, auto)',
         },
-      });
-    }),
-    plugin(function ({ addUtilities }: AddUtilitiesParams) {
-      const newUtilities = {
         '.text-stroke': {
           textShadow: `
               -1px -1px 0 #000,
@@ -153,30 +127,10 @@ const config = {
                1px  1px 0 #000
             `,
         },
-      }
-
-      addUtilities(newUtilities);
-    }),
-    plugin(function ({ addUtilities }: AddUtilitiesParams) {
-      addUtilities({
-        '.bg-clip-text': {
-          'background-clip': 'text',
-          '-webkit-background-clip': 'text',
-        },
-        '.text-transparent': {
-          'color': 'transparent',
-        },
-      });
-    }),
-    plugin(function ({ addUtilities }: AddUtilitiesParams) {
-      addUtilities({
         '.link-transition': {
           'transition-duration': '420ms',
           'transition-timing-function': 'cubic-bezier(0.4, 0, 0.2, 1)',
           'transition-property': 'all',
-        },
-        '.text-transparent': {
-          'color': 'transparent',
         },
       });
     }),
