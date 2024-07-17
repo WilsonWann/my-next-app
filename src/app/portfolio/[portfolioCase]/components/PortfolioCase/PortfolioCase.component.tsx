@@ -18,7 +18,7 @@ const PortfolioCase: FC<Props> = async ({ portfolioCase }) => {
   const { title, tags, imageFolder, images } = response.data
 
   return (
-    <>
+    <div className="w-full flex flex-col items-stretch gap-4">
       <section className={`${scheherazade.className} flex flex-col justify-start items-start gap-2 text-secondary`}>
         <h2 className="text-xl ">{title}</h2>
         {tags.map((tag, index) => (
@@ -26,7 +26,7 @@ const PortfolioCase: FC<Props> = async ({ portfolioCase }) => {
         ))}
       </section>
       <PortfolioCaseImages imageFolder={imageFolder} images={images} />
-    </>
+    </div>
   )
 }
 

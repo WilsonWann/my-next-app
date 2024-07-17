@@ -17,8 +17,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode,
+  modal: React.ReactNode,
 }>) {
   return (
     <html lang="zh-TW">
@@ -29,6 +31,7 @@ export default function RootLayout({
               <Header />
               <div className="xl:mt-16 mt-[100px]">
                 <main className="overflow-x-clip bg-transparent xl:px-1 px-8 md:min-h-main h-wo-main-mobile">
+                  {modal}
                   {children}
                   <SpeedInsights />
                 </main>
