@@ -1,11 +1,11 @@
 "use client";
 
-import { FC, createContext, useEffect, useRef } from "react";
+import { FC, createContext, useRef } from "react";
 import { LoadScript } from "@react-google-maps/api";
 import { MapState } from "@/store/map/map.slice";
 import useGoogleMap from "@/hook/useGoogleMap";
 import useViewCallback from "@/hook/useViewCallback";
-import Loading from "../loading";
+import Loading from "@/app/loading";
 
 export const GoogleMapContext = createContext<MapState>({
   apiKey: null,

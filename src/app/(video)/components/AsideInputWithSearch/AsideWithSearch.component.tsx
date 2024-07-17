@@ -13,7 +13,6 @@ type Props = {
 }
 
 const AsideInputWithSearch: FC<Props> = (props) => {
-
   const inputRef = React.useRef<HTMLInputElement>(null)
 
   const onSearchClick = () => {
@@ -29,6 +28,7 @@ const AsideInputWithSearch: FC<Props> = (props) => {
   if (!videoRoute.routes) return null
   const routeDetail = videoRoute.routes.find(route => !route.indexPage && route.route === props.pathname) as RouteDetail
 
+  if (!routeDetail) return
   const title = `${firstCharUpperCase(routeDetail.mainName)} ${routeDetail.altName}`
 
   return (
