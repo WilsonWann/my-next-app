@@ -72,7 +72,7 @@ const PortfolioCasePage: FC<PortfolioCaseParamsProps> = async ({ params: { portf
 
   return (
     <Modal>
-      <ScrollArea className="h-[600px]">
+      <ScrollArea className="md:h-[600px] h-[480px]">
         <PortfolioCase portfolioCase={portfolioCase} />
       </ScrollArea>
     </Modal>

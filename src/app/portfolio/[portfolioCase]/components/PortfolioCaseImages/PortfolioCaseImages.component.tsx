@@ -18,7 +18,7 @@ const PortfolioCaseImages = async (props: Props) => {
   return (
     <div className="flex flex-col items-stretch gap-6">
       {allImagesWithBlurDataUrl.map((image, index) => (
-        <div key={index} className="relative w-full h-[500px] overflow-clip">
+        <div key={index} className="relative w-full md:h-[500px] h-[420px] overflow-clip">
           {image.success ? <LocalImage image={image.data} fill /> : <FallbackImage />}
         </div>
       ))}
